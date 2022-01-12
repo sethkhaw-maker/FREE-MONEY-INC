@@ -225,3 +225,20 @@ Start importing Assets/TextMesh Pro/Fonts/PrequelDemo-ShadowItalic SDF.asset usi
  -> (artifact id: 'be34b83979cb431b659a8484b1b6fb0a') in 0.037548 seconds
   Import took 0.043337 seconds .
 
+========================================================================
+Received Import Request.
+  Time since last request: 25.821411 seconds.
+  path: Assets/Scenes/SampleScene.unity
+  artifactKey: Guid(2cda990e2423bbf4892e6590ba056729) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/SampleScene.unity using Guid(2cda990e2423bbf4892e6590ba056729) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f36fc83d6314cda48b47f550520830db') in 0.011168 seconds
+  Import took 0.015018 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 14.181871 seconds.
+  path: Assets/Scenes/Menu_Scene.unity
+  artifactKey: Guid(2cda990e2423bbf4892e6590ba056729) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/Menu_Scene.unity using Guid(2cda990e2423bbf4892e6590ba056729) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a095d9e764ecac4af8c4a37d9a77d351') in 0.012052 seconds
+  Import took 0.018589 seconds .
+
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
