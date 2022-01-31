@@ -6,30 +6,51 @@ using UnityEngine.UI;
 public class Minigame : MonoBehaviour
 {
     //UI Variables
-    public float minigameWidth;     //Technical stuff, allows free sizing of Minigame width
-    [SerializeField] private float hitboxPercentage;  //Percentage of the hitbox will cover on minigame screen
-    public float hitBoxSize;
-    public float hitboxOffset;
+    private float minigameWidth;         //Technical stuff, allows free sizing of Minigame width
+    private float hitboxPercentage;     //Percentage of the hitbox will cover on minigame screen
+    private float hitBoxSize;
+    private float hitboxOffset;
 
-    public float finalOffset;
+    private float finalOffset;
 
-    public RectTransform hitboxDisplay;
-    private Slider hitSlider;       //The moving slider
-    public float sliderValue;
+    public RectTransform hitboxDisplay; //The red hitbox area
+    private Slider hitSlider;           //The slider which moves back and forth
+    private float sliderValue;
 
     //Gameplay Variables
     private bool isGaming;
     public Text scoreText;
     int score;
+
+    [Range(0.25f,1.75f)]
+    public float speedModifier = 1;
+
+    [Range(0f, 100f)]
+    public int minHitboxPercentage = 20;      //Minimum size of hitbox in percentage
+
+    [Range(0f, 100f)]
+    public int maxHitboxPercentage = 100;     //Maximum size of hitbox in percentage
+
     void Start()
     {
+        //Assign the slider from child variable
         hitSlider = GetComponentInChildren<Slider>();
+
+        //Generate the starting hitbox
         GenerateHitbox();
     }
 
     private void Update()
     {
+        //Update the slider to move in real time
         UpdateSlider();
+    }
+
+    //Slider which moves left and right
+    private void UpdateSlider()
+    {
+        sliderValue = Mathf.PingPong(Time.time * speedModifier, 1);
+        hitSlider.value = sliderValue;
     }
 
     //Generate a hitbox for the minigame
@@ -39,7 +60,7 @@ public class Minigame : MonoBehaviour
         minigameWidth = GetComponent<RectTransform>().rect.width;
 
         //Set a percentage amount for hitbox
-        hitboxPercentage = Random.Range(10f, 40f);
+        hitboxPercentage = Random.Range(minHitboxPercentage, maxHitboxPercentage);
 
         //hitboxPercentage = 10f; //TEMPTESTING
 
@@ -58,16 +79,9 @@ public class Minigame : MonoBehaviour
         hitboxDisplay.anchoredPosition = new Vector2(finalOffset, 0);
     }
 
-    //Update the slider to move left and right
-    private void UpdateSlider()
-    {
-        sliderValue = Mathf.PingPong(Time.time, 1);
-        hitSlider.value = sliderValue;
-    }
 
-
-    //The button to stop the minigame
-    public void StopMinigame()
+    //The minigame hit button
+    public void HitMinigameButton()
     {
         isGaming = false;
 
@@ -76,9 +90,8 @@ public class Minigame : MonoBehaviour
         float hitboxRight = (hitboxOffset + finalOffset + hitBoxSize) / minigameWidth;
         if (sliderValue > hitboxLeft && sliderValue < hitboxRight)
         {
-            print("WIN!");
             GenerateHitbox();
-            scoreText.text = score++.ToString();
+            scoreText.text = (++score).ToString();
         }
     }
 

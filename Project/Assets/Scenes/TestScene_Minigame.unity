@@ -687,14 +687,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdc528712ee8e0f4b98f0836481bbdee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minigameWidth: 0
-  hitboxPercentage: 0
-  hitBoxSize: 0
-  hitboxOffset: 0
-  finalOffset: 15
   hitboxDisplay: {fileID: 1429615119}
-  sliderValue: 0
   scoreText: {fileID: 1354984047}
+  speedModifier: 1
+  minHitboxPercentage: 25
+  maxHitboxPercentage: 50
 --- !u!1 &1354984045
 GameObject:
   m_ObjectHideFlags: 0
@@ -1101,7 +1098,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1166134371}
         m_TargetAssemblyTypeName: Minigame, Assembly-CSharp
-        m_MethodName: StopMinigame
+        m_MethodName: HitMinigameButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
