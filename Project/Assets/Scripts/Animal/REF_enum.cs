@@ -33,5 +33,6 @@ public enum EMOTE
     HUNGRY,
     SCARED,
     HAPPY,
-    ANGRY
+    ANGRY,
+    CONFUSED
 }

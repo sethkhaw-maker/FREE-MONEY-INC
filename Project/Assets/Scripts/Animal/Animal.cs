@@ -26,6 +26,7 @@ public class Animal : MonoBehaviour
     [HideInInspector] public SYS_Emote animalEmote;
 
     [HideInInspector] public SpriteRenderer animalSprite;
+    [HideInInspector] public Animator animalAnimator;
     [HideInInspector] public bool isDespawning, inParty;
 
     private void Start()

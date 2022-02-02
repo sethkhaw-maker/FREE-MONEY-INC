@@ -4,10 +4,17 @@ using UnityEngine;
 
 public class SYS_Emote 
 {
+    Animator anim;
     Animal self;
-    public void Start(Animal _s) => self = _s;
 
-    public void EmoteAct(EMOTE emote)
+    public void Start(Animal _a)
+    {
+        self = _a;
+        anim = self.animalAnimator;
+    }
+
+    // animations go here
+    public void EmoteShowAction(EMOTE emote)
     {
         switch (emote)
         {
@@ -20,7 +27,8 @@ public class SYS_Emote
         }
     }
 
-    public void EmoteShow(EMOTE emote)
+    // sprite showing goes here; not sure what input is yet.
+    public void EmoteShowBubble(EMOTE emote)
     {
         switch (emote)
         {
@@ -32,10 +40,4 @@ public class SYS_Emote
             default: break;
         }
     }
-    
-    void Normal() { }
-    void Happy() { }
-    void Hungry() { }
-    void Scared() { }
-    void Angry() { }
 }

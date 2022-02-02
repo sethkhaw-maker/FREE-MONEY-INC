@@ -7,6 +7,7 @@ public abstract class SYS_FSM : MonoBehaviour
     [HideInInspector] public SYS_FSMState currState;
     [HideInInspector] public List<SYS_FSMState> states = new List<SYS_FSMState>();
     [HideInInspector] public Animal self;
+    [HideInInspector] public bool active = true;
 
     public void Start(Animal _self)
     {
@@ -15,6 +16,7 @@ public abstract class SYS_FSM : MonoBehaviour
 
     public void Update()
     {
+        if (!active) return;
         //if (GameOver()) return;
         currState.Running();
         CheckForStateSwitch();
@@ -38,13 +40,13 @@ public abstract class SYS_FSM : MonoBehaviour
     {
         switch (state)
         {
-            case eSTATE.IDLE:           return states.Find(x => x is STATE_Wander);
+            case eSTATE.IDLE:           return states.Find(x => x is STATE_Idle);
             case eSTATE.WANDER:         return states.Find(x => x is STATE_Wander);
-            case eSTATE.LOOKTOCHASE:    return states.Find(x => x is STATE_Wander);
-            case eSTATE.LOOKTOFLEE:     return states.Find(x => x is STATE_Wander);
-            case eSTATE.CHASE:          return states.Find(x => x is STATE_Wander);
-            case eSTATE.FLEE:           return states.Find(x => x is STATE_Wander);
-            case eSTATE.FOLLOW:         return states.Find(x => x is STATE_Wander);
+            case eSTATE.LOOKTOCHASE:    return states.Find(x => x is STATE_LookToChase);
+            case eSTATE.LOOKTOFLEE:     return states.Find(x => x is STATE_LookToFlee);
+            case eSTATE.CHASE:          return states.Find(x => x is STATE_Chase);
+            case eSTATE.FLEE:           return states.Find(x => x is STATE_Flee);
+            case eSTATE.FOLLOW:         return states.Find(x => x is STATE_Follow);
             default: return null;
         }
     }
