@@ -18,7 +18,7 @@ public class Minigame : MonoBehaviour
     private float sliderValue;
 
     //Gameplay Variables
-    private bool isGaming;
+    private bool isGaming = true;
     public Text scoreText;
     int score;
 
@@ -42,8 +42,11 @@ public class Minigame : MonoBehaviour
 
     private void Update()
     {
-        //Update the slider to move in real time
-        UpdateSlider();
+        if (isGaming)
+        {
+            //Update the slider to move in real time
+            UpdateSlider();
+        }
     }
 
     //Slider which moves left and right
@@ -77,12 +80,15 @@ public class Minigame : MonoBehaviour
         finalOffset = Random.Range(-hitboxOffset, hitboxOffset);
         
         hitboxDisplay.anchoredPosition = new Vector2(finalOffset, 0);
+
+        isGaming = true;
     }
 
 
     //The minigame hit button
     public void HitMinigameButton()
     {
+        if (isGaming == false) return;
         isGaming = false;
 
         float hitboxLeft = (hitboxOffset + finalOffset) / minigameWidth;
@@ -90,7 +96,7 @@ public class Minigame : MonoBehaviour
         float hitboxRight = (hitboxOffset + finalOffset + hitBoxSize) / minigameWidth;
         if (sliderValue > hitboxLeft && sliderValue < hitboxRight)
         {
-            GenerateHitbox();
+            //GenerateHitbox();
             scoreText.text = (++score).ToString();
         }
     }
