@@ -8,6 +8,8 @@ public class FlipAnimal : MonoBehaviour
 
     private Vector2 originalSize;
 
+    private bool facingRight;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,8 +22,17 @@ public class FlipAnimal : MonoBehaviour
     void Update()
     {
         float rnd = Input.GetAxisRaw("Horizontal");
-        rnd = Mathf.Clamp(rnd, 0, 1);
+
         if (rnd == 1)
+        {
+            facingRight = true;
+        }
+        else if (rnd == -1)
+        {
+            facingRight = false;
+        }
+
+        if (facingRight)
         {
             transform.localScale = new Vector3(Mathf.Lerp(transform.localScale.x, originalSize.x, Time.deltaTime * speed), transform.localScale.y, transform.localScale.z);
         }
