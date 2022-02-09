@@ -690,8 +690,8 @@ MonoBehaviour:
   hitboxDisplay: {fileID: 1429615119}
   scoreText: {fileID: 1354984047}
   speedModifier: 1
-  minHitboxPercentage: 25
-  maxHitboxPercentage: 50
+  minHitboxPercentage: 15
+  maxHitboxPercentage: 40
 --- !u!1 &1354984045
 GameObject:
   m_ObjectHideFlags: 0
@@ -821,15 +821,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7482667652216324306, guid: 37e8e2a6174ece94e891a266b2b8e94d, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: 6a1ff93eccc3b214cbc3734ac2ebe96f, type: 3}
+  m_Type: 2
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
