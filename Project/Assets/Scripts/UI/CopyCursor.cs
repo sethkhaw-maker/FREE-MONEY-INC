@@ -85,12 +85,11 @@ public class CopyCursor : MonoBehaviour
     }
     void PlayRandom()
     {
-        if (!CursorAudio.isPlaying)
+        if (CursorAudio.isActiveAndEnabled && !CursorAudio.isPlaying)
         {
             CursorAudio.clip = CursorClips[Random.Range(0, CursorClips.Length)];
             CursorAudio.Play();
         }
-        
     }
 }
 

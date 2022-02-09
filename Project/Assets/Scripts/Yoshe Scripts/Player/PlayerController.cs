@@ -68,22 +68,22 @@ public class PlayerController : MonoBehaviour
     {
         if (rb.velocity.x / speed > 0.5f)
         {
-            print("Walking RIGHT");
+            //print("Walking RIGHT");
             moveDirection = MoveDirection.RIGHT;
         }
         else if (rb.velocity.x / speed < -0.5f)
         {
-            print("Walking LEFT");
+            //print("Walking LEFT");
             moveDirection = MoveDirection.LEFT;
         }
         else if (rb.velocity.y / speed > 0.5f)
         {
-            print("Walking UP");
+            //print("Walking UP");
             moveDirection = MoveDirection.UP;
         }
         else if (rb.velocity.y / speed < -0.5f)
         {
-            print("Walking DOWN");
+            //print("Walking DOWN");
             moveDirection = MoveDirection.DOWN;
         }
 
