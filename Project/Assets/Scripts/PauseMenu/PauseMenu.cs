@@ -6,15 +6,29 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     public static bool GameIsPaused = false;
-    public GameObject pauseMenuUI;
-    //public GameObject optionsMenuUI;
+    public GameObject pauseMenuUICanvas;
+    public GameObject confirmationUICanvas;
+    public GameObject optionsUICanvas;
+    public GameObject htpUICanvas;
+
+    public GameObject pauseButton;
+
     private AudioSource audiosourceref;
 
     public static PauseMenu instance;
+
     private void Awake()
     {
-        if (instance == null) { instance = this; }
-        else { Destroy(this.gameObject); }
+        if (instance != null)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
+        else
+        {
+            instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
     }
 
     private void Start()
@@ -27,16 +41,22 @@ public class PauseMenu : MonoBehaviour
             Resume();
             Debug.Log("is resumed");
         }
+
+        confirmationUICanvas.SetActive(false);
+        pauseMenuUICanvas.SetActive(false);
+        optionsUICanvas.SetActive(false);
+        htpUICanvas.SetActive(false);
     }
-    // Update is called once per frame
+
+
     void Update()
     {
-        if (!Application.isFocused) 
-        { 
-            if (pauseMenuUI != null)
+        if (!Application.isFocused)
+        {
+            if (pauseMenuUICanvas != null)
             {
-                Pause(); 
-            } 
+                Pause();
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -60,17 +80,25 @@ public class PauseMenu : MonoBehaviour
 
     }
 
-    public void Resume ()
+    public void Resume()
     {
-        pauseMenuUI.SetActive(false);
-        //optionsMenuUI.SetActive(false);
+        pauseButton.SetActive(true);
+        pauseMenuUICanvas.SetActive(false);
+        confirmationUICanvas.SetActive(false);
+        pauseMenuUICanvas.SetActive(false);
+        optionsUICanvas.SetActive(false);
+        htpUICanvas.SetActive(false);
+
         Time.timeScale = 1f;
         audiosourceref.volume = 1f;
         GameIsPaused = false;
     }
-    public void Pause ()
+    public void Pause()
     {
-        pauseMenuUI.SetActive(true);
+        pauseMenuUICanvas.SetActive(true);
+        pauseButton.SetActive(false);
+
+
         Time.timeScale = 0f;
         audiosourceref.volume = 0f;
         GameIsPaused = true;
@@ -88,7 +116,7 @@ public class PauseMenu : MonoBehaviour
         SceneManager.LoadScene("Main Menu");
     }
 
-    public void LoadMenu ()
+    public void LoadMenu()
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene(0);
