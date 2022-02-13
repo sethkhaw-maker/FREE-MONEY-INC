@@ -15,12 +15,13 @@ public class STATE_Idle : SYS_FSMState
     public override void OnExit()
     {
         timer = 0f;
+        progress = false;
     }
 
     public override void Running()
     {
         timer += Time.deltaTime;
         if (timer > self.idleTime)
-            progress = true;
+            EnterNextState();
     }
 }

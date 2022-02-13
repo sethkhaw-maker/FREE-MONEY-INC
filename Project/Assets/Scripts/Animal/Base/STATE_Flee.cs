@@ -45,6 +45,6 @@ public class STATE_Flee : SYS_FSMState
         fleeing = true;
     }
     void FleeFromTarget() => self.transform.position = Vector3.MoveTowards(startPos, endPos, self.runSpeed * Time.deltaTime);
-    bool OutOfRange() => Vector3.Distance(self.transform.position, endPos) >= self.target.runRange ? true : false;
+    bool OutOfRange() => Vector3.Distance(self.transform.position, endPos) >= self.targetAsAnimal.runRange ? true : false;
     void LoseTarget() => self.target = null;
 }

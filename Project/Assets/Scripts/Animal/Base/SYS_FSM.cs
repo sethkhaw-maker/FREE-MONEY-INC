@@ -9,20 +9,20 @@ public abstract class SYS_FSM : MonoBehaviour
     [HideInInspector] public Animal self;
     [HideInInspector] public bool active = true;
 
-    public void Start(Animal _self)
+    public void Init(Animal _s)
     {
-        self = _self;
+        self = _s;
     }
 
     public void Update()
     {
-        if (!active) return;
+        if (!active || self == null) return;
         //if (GameOver()) return;
         currState.Running();
         CheckForStateSwitch();
     }
 
-    protected void SwitchToState(eSTATE state)
+    public void SwitchToState(eSTATE state)
     {
         Debug.Log("state: " + state);
         SYS_FSMState newState = FindState(state);
@@ -31,7 +31,9 @@ public abstract class SYS_FSM : MonoBehaviour
 
     protected void SwitchToState(SYS_FSMState newState)
     {
-        currState.OnExit();
+        Debug.Log("changing states. " + newState);
+        if (currState != null)
+            currState.OnExit();
         currState = newState;
         currState.OnEnter();
     }
@@ -46,7 +48,7 @@ public abstract class SYS_FSM : MonoBehaviour
             case eSTATE.LOOKTOFLEE:     return states.Find(x => x is STATE_LookToFlee);
             case eSTATE.CHASE:          return states.Find(x => x is STATE_Chase);
             case eSTATE.FLEE:           return states.Find(x => x is STATE_Flee);
-            case eSTATE.FOLLOW:         return states.Find(x => x is STATE_Follow);
+            case eSTATE.FOLLOWNOAH:         return states.Find(x => x is STATE_FollowNoah);
             default: return null;
         }
     }
@@ -54,7 +56,7 @@ public abstract class SYS_FSM : MonoBehaviour
     //protected bool GameOver() => SYS_GeneralDashboard.instance.gameOver;
     protected virtual void SetFirstState(eSTATE state) => currState = FindState(state);
 
-    protected abstract void SetupStates();
+    public abstract void SetupStates();
     protected abstract void CheckForStateSwitch();
 }
 

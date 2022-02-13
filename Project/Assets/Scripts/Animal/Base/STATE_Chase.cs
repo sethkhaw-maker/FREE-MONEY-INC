@@ -5,7 +5,7 @@ using UnityEngine;
 public class STATE_Chase : SYS_FSMState
 {
     float leniency = 0.1f;
-    Vector3 startPos, endPos;
+    Vector3 endPos;
     bool chasing;
 
     public override void Init(Animal _s)
@@ -15,7 +15,6 @@ public class STATE_Chase : SYS_FSMState
     public override void OnEnter() { }
     public override void OnExit()
     {
-        startPos = Vector3.zero;
         endPos = Vector3.zero;
         chasing = false;
         progress = false;
@@ -35,11 +34,10 @@ public class STATE_Chase : SYS_FSMState
 
     void GetPositions()
     {
-        startPos = self.transform.position;
         endPos = self.target.transform.position;
         chasing = true;
     }
-    void ChaseTarget() => self.transform.position = Vector3.MoveTowards(startPos, endPos, self.runSpeed * Time.deltaTime);
+    void ChaseTarget() => self.transform.position = Vector3.MoveTowards(self.transform.position, endPos, self.runSpeed * Time.deltaTime);
     bool AtChasePosition() => Vector3.Distance(self.transform.position, endPos) < leniency ? true : false;
     void LoseTarget() => self.target = null;
 }

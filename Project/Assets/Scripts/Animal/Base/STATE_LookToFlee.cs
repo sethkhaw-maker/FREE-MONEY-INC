@@ -30,5 +30,5 @@ public class STATE_LookToFlee : SYS_FSMState
         return listOfTargets.Contains(name);
     }
     bool IsOutOfRange(Animal other) => Vector3.Distance(self.transform.position, other.transform.position) >= other.runRange ? true : false;
-    void AssignTarget(Animal a) => self.target = a;
+    void AssignTarget(Animal a) => self.targetAsAnimal = a;
 }

@@ -8,11 +8,15 @@ public class PlayerController : MonoBehaviour
     public float speed = 5f;
     private Rigidbody2D rb;
 
+    public static List<Animal> party = new List<Animal>();
+    public static GameObject GameObject;
+
     float checkDist = 0.5f;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        GameObject = gameObject;
     }
 
     // Update is called once per frame

@@ -30,5 +30,5 @@ public class STATE_LookToChase : SYS_FSMState
         return listOfTargets.Contains(name);
     }
     bool IsWithinDistance(Transform other) => Vector3.Distance(self.transform.position, other.position) <= self.runRange ? true : false;
-    void AssignTarget(Animal a) => self.target = a;
+    void AssignTarget(Animal a) => self.targetAsAnimal = a;
 }

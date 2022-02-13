@@ -10,7 +10,7 @@ public enum eSTATE
     LOOKTOFLEE,
     CHASE,
     FLEE,
-    FOLLOW
+    FOLLOWNOAH
 }
 
 public enum SPAWNTIME

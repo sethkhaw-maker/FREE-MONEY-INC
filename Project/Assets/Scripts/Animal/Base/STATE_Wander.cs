@@ -5,7 +5,7 @@ using UnityEngine;
 public class STATE_Wander : SYS_FSMState
 {
     float leniency = 0.1f;
-    Vector3 startPos, endPos;
+    Vector3 endPos;
     bool wandering;
 
     public override void Init(Animal _s)
@@ -18,6 +18,7 @@ public class STATE_Wander : SYS_FSMState
     {
         wandering = false;
         progress = false;
+        endPos = Vector3.zero;
     }
 
     public override void Running()
@@ -35,10 +36,9 @@ public class STATE_Wander : SYS_FSMState
         float y = Random.Range(-self.wanderRange, self.wanderRange);
 
         Vector3 wanderPoint = new Vector3(x, y);
-        startPos = self.transform.position;
-        endPos = startPos + wanderPoint;
+        endPos = self.transform.position + wanderPoint;
         wandering = true;
     }
-    void MoveTowardsWanderPosition() => self.transform.position = Vector3.MoveTowards(startPos, endPos, self.wanderSpeed * Time.deltaTime);
+    void MoveTowardsWanderPosition() => self.transform.position = Vector3.MoveTowards(self.transform.position, endPos, self.wanderSpeed * Time.deltaTime);
     bool AtWanderPosition() => Vector3.Distance(self.transform.position, endPos) < leniency ? true : false;
 }
