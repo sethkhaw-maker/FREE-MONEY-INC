@@ -6,11 +6,6 @@ public class STATE_FollowNoah : SYS_FSMState
 {
     float offset = 1.5f; // needs recalc next time.
 
-    public override void Init(Animal _s)
-    {
-        self = _s;
-    }
-
     public override void OnEnter()
     {
         // Assume follow target is Noah.

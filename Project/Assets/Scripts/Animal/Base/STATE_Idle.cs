@@ -6,11 +6,6 @@ public class STATE_Idle : SYS_FSMState
 {
     float timer;
 
-    public override void Init(Animal _s)
-    {
-        self = _s;
-    }
-
     public override void OnEnter() { }
     public override void OnExit()
     {

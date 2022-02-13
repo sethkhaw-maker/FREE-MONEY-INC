@@ -8,11 +8,6 @@ public class STATE_Wander : SYS_FSMState
     Vector3 endPos;
     bool wandering;
 
-    public override void Init(Animal _s)
-    {
-        self = _s;
-    }
-
     public override void OnEnter() { }
     public override void OnExit()
     {

@@ -8,10 +8,6 @@ public class STATE_Chase : SYS_FSMState
     Vector3 endPos;
     bool chasing;
 
-    public override void Init(Animal _s)
-    {
-        self = _s;
-    }
     public override void OnEnter() { }
     public override void OnExit()
     {

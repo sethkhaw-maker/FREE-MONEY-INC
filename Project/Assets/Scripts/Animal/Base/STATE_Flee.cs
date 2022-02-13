@@ -7,11 +7,6 @@ public class STATE_Flee : SYS_FSMState
     Vector3 startPos, endPos;
     bool fleeing;
 
-    public override void Init(Animal _s)
-    {
-        self = _s;
-    }
-
     public override void OnEnter() { }
     public override void OnExit()
     {
