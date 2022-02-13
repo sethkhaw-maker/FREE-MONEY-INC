@@ -98,7 +98,16 @@ public class Minigame : MonoBehaviour
         {
             //GenerateHitbox();
             scoreText.text = (++score).ToString();
+
+            //Return back to gameplay
+            if (GameplayManager.instance != null)
+                GameplayManager.instance.EndMinigame(true);
+        }
+        else
+        {
+            //Return back to gameplay
+            if (GameplayManager.instance != null)
+                GameplayManager.instance.EndMinigame(false);
         }
     }
-
 }

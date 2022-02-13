@@ -37,7 +37,7 @@ public class Animal : MonoBehaviour
         animalFSM.Init(this);
         animalFSM.SetupStates();
         animalFSM.SwitchToState(firstState);
-        RegisterAnimalToParty();
+        //RegisterAnimalToParty();
     }
 
     public void RegisterAnimalToParty()

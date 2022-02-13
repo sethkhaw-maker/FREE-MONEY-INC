@@ -22,7 +22,6 @@ public class FlipAnimal : MonoBehaviour
     void Update()
     {
         float rnd = Input.GetAxisRaw("Horizontal");
-
         if (rnd == 1)
         {
             facingRight = true;
@@ -32,6 +31,12 @@ public class FlipAnimal : MonoBehaviour
             facingRight = false;
         }
 
+        //Squash and stretch vertically
+        transform.localScale = new Vector3(transform.localScale.x, originalSize.y + (Mathf.Sin(Time.time)/10*originalSize.y), transform.localScale.z);
+    }
+
+    public void FlipSide(Vector3 target)
+    {
         if (facingRight)
         {
             transform.localScale = new Vector3(Mathf.Lerp(transform.localScale.x, originalSize.x, Time.deltaTime * speed), transform.localScale.y, transform.localScale.z);
@@ -40,7 +45,5 @@ public class FlipAnimal : MonoBehaviour
         {
             transform.localScale = new Vector3(Mathf.Lerp(transform.localScale.x, -originalSize.x, Time.deltaTime * speed), transform.localScale.y, transform.localScale.z);
         }
-
-        transform.localScale = new Vector3(transform.localScale.x, originalSize.y + (Mathf.Sin(Time.time)/10*originalSize.y), transform.localScale.z);
     }
 }

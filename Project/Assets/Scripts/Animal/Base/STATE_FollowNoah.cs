@@ -14,8 +14,8 @@ public class STATE_FollowNoah : SYS_FSMState
     public override void OnEnter()
     {
         // Assume follow target is Noah.
-        GameObject followTarget = PlayerController.GameObject;
-
+        GameObject followTarget = PlayerController.instance.gameObject;
+        
         // The Animal should already be registered to Noah's party, so try and get its position in
         // the party List.
         int index = PlayerController.party.IndexOf(self);
@@ -38,5 +38,6 @@ public class STATE_FollowNoah : SYS_FSMState
         // Ensure that there's an offset. Move animal until offset distance.
         if (dist > offset)
             self.transform.position = Vector3.MoveTowards(self.transform.position, self.target.transform.position, self.wanderSpeed * Time.deltaTime);
+
     }
 }

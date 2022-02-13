@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public static GameObject GameObject;
+    public static PlayerController instance;
     public static List<Animal> party = new List<Animal>();
 
     //Variables
@@ -12,6 +12,12 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
 
     float checkDist = 0.5f;
+
+    private LayerMask animalLayer;
+
+    public Animal targetAnimal;
+
+    public Vector2 targetMove;
 
     public enum MoveDirection
     {
@@ -29,17 +35,75 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        GameObject = gameObject;
+        instance = this;
+        animalLayer = LayerMask.GetMask("Animal");
+        targetMove = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (GameplayManager.gameState == GameplayManager.GameState.MINIGAME)
+        {
+            return;
+        }
+
+        //Input mouse clicked, check for animal or move there
+        if (Input.GetMouseButtonDown(0))
+        {
+            CheckClick();
+        }
+
+        //Chase target if exist
+        if (targetAnimal != null)
+        {
+            //Enter the minigame if player is near the animal
+            if (Vector2.Distance(transform.position, targetAnimal.transform.position) < checkDist)
+            {
+                //Noah has reached destination
+                rb.velocity = Vector2.zero;
+
+                //Activate the minigame
+                if (GameplayManager.instance != null)
+                    GameplayManager.instance.InitMinigame();
+
+                //Reset the target animal to null
+                targetMove = transform.position;
+                return;
+            }
+
+            //Get normalized target direction
+            Vector2 dir = targetAnimal.transform.position - transform.position;
+            dir = dir.normalized;
+
+            //Move towards target direction
+            rb.velocity = dir * speed;
+        }
+        else
+        {
+            if (Vector2.Distance(transform.position, targetMove) < checkDist)
+            {
+                //Noah has reached destination
+                rb.velocity = Vector2.zero;
+            }
+            else
+            {
+                //Get the vector direction from mousepos to player
+                Vector2 dir = targetMove - new Vector2(transform.position.x, transform.position.y);
+                dir = dir.normalized;
+
+                rb.velocity = dir * speed;
+            }
+        }
+
         //Mouse is held down, Noah moves to mouse position
         if (Input.GetMouseButton(0))
         {
+            if (targetAnimal != null) return;
+
             //Get mouse position in world space
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            targetMove = mousePos;
 
             //Return if player is near the mouse
             if (Vector2.Distance(transform.position, mousePos) < checkDist)
@@ -50,15 +114,10 @@ public class PlayerController : MonoBehaviour
             }
 
             //Get the vector direction from mousepos to player
-            Vector2 dir = mousePos - new Vector2(transform.position.x, transform.position.y);
+            Vector2 dir = targetMove - new Vector2(transform.position.x, transform.position.y);
             dir = dir.normalized;
 
             rb.velocity = dir * speed;
-        }
-        else
-        {
-            //Mouse is not held down, Noah stops moving
-            rb.velocity = Vector2.zero;
         }
 
         //Update Noah's direction based on velocity
@@ -66,8 +125,50 @@ public class PlayerController : MonoBehaviour
 
         //Update Noah's animation
         UpdateAnimation();
+
+        //Testing section
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            Animal[] animalsInScene = FindObjectsOfType<Animal>();
+            foreach (var newAnimal in animalsInScene)
+            {
+                newAnimal.RegisterAnimalToParty();
+            }
+        }
     }
 
+    //Check for animal clicked
+    private void CheckClick()
+    {
+        //Get mouse position in world space
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        //Raycast to check if hit an animal
+        RaycastHit2D hit = Physics2D.Raycast(mousePos, transform.forward, 1f, animalLayer);
+
+        //Raycast hit an animal
+        if (hit.collider != null)
+        {
+            //Get the animal component from hit
+            Animal hitAnimal = hit.collider.GetComponent<Animal>();
+
+            //Check if party contains the animal
+            if (party.Contains(hitAnimal)) return;
+
+            //Assign animal to target for chase and minigame
+            targetAnimal = hitAnimal;
+            targetMove = mousePos;
+        }
+        else
+        {
+            //Clicked outside of animal, stopped chasing
+            targetAnimal = null;
+
+            targetMove = mousePos;
+        }
+    }
+
+    //Update direction of moveDirection for animation
     private void UpdateDirection()
     {
         if (rb.velocity.x / speed > 0.5f)
