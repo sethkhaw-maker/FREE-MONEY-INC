@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public static GameObject GameObject;
+    public static List<Animal> party = new List<Animal>();
+
     //Variables
     public float speed = 3.5f;
     private Rigidbody2D rb;
@@ -26,6 +29,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        GameObject = gameObject;
     }
 
     // Update is called once per frame
