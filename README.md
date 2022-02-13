@@ -7,3 +7,5 @@ Valerie
 Hughes
 Constance 
 Venus
+
+Update: Now we have github updates on Discord woohoo

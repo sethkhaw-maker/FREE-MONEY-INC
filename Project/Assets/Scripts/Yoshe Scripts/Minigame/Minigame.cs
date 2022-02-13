@@ -71,7 +71,7 @@ public class Minigame : MonoBehaviour
         hitBoxSize = hitboxPercentage / 100 * minigameWidth;
         
         //Set the hitbox width
-        hitboxDisplay.sizeDelta = new Vector2(hitBoxSize, 0);
+        hitboxDisplay.sizeDelta = new Vector2(hitBoxSize, hitboxDisplay.sizeDelta.y);
 
         //Get highest possible offset value for hitbox
         hitboxOffset = (minigameWidth - hitBoxSize) / 2;
