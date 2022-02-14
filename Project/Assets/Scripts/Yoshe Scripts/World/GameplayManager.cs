@@ -16,8 +16,16 @@ public class GameplayManager : MonoBehaviour
     }
     public static GameState gameState;
 
+    //Minigame prefabs
     private GameObject minigameInstance;
     public GameObject minigamePrefab;
+
+    //Clock stuff
+    public GameObject clockhand;
+    public float clockSpeed = 5;
+
+    //Game timers
+    private float dayTimer;
 
     void Start()
     {
@@ -26,9 +34,21 @@ public class GameplayManager : MonoBehaviour
 
     void Update()
     {
+        if (gameState == GameState.PLAYING)
+        {
+            UpdateGameTime();
+        }
         
     }
 
+    //Updates the in game timer
+    private void UpdateGameTime()
+    {
+        dayTimer += Time.deltaTime * clockSpeed;
+        clockhand.transform.rotation = Quaternion.Euler(0, 0, -dayTimer);
+    }
+
+    //Call this to activate minigame
     public void InitMinigame()
     {
         gameState = GameState.MINIGAME;
@@ -37,10 +57,9 @@ public class GameplayManager : MonoBehaviour
         {
             minigameInstance = Instantiate(minigamePrefab);
         }
-        print("minigame has started");
-
     }
 
+    //Call this to activate end of minigame
     public void EndMinigame(bool win)
     {
         StartCoroutine(DelayEndMinigame(win));
@@ -74,12 +93,7 @@ public class GameplayManager : MonoBehaviour
     //Send the animals into the ark
     public void SendAnimalsIntoArk(GameObject ark)
     {
-        //if (PlayerController.party[0] == null) //Is not able to check for null
-        //{
-        //    print("You do not have any animals!");
-        //    return;
-        //}
-        //PlayerController.party[0].target = ark;
+        //Send all into the ark (can probably do it to the 1st in party and recursive this)
         for (int i = 0; i < PlayerController.party.Count; i++)
         {
             PlayerController.party[i].target = ark;

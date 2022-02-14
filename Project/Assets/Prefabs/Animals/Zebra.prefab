@@ -171,7 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8503421662c3acf43aefef954a52b3a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animalName: Elephant
+  animalName: Zebra
   wanderRange: 5
   wanderSpeed: 5
   runRange: 0
@@ -185,6 +185,7 @@ MonoBehaviour:
   fleeTargets: 
   target: {fileID: 0}
   targetAsAnimal: {fileID: 0}
+  followOffset: 1.5
   animalFSM: {fileID: -9210054186356706765}
   animalSprite: {fileID: 0}
   animalAnimator: {fileID: 0}

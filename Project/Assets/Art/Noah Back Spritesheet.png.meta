@@ -1,28 +1,16 @@
 fileFormatVersion: 2
-guid: 541fa34a243e90149ad40399e91c74b1
+guid: fb5bd4075c8113749b70a426fb2e516d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1817757272684197029
-    second: Hyena Spritesheet_0
+      213: -3307555350915407575
+    second: Noah Back Spritesheet_0
   - first:
-      213: -993932212649858422
-    second: Hyena Spritesheet_1
+      213: 6934518229294074942
+    second: Noah Back Spritesheet_1
   - first:
-      213: -6732670049704958023
-    second: Hyena Spritesheet_2
-  - first:
-      213: 8707419124745076739
-    second: Hyena Spritesheet_3
-  - first:
-      213: -6448136607579574735
-    second: Hyena Spritesheet_4
-  - first:
-      213: 1842492824481453719
-    second: Hyena Spritesheet_5
-  - first:
-      213: -8778854611705380224
-    second: Hyena Spritesheet_6
+      213: -8203749753226953319
+    second: Noah Back Spritesheet_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -67,7 +55,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 256
+  spritePixelsToUnits: 512
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -110,91 +98,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Hyena Spritesheet_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 1536
-        width: 512
-        height: 512
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b5b86c1346706c6e0800000000000000
-      internalID: -1817757272684197029
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Hyena Spritesheet_1
-      rect:
-        serializedVersion: 2
-        x: 512
-        y: 1536
-        width: 512
-        height: 512
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a8aef2e2be7d432f0800000000000000
-      internalID: -993932212649858422
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Hyena Spritesheet_2
-      rect:
-        serializedVersion: 2
-        x: 1024
-        y: 1536
-        width: 512
-        height: 512
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9b7ac61d240c092a0800000000000000
-      internalID: -6732670049704958023
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Hyena Spritesheet_3
-      rect:
-        serializedVersion: 2
-        x: 1536
-        y: 1536
-        width: 512
-        height: 512
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3008fd06f87f6d870800000000000000
-      internalID: 8707419124745076739
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Hyena Spritesheet_4
+      name: Noah Back Spritesheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -208,14 +112,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 13ee60a4bed9386a0800000000000000
-      internalID: -6448136607579574735
+      spriteID: 921aeb9bee33912d0800000000000000
+      internalID: -3307555350915407575
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hyena Spritesheet_5
+      name: Noah Back Spritesheet_1
       rect:
         serializedVersion: 2
         x: 512
@@ -229,14 +133,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7965c604679d19910800000000000000
-      internalID: 1842492824481453719
+      spriteID: e3c4b81c69b5c3060800000000000000
+      internalID: 6934518229294074942
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hyena Spritesheet_6
+      name: Noah Back Spritesheet_2
       rect:
         serializedVersion: 2
         x: 1024
@@ -250,8 +154,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 08240863e3e3b2680800000000000000
-      internalID: -8778854611705380224
+      spriteID: 99d75b4901d662e80800000000000000
+      internalID: -8203749753226953319
       vertices: []
       indices: 
       edges: []

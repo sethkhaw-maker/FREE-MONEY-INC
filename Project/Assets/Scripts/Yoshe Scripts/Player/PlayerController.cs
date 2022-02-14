@@ -47,6 +47,12 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Update Noah's direction based on velocity
+        UpdateDirection();
+
+        //Update Noah's animation
+        UpdateAnimation();
+
         if (party.Count == 0)
         {
             isClearingAnimals = false;
@@ -130,18 +136,13 @@ public class PlayerController : MonoBehaviour
             rb.velocity = dir * speed;
         }
 
-        //Update Noah's direction based on velocity
-        UpdateDirection();
-
-        //Update Noah's animation
-        UpdateAnimation();
-
         //Testing section
         if (Input.GetKeyDown(KeyCode.F))
         {
             Animal[] animalsInScene = FindObjectsOfType<Animal>();
             foreach (var newAnimal in animalsInScene)
             {
+                if (!party.Contains(newAnimal))
                 newAnimal.RegisterAnimalToParty();
             }
         }
