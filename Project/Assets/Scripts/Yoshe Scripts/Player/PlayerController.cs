@@ -14,10 +14,13 @@ public class PlayerController : MonoBehaviour
     float checkDist = 0.5f;
 
     private LayerMask animalLayer;
+    private LayerMask arkLayer;
 
     public Animal targetAnimal;
 
     public Vector2 targetMove;
+
+    bool isClearingAnimals = false;
 
     public enum MoveDirection
     {
@@ -37,14 +40,21 @@ public class PlayerController : MonoBehaviour
         anim = GetComponent<Animator>();
         instance = this;
         animalLayer = LayerMask.GetMask("Animal");
+        arkLayer = LayerMask.GetMask("Ark");
         targetMove = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (GameplayManager.gameState == GameplayManager.GameState.MINIGAME)
+        if (party.Count == 0)
         {
+            isClearingAnimals = false;
+        }
+        if (GameplayManager.gameState == GameplayManager.GameState.MINIGAME || isClearingAnimals == true)
+        {
+            targetMove = transform.position;
+            rb.velocity = Vector2.zero;
             return;
         }
 
@@ -142,6 +152,15 @@ public class PlayerController : MonoBehaviour
     {
         //Get mouse position in world space
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        RaycastHit2D hitArk = Physics2D.Raycast(mousePos, transform.forward, 1f, arkLayer);
+        if (hitArk.collider != null)
+        {
+            GameplayManager.instance.SendAnimalsIntoArk(hitArk.collider.gameObject);
+            targetMove = transform.position;
+            isClearingAnimals = true;
+            return;
+        }
 
         //Raycast to check if hit an animal
         RaycastHit2D hit = Physics2D.Raycast(mousePos, transform.forward, 1f, animalLayer);

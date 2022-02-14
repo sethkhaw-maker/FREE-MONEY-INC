@@ -22,14 +22,19 @@ public class Animal : MonoBehaviour
     public string chaseTargets, fleeTargets;
     public GameObject target;
     public Animal targetAsAnimal;
+    public float followOffset = 1.5f;
 
     [Header("Class References")]
     public SYS_FSM animalFSM;
-    [HideInInspector] public SYS_Emote animalEmote;
+    [HideInInspector] public SYS_Emote animalEmote = new SYS_Emote();
 
     [HideInInspector] public SpriteRenderer animalSprite;
     [HideInInspector] public Animator animalAnimator;
     [HideInInspector] public bool isDespawning, inParty;
+
+    public int difficultyLevel = 0;
+
+    public GameObject thoughtBubble;
 
     private void Start()
     {
@@ -44,5 +49,15 @@ public class Animal : MonoBehaviour
     {
         PlayerController.party.Add(this);
         inParty = true;
+
+        StartCoroutine(animalEmote.EmoteShowBubble(thoughtBubble, 1.5f, EMOTE.HAPPY));
+    }
+
+    public void RegisterAnimalToArk()
+    {
+        PlayerController.party.Remove(this);
+        inParty = false;
+
+        Destroy(gameObject);
     }
 }

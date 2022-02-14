@@ -402,9 +402,10 @@ GameObject:
   m_Component:
   - component: {fileID: 365989799}
   - component: {fileID: 365989798}
-  m_Layer: 0
+  - component: {fileID: 365989800}
+  m_Layer: 11
   m_Name: Ark
-  m_TagString: Untagged
+  m_TagString: Ark
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -468,12 +469,38 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 365989797}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.18, y: 21.59, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.35947233, y: 0.35947233, z: 0.35947233}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &365989800
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 365989797}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 1.2515409}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.20192738}
+    oldSize: {x: 13.72, y: 9.55}
+    newSize: {x: 13.72, y: 9.55}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 4.26, y: 4.49706}
+  m_EdgeRadius: 0
 --- !u!1 &1005049995
 GameObject:
   m_ObjectHideFlags: 0
@@ -574,7 +601,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1005049995}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.04, y: 18.44, z: 0}
+  m_LocalPosition: {x: 0, y: -3, z: 0}
   m_LocalScale: {x: 1.65, y: 1.65, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -806,7 +833,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1190563846}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.0399995, y: 18.44, z: -10}
+  m_LocalPosition: {x: 0.00000029802322, y: -2.9999998, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1333444222}
@@ -891,7 +918,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1274526686}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.0399995, y: 18.44, z: -10}
+  m_LocalPosition: {x: 0.00000029802322, y: -2.9999998, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1220,7 +1247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0de482cf6a79154d93b5fd49a0b6714, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minigamePrefab: {fileID: 8357471887189804554, guid: 28ae07f5495e694499d40388cec61fa7, type: 3}
+  minigamePrefab: {fileID: 8647733002037104805, guid: 358213872dc64ad4980f9c0b6eec5f20, type: 3}
 --- !u!1 &2071854297
 GameObject:
   m_ObjectHideFlags: 0
@@ -1278,7 +1305,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -5
-  m_Sprite: {fileID: 21300000, guid: 56136737ba831424882cd3b5ef768aed, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 20b0d685529741a4786ca81f5a8b8fb4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

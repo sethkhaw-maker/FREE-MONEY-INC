@@ -39,7 +39,6 @@ public class GameplayManager : MonoBehaviour
         }
         print("minigame has started");
 
-        //targetAnimal.RegisterAnimalToParty();
     }
 
     public void EndMinigame(bool win)
@@ -50,7 +49,7 @@ public class GameplayManager : MonoBehaviour
     private IEnumerator DelayEndMinigame(bool win)
     {
         //Add a delay for atas
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
 
         //Destroy minigame instance
         if (minigameInstance != null)
@@ -69,5 +68,22 @@ public class GameplayManager : MonoBehaviour
         
         //Reset target animal from player
         PlayerController.instance.targetAnimal = null;
+    }
+
+
+    //Send the animals into the ark
+    public void SendAnimalsIntoArk(GameObject ark)
+    {
+        //if (PlayerController.party[0] == null) //Is not able to check for null
+        //{
+        //    print("You do not have any animals!");
+        //    return;
+        //}
+        //PlayerController.party[0].target = ark;
+        for (int i = 0; i < PlayerController.party.Count; i++)
+        {
+            PlayerController.party[i].target = ark;
+            PlayerController.party[i].followOffset = 0.1f;
+        }
     }
 }
