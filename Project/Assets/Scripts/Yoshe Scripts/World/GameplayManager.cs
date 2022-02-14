@@ -16,9 +16,12 @@ public class GameplayManager : MonoBehaviour
     }
     public static GameState gameState;
 
-    //Minigame prefabs
+    //Canvas prefabs
     private GameObject minigameInstance;
     public GameObject minigamePrefab;
+
+    private GameObject gameOverInstance;
+    public GameObject gameOverPrefab;
 
     //Clock stuff
     public GameObject clockhand;
@@ -26,6 +29,8 @@ public class GameplayManager : MonoBehaviour
 
     //Game timers
     private float dayTimer;
+
+    public int animalsCollected = 0;
 
     void Start()
     {
@@ -38,7 +43,8 @@ public class GameplayManager : MonoBehaviour
         {
             UpdateGameTime();
         }
-        
+
+        CheckWin();
     }
 
     //Updates the in game timer
@@ -100,4 +106,15 @@ public class GameplayManager : MonoBehaviour
             PlayerController.party[i].followOffset = 0.1f;
         }
     }
+
+    //////////////////////////////////////////////
+    //Check win con
+    private void CheckWin()
+    {
+        if (animalsCollected >= 10 && gameOverInstance == null)
+        {
+            gameOverInstance = Instantiate(gameOverPrefab);
+        }
+    }
+
 }

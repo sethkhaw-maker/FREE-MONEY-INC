@@ -55,6 +55,8 @@ public class Animal : MonoBehaviour
 
     public void RegisterAnimalToArk()
     {
+        GameplayManager.instance.animalsCollected++;
+
         PlayerController.party.Remove(this);
         inParty = false;
 
