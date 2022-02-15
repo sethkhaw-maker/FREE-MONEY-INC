@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class STATE_LookToChase : SYS_FSMState
 {
-    public override void Init(Animal _s)
-    {
-        self = _s;
-    }
 
     public override void OnEnter() { }
     public override void OnExit()
