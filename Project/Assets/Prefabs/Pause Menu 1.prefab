@@ -698,7 +698,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -2.5999756, y: 0.8999939}
+  m_AnchoredPosition: {x: -2.5999756, y: 0.8999634}
   m_SizeDelta: {x: 15.71167, y: 26.067627}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1011432983294503594
@@ -944,7 +944,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -2.5999756, y: 0.8999939}
+  m_AnchoredPosition: {x: -2.5999756, y: 0.8999634}
   m_SizeDelta: {x: 15.71167, y: 26.067627}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1011432983630824501
@@ -1800,7 +1800,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -2.5999756, y: 0.8999939}
+  m_AnchoredPosition: {x: -2.5999756, y: 0.8999634}
   m_SizeDelta: {x: 15.71167, y: 26.067627}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1011432984181143155
@@ -2612,8 +2612,20 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1011432984706394886}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-        m_MethodName: LoadMenu
+        m_MethodName: QuitGame
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1011432984706394872}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2810,7 +2822,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -2.5999756, y: 0.8999939}
+  m_AnchoredPosition: {x: -2.5999756, y: 0.8999634}
   m_SizeDelta: {x: 15.71167, y: 26.067627}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1011432984729729148
@@ -3060,7 +3072,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Return to Main Menu?
+  m_text: 'Are you sure you want
+
+    to abandon the animals?'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b5f0cc184121ccd489182881d9fe471a, type: 2}
   m_sharedMaterial: {fileID: 5520998118570257610, guid: b5f0cc184121ccd489182881d9fe471a, type: 2}
