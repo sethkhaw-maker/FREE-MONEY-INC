@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 876579809860123636}
   - component: {fileID: 2076988609493673569}
   - component: {fileID: 5429156376670242721}
-  - component: {fileID: 1751212711140343319}
+  - component: {fileID: 2212193147059078148}
   m_Layer: 8
   m_Name: Tiger
   m_TagString: Untagged
@@ -174,7 +174,7 @@ MonoBehaviour:
   inParty: 0
   difficultyLevel: 1
   thoughtBubble: {fileID: 4219240817414844796}
---- !u!95 &1751212711140343319
+--- !u!95 &2212193147059078148
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0

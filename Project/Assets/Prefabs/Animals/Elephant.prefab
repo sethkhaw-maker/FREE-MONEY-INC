@@ -98,7 +98,7 @@ Animator:
   m_GameObject: {fileID: 4410206232265524488}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d292ff41800ab3e498a1ee6a3eede67f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -185,6 +185,7 @@ MonoBehaviour:
   fleeTargets: 
   target: {fileID: 0}
   targetAsAnimal: {fileID: 0}
+  followOffset: 1.5
   animalFSM: {fileID: 1580656281}
   animalSprite: {fileID: 0}
   animalAnimator: {fileID: 0}
