@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class STATE_FollowNoah : SYS_FSMState
 {
-    float offset = 1.5f; // needs recalc next time.
+    //public float offset = 1.5f; // needs recalc next time.
 
     public override void Init(Animal _s)
     {
@@ -14,8 +14,8 @@ public class STATE_FollowNoah : SYS_FSMState
     public override void OnEnter()
     {
         // Assume follow target is Noah.
-        GameObject followTarget = PlayerController.GameObject;
-
+        GameObject followTarget = PlayerController.instance.gameObject;
+        
         // The Animal should already be registered to Noah's party, so try and get its position in
         // the party List.
         int index = PlayerController.party.IndexOf(self);
@@ -36,7 +36,17 @@ public class STATE_FollowNoah : SYS_FSMState
         float dist = Vector3.Distance(self.transform.position, self.target.transform.position);
 
         // Ensure that there's an offset. Move animal until offset distance.
-        if (dist > offset)
+        if (dist > self.followOffset)
+        {
             self.transform.position = Vector3.MoveTowards(self.transform.position, self.target.transform.position, self.wanderSpeed * Time.deltaTime);
+        }
+        else
+        {
+            if (self.target.CompareTag("Ark"))
+            {
+                self.RegisterAnimalToArk();
+            }
+        }
+
     }
 }
