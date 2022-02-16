@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 //This script runs the world logic for day/night cycle and weather system
 public class GameplayManager : MonoBehaviour
@@ -23,14 +24,16 @@ public class GameplayManager : MonoBehaviour
     private GameObject gameOverInstance;
     public GameObject gameOverPrefab;
 
-    //Clock stuff
+    //UI stuff
     public GameObject clockhand;
     public float clockSpeed = 5;
+
+    public Text animalsCollectedText;
+    public int animalsCollected = 0;
 
     //Game timers
     private float dayTimer;
 
-    public int animalsCollected = 0;
 
     void Start()
     {
@@ -42,16 +45,23 @@ public class GameplayManager : MonoBehaviour
         if (gameState == GameState.PLAYING)
         {
             UpdateGameTime();
+            UpdateAnimalsCollected();
         }
 
         CheckWin();
     }
 
-    //Updates the in game timer
-    private void UpdateGameTime()
+    //Update UI for in game timer
+    public void UpdateGameTime()
     {
         dayTimer += Time.deltaTime * clockSpeed;
         clockhand.transform.rotation = Quaternion.Euler(0, 0, -dayTimer);
+    }
+
+    //Update UI for animals collected
+    public void UpdateAnimalsCollected()
+    {
+        animalsCollectedText.text = "Animals collected: " + animalsCollected;
     }
 
     //Call this to activate minigame
