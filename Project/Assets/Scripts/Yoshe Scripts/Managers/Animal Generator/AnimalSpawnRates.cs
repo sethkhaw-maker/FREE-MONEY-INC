@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//This script holds the rates of spawning each type of animal
 public static class AnimalSpawnRates
 {
     public static float probabilityPrey = 10;

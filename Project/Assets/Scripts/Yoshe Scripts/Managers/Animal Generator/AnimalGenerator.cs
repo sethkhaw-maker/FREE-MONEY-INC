@@ -7,7 +7,6 @@ public class AnimalGenerator : MonoBehaviour
     //Internal timers
     private float spawnTimer;
 
-
     //Variables
     public int spawnCap = 20;
     private int spawnedQuantity = 0;
