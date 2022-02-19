@@ -1,15 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 //This script runs the world logic for day/night cycle and weather system
 public class GameplayManager : MonoBehaviour
 {
     //Enums
     public enum GameState { PLAYING, MINIGAME, PAUSED }
-    private enum ClockState { DAY, NIGHT }
-    private enum WeatherState { CLEAR, RAINY }
+    public enum ClockState { DAY, NIGHT }
+    public enum WeatherState { CLEAR, RAINY }
 
 
     //Variables
@@ -24,25 +23,23 @@ public class GameplayManager : MonoBehaviour
     private GameObject gameOverInstance;
     public GameObject gameOverPrefab;
 
-    //UI stuff
-    public GameObject clockhand;
-    public Text animalsCollectedText;
-    public int animalsCollected = 0;                //Number of animals collected in this session
+    //In game variables
+    [HideInInspector] public int animalsCollected = 0;                //Number of animals collected in this session
 
     //Game timers
-    private float clockTimer;
+    [HideInInspector] public float clockTimer;
     private ClockState clockState = ClockState.DAY;
-    private float oneDayRevolution = 120f;          //Seconds before a full day is over
+    [HideInInspector] public float oneDayRevolution = 180f;          //Seconds before a full day is over
 
     //Weather stuffs
     
     [Header("Rain Variables")]
-    [SerializeField] private WeatherState weatherState = WeatherState.CLEAR;
+    [HideInInspector] public WeatherState weatherState = WeatherState.CLEAR;
 
     private float weatherTimer;
     [SerializeField] private float rainCheckInterval = 15f;     //Intervals for rain check during clear weather
     private int rainChance;                                     //Out of 100
-    [SerializeField] private int rainChanceBase = 50;           //Base chance of rain
+    [SerializeField] private int rainChanceBase = 40;           //Base chance of rain
     [SerializeField] private int rainChanceIncrement = 15;      //Increased chance per failed rain
     [SerializeField] private float rainDuration = 30f;          //Duration of rain
 
@@ -58,7 +55,6 @@ public class GameplayManager : MonoBehaviour
         {
             UpdateGameTime();
             UpdateWeatherTime();
-            UpdateAnimalsCollected();
         }
 
         CheckWin();
@@ -71,10 +67,6 @@ public class GameplayManager : MonoBehaviour
         clockTimer += Time.deltaTime;
 
         
-
-        //Rotate the clockhand UI
-        clockhand.transform.rotation = Quaternion.Euler(0, 0, -clockTimer/ oneDayRevolution * 360);
-
         //Reset to day
         if (clockTimer >= oneDayRevolution)
         {
@@ -145,12 +137,6 @@ public class GameplayManager : MonoBehaviour
             rainChance += rainChanceIncrement;
             return false;
         }
-    }
-
-    //Update UI for animals collected
-    public void UpdateAnimalsCollected()
-    {
-        animalsCollectedText.text = "Animals collected: " + animalsCollected;
     }
 
     //Call this to activate minigame

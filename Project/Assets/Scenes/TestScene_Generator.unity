@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 113902178}
   - component: {fileID: 113902177}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Weather Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -588,7 +588,7 @@ GameObject:
   - component: {fileID: 674818788}
   - component: {fileID: 674818787}
   m_Layer: 5
-  m_Name: Collected Text
+  m_Name: Animals Collected Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -680,7 +680,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1011432984706394872, guid: 17657fcbeac646449b118c102948d7cc, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1011432984706394887, guid: 17657fcbeac646449b118c102948d7cc, type: 3}
       propertyPath: m_LocalPosition.x
@@ -821,6 +821,7 @@ GameObject:
   - component: {fileID: 1256690778}
   - component: {fileID: 1256690777}
   - component: {fileID: 1256690776}
+  - component: {fileID: 1256690780}
   m_Layer: 5
   m_Name: Gameplay Canvas
   m_TagString: Untagged
@@ -909,6 +910,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1256690780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1256690775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c773c10cc3f2f4248970a2035c667c08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clockhandImage: {fileID: 1947521932}
+  animalsCollectedText: {fileID: 674818787}
+  weatherImage: {fileID: 113902177}
+  clearWeatherImage: {fileID: 21300000, guid: 7a62b2f41f2de5a40adc6cc3f6459478, type: 3}
+  rainyWeatherImage: {fileID: 21300000, guid: 777f3f8b53f88f7458038910a7d74954, type: 3}
 --- !u!1 &1274526686
 GameObject:
   m_ObjectHideFlags: 0
@@ -1478,7 +1496,7 @@ GameObject:
   - component: {fileID: 1947521935}
   - component: {fileID: 1947521934}
   m_Layer: 5
-  m_Name: Clockhand
+  m_Name: Clockhand Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1586,12 +1604,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minigamePrefab: {fileID: 8647733002037104805, guid: 358213872dc64ad4980f9c0b6eec5f20, type: 3}
   gameOverPrefab: {fileID: 7651901415210417604, guid: b05cc1048ace9614f8e117ce2bd30c3b, type: 3}
-  clockhand: {fileID: 1947521932}
-  animalsCollectedText: {fileID: 674818787}
   animalsCollected: 0
+  clockTimer: 0
+  oneDayRevolution: 180
   weatherState: 0
   rainCheckInterval: 15
-  rainChanceBase: 50
+  rainChanceBase: 40
   rainChanceIncrement: 15
   rainDuration: 30
 --- !u!1 &1970721972
