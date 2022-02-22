@@ -13,21 +13,15 @@ public class Minigame : MonoBehaviour
 
     private float finalOffset;
 
-    public RectTransform hitboxDisplay; //The red hitbox area
+    public RectTransform hitboxDisplay; //Size of the hitbox area
     private Slider hitSlider;           //The slider which moves back and forth
     private float sliderValue;
 
     //Gameplay Variables
-    private bool isGaming = true;
+    private bool isGaming = true;       //true = minigame slider is moving
 
     [Range(0.25f,1.75f)]
-    public float speedModifier = 1;
-
-    //[Range(0f, 100f)]
-    //public int minHitboxPercentage = 20;      //Minimum size of hitbox in percentage
-
-    //[Range(0f, 100f)]
-    //public int maxHitboxPercentage = 100;     //Maximum size of hitbox in percentage
+    public float speedModifier = 1;     //Speed of the slider based on weather
 
     public enum DifficultyLevel
     {
@@ -37,7 +31,7 @@ public class Minigame : MonoBehaviour
     }
     public DifficultyLevel difficultyLevel;
 
-    public Sprite[] soundWaves;
+    public Sprite[] soundWaves; //Sound wave sprites from longest to shortest
 
     void Start()
     {
