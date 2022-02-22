@@ -15,6 +15,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Loading.unity
     guid: 00cd9d36f1d2c8642a894aaa45f184ac
   - enabled: 1
-    path: Assets/Scenes/TestScene_Generator.unity
+    path: Assets/Scenes/Test Scenes/TestScene_Generator.unity
     guid: db57b7da0e30412479d3b47790dc4744
+  - enabled: 1
+    path: Assets/Scenes/Tutorial Prompt.unity
+    guid: 0ef1a97eba486e24b85b3e38d89238bd
+  - enabled: 1
+    path: Assets/Scenes/Tutorial.unity
+    guid: 16d1b91fe9c636248b82b7593edbf50b
   m_configObjects: {}
