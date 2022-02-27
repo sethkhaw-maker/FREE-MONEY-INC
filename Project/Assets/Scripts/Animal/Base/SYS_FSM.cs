@@ -27,14 +27,14 @@ public abstract class SYS_FSM : MonoBehaviour
 
     public void SwitchToState(eSTATE state)
     {
-        Debug.Log("state: " + state);
+        //Debug.Log("state: " + state);
         SYS_FSMState newState = FindState(state);
         SwitchToState(newState);
     }
 
     protected void SwitchToState(SYS_FSMState newState)
     {
-        Debug.Log("changing states. " + newState);
+        //Debug.Log("changing states. " + newState);
         if (currState != null)
             currState.OnExit();
         currState = newState;

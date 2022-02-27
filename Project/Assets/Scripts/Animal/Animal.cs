@@ -5,14 +5,12 @@ using UnityEngine;
 public class Animal : MonoBehaviour
 {
     public static List<Animal> allAnimals = new List<Animal>();
-    public static List<Animal> allAnimalLeaders = new List<Animal>();
 
     [Header("Animal Details")]
     public string animalName;
     public float wanderRange, wanderSpeed;
     public float runRange, runSpeed;
     public float idleTime = 2.5f;
-    public bool isLeader;
 
     [Header("Spawn Conditions")]
     public SPAWNTIME spawnTime;
@@ -24,23 +22,23 @@ public class Animal : MonoBehaviour
     public string chaseTargets, fleeTargets;
     public GameObject target;
     public Animal targetAsAnimal;
+    public float followOffset = 1.5f;
 
     [Header("Class References")]
     public SYS_FSM animalFSM;
-    [HideInInspector] public SYS_Emote animalEmote;
+    [HideInInspector] public SYS_Emote animalEmote = new SYS_Emote();
 
     [HideInInspector] public SpriteRenderer animalSprite;
     [HideInInspector] public Animator animalAnimator;
-    [HideInInspector] public bool isDespawning, isInParty;
+    [HideInInspector] public bool isDespawning, inParty;
 
-    private void OnEnable()
-    {
-        if (isLeader) allAnimalLeaders.Add(this);
-        allAnimals.Add(this);
-    }
+    public int difficultyLevel = 0;
+
+    public GameObject thoughtBubble;
 
     private void Start()
     {
+        allAnimals.Add(this);
         animalFSM.Init(this);
         animalFSM.SetupStates();
         animalFSM.SwitchToState(firstState);
@@ -50,17 +48,18 @@ public class Animal : MonoBehaviour
     public void RegisterAnimalToParty()
     {
         PlayerController.party.Add(this);
-        isInParty = true;
+        inParty = true;
+
+        StartCoroutine(animalEmote.EmoteShowBubble(thoughtBubble, 1.5f, EMOTE.HAPPY));
     }
 
-    public void RegisterAnimalAsLeader()
+    public void RegisterAnimalToArk()
     {
-        isLeader = true;
-        int index = allAnimalLeaders.FindIndex(x => x.animalName == animalName);
-        allAnimalLeaders[index] = this;
-        animalFSM.SetupStates();
-    }
+        GameplayManager.instance.animalsCollected++;
 
-    public List<Animal> GetAllSameAnimals() => allAnimals.FindAll(x => x.animalName == animalName);
-    public Animal GetLeader() => allAnimalLeaders.Find(x => x.animalName == animalName);
+        PlayerController.party.Remove(this);
+        inParty = false;
+
+        Destroy(gameObject);
+    }
 }

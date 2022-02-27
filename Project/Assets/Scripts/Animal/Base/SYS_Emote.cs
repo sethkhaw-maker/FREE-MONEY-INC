@@ -6,7 +6,7 @@ public class SYS_Emote
 {
     Animator anim;
     Animal self;
-
+    public GameObject thoughtBubble;
     public void Start(Animal _a)
     {
         self = _a;
@@ -28,8 +28,10 @@ public class SYS_Emote
     }
 
     // sprite showing goes here; not sure what input is yet.
-    public void EmoteShowBubble(EMOTE emote)
+    public IEnumerator EmoteShowBubble(GameObject thoughtBubble, float displayDuration, EMOTE emote)
     {
+        thoughtBubble.SetActive(true);
+
         switch (emote)
         {
             case EMOTE.NORMAL: break;
@@ -39,5 +41,8 @@ public class SYS_Emote
             case EMOTE.ANGRY: break;
             default: break;
         }
+
+        yield return new WaitForSeconds(displayDuration);
+        thoughtBubble.SetActive(false);
     }
 }

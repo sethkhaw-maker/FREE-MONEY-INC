@@ -78,7 +78,7 @@ public class MusicTransition : MonoBehaviour
     {
         // Create a temporary reference to the current scene.
         Scene currentScene = SceneManager.GetActiveScene();
-        Debug.Log("Current Scene Build Index is " + currentScene.name);
+       // Debug.Log("Current Scene Build Index is " + currentScene.name);
         // Retrieve the name of this scene.
         sceneName = currentScene.name;
 
