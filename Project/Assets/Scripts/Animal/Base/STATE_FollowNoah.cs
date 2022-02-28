@@ -33,10 +33,12 @@ public class STATE_FollowNoah : SYS_FSMState
         // Ensure that there's an offset. Move animal until offset distance.
         if (dist > self.followOffset)
         {
-            self.transform.position = Vector3.MoveTowards(self.transform.position, self.target.transform.position, self.wanderSpeed * Time.deltaTime);
+            self.rb.velocity = SYS_AnimalTools.MoveTowards(self.target.transform.position, self, self.wanderSpeed);
         }
         else
         {
+            self.rb.velocity = Vector2.zero;
+
             if (self.target.CompareTag("Ark"))
             {
                 self.RegisterAnimalToArk();

@@ -6,6 +6,7 @@ public abstract class SYS_FSMState
 {
     protected Animal self;
     public bool progress;
+    public bool isInteractable = true;
 
     public void EnterNextState() => progress = true;
     public void Init(Animal _s) => self = _s;

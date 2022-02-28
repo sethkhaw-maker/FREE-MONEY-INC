@@ -5,6 +5,7 @@ using UnityEngine;
 public class Animal : MonoBehaviour
 {
     public static List<Animal> allAnimals = new List<Animal>();
+    public static List<Animal> allAnimalLeaders = new List<Animal>();
 
     [Header("Animal Details")]
     public string animalName;
@@ -23,6 +24,7 @@ public class Animal : MonoBehaviour
     public GameObject target;
     public Animal targetAsAnimal;
     public float followOffset = 1.5f;
+    public bool isLeader;
 
     [Header("Class References")]
     public SYS_FSM animalFSM;
@@ -30,7 +32,9 @@ public class Animal : MonoBehaviour
 
     [HideInInspector] public SpriteRenderer animalSprite;
     [HideInInspector] public Animator animalAnimator;
-    [HideInInspector] public bool isDespawning, inParty;
+    [HideInInspector] public FlipAnimal flipAnimal;
+    [HideInInspector] public Rigidbody2D rb;
+    [HideInInspector] public bool isDespawning, isInParty;
 
     public int difficultyLevel = 0;
 
@@ -38,17 +42,25 @@ public class Animal : MonoBehaviour
 
     private void Start()
     {
-        allAnimals.Add(this);
         animalFSM.Init(this);
         animalFSM.SetupStates();
         animalFSM.SwitchToState(firstState);
         //RegisterAnimalToParty();
     }
 
+    private void OnEnable()
+    {
+        if (isLeader) allAnimalLeaders.Add(this);
+        allAnimals.Add(this);
+
+        flipAnimal = GetComponent<FlipAnimal>();
+        rb = GetComponent<Rigidbody2D>();
+    }
+
     public void RegisterAnimalToParty()
     {
         PlayerController.party.Add(this);
-        inParty = true;
+        isInParty = true;
 
         StartCoroutine(animalEmote.EmoteShowBubble(thoughtBubble, 1.5f, EMOTE.HAPPY));
     }
@@ -58,8 +70,28 @@ public class Animal : MonoBehaviour
         GameplayManager.instance.animalsCollected++;
 
         PlayerController.party.Remove(this);
-        inParty = false;
+        isInParty = false;
 
         Destroy(gameObject);
     }
+
+    public void RegisterAnimalAsLeader()
+    {
+        isLeader = true;
+        int index = allAnimalLeaders.FindIndex(x => x.animalName == animalName);
+        allAnimalLeaders[index] = this;
+        animalFSM.SetupStates();
+    }
+
+    public void MinigameIsStarting()
+    {
+        if (!animalFSM.currState.isInteractable) return;
+        Debug.Log("trying to stop animal from moving during minigame");
+        animalFSM.active = false;
+        rb.velocity = Vector2.zero;
+    }
+
+    public List<Animal> GetAllSameAnimals() => allAnimals.FindAll(x => x.animalName == animalName);
+    public Animal GetLeader() => allAnimalLeaders.Find(x => x.animalName == animalName);
+
 }

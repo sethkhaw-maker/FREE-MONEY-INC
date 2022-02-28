@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2076988609493673569}
   - component: {fileID: 5429156376670242721}
   - component: {fileID: 2212193147059078148}
+  - component: {fileID: -3562418051402305063}
   m_Layer: 8
   m_Name: Tiger
   m_TagString: Untagged
@@ -126,6 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a20655ea1c35778488b3246a147828cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  facingRight: 0
 --- !u!114 &2076988609493673569
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,11 +169,14 @@ MonoBehaviour:
   target: {fileID: 0}
   targetAsAnimal: {fileID: 0}
   followOffset: 1.5
+  isLeader: 0
   animalFSM: {fileID: 2076988609493673569}
   animalSprite: {fileID: 0}
   animalAnimator: {fileID: 0}
+  flipAnimal: {fileID: 0}
+  rb: {fileID: 0}
   isDespawning: 0
-  inParty: 0
+  isInParty: 0
   difficultyLevel: 1
   thoughtBubble: {fileID: 4219240817414844796}
 --- !u!95 &2212193147059078148
@@ -193,6 +198,27 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!50 &-3562418051402305063
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8057081832173341665}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!1001 &6719703929026755636
 PrefabInstance:
   m_ObjectHideFlags: 0

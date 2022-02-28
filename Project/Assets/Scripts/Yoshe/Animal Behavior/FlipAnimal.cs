@@ -8,7 +8,7 @@ public class FlipAnimal : MonoBehaviour
 
     private Vector2 originalSize;
 
-    private bool facingRight;
+    public bool facingRight;
 
     // Start is called before the first frame update
     void Start()

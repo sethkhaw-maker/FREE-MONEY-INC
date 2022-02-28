@@ -15,6 +15,7 @@ public abstract class SYS_FSM : MonoBehaviour
     {
         if (!active || self == null) return;
         //if (GameOver()) return;
+        Debug.Log("Running State: " + currState);
         currState.Running();
         CheckForStateSwitch();
     }

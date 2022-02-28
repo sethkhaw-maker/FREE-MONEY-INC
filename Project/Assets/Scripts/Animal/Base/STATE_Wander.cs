@@ -34,6 +34,6 @@ public class STATE_Wander : SYS_FSMState
         endPos = self.transform.position + wanderPoint;
         wandering = true;
     }
-    void MoveTowardsWanderPosition() => self.transform.position = Vector3.MoveTowards(self.transform.position, endPos, self.wanderSpeed * Time.deltaTime);
+    void MoveTowardsWanderPosition() => self.rb.velocity = SYS_AnimalTools.MoveTowards(endPos, self, self.wanderSpeed);
     bool AtWanderPosition() => Vector3.Distance(self.transform.position, endPos) < leniency ? true : false;
 }

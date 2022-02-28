@@ -79,6 +79,9 @@ public class PlayerController : MonoBehaviour
                 //Noah has reached destination
                 rb.velocity = Vector2.zero;
 
+                //Tell Animal that the Minigame is starting
+                targetAnimal.MinigameIsStarting();
+
                 //Activate the minigame
                 if (GameplayManager.instance != null)
                     GameplayManager.instance.InitMinigame();
