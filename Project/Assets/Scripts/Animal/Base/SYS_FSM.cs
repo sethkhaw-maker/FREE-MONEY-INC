@@ -49,7 +49,7 @@ public abstract class SYS_FSM : MonoBehaviour
             case eSTATE.IDLE:           return states.Find(x => x is STATE_Idle);
             case eSTATE.WANDER:         return states.Find(x => x is STATE_Wander);
             case eSTATE.LOOKTOCHASE:    return states.Find(x => x is STATE_LookToChase);
-            case eSTATE.LOOKTOFLEE:     return states.Find(x => x is STATE_LookToFlee);
+            case eSTATE.LOOKTOFLEE:     return states.Find(x => x is STATE_Flee);
             case eSTATE.CHASE:          return states.Find(x => x is STATE_Chase);
             case eSTATE.FLEE:           return states.Find(x => x is STATE_Flee);
             case eSTATE.FOLLOWNOAH:     return states.Find(x => x is STATE_FollowNoah);

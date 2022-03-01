@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class STATE_LookToChase : SYS_FSMState
 {
-
     public override void OnEnter() { }
     public override void OnExit()
     {

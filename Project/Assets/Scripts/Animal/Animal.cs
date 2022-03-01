@@ -34,7 +34,7 @@ public class Animal : MonoBehaviour
     [HideInInspector] public Animator animalAnimator;
     [HideInInspector] public FlipAnimal flipAnimal;
     [HideInInspector] public Rigidbody2D rb;
-    [HideInInspector] public bool isDespawning, isInParty;
+    [HideInInspector] public bool isDespawning, isInParty, shouldFlee;
 
     public int difficultyLevel = 0;
 
@@ -86,12 +86,13 @@ public class Animal : MonoBehaviour
     public void MinigameIsStarting()
     {
         if (!animalFSM.currState.isInteractable) return;
-        Debug.Log("trying to stop animal from moving during minigame");
         animalFSM.active = false;
         rb.velocity = Vector2.zero;
     }
 
     public List<Animal> GetAllSameAnimals() => allAnimals.FindAll(x => x.animalName == animalName);
+    public List<Animal> GetAllSameAnimals(string givenName) => allAnimals.FindAll(x => x.animalName == givenName);
     public Animal GetLeader() => allAnimalLeaders.Find(x => x.animalName == animalName);
+    public void SetTargetAs(Animal a) { target = a.gameObject; targetAsAnimal = a; }
 
 }
