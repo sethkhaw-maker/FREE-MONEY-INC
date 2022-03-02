@@ -1,0 +1,814 @@
+fileFormatVersion: 2
+guid: 748743f1f1b16444c94596b2044463c7
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4290563240134749844
+    second: Elephant Sleeping Spritesheet_0
+  - first:
+      213: -2366957790782928860
+    second: Elephant Sleeping Spritesheet_1
+  - first:
+      213: -29129584777918729
+    second: Elephant Sleeping Spritesheet_2
+  - first:
+      213: -7124167337234195236
+    second: Elephant Sleeping Spritesheet_3
+  - first:
+      213: -5105026922633817409
+    second: Elephant Sleeping Spritesheet_4
+  - first:
+      213: -4821848354231909544
+    second: Elephant Sleeping Spritesheet_5
+  - first:
+      213: 4371693800129145407
+    second: Elephant Sleeping Spritesheet_6
+  - first:
+      213: -334989772908747476
+    second: Elephant Sleeping Spritesheet_7
+  - first:
+      213: 5853951177884843542
+    second: Elephant Sleeping Spritesheet_8
+  - first:
+      213: 6779707959931640560
+    second: Elephant Sleeping Spritesheet_9
+  - first:
+      213: 382050162873406473
+    second: Elephant Sleeping Spritesheet_10
+  - first:
+      213: -4858080157942336075
+    second: Elephant Sleeping Spritesheet_11
+  - first:
+      213: -5466803242998143792
+    second: Elephant Sleeping Spritesheet_12
+  - first:
+      213: -4967246866291196085
+    second: Elephant Sleeping Spritesheet_13
+  - first:
+      213: 4976258505379910294
+    second: Elephant Sleeping Spritesheet_14
+  - first:
+      213: 6741943811907862740
+    second: Elephant Sleeping Spritesheet_15
+  - first:
+      213: 4912674161045656502
+    second: Elephant Sleeping Spritesheet_16
+  - first:
+      213: 3829459008102161537
+    second: Elephant Sleeping Spritesheet_17
+  - first:
+      213: 34031772984782689
+    second: Elephant Sleeping Spritesheet_18
+  - first:
+      213: 7181859786152792133
+    second: Elephant Sleeping Spritesheet_19
+  - first:
+      213: 8082270089655304966
+    second: Elephant Sleeping Spritesheet_20
+  - first:
+      213: 8406159342307494780
+    second: Elephant Sleeping Spritesheet_21
+  - first:
+      213: -3967656084755649879
+    second: Elephant Sleeping Spritesheet_22
+  - first:
+      213: -7658082390569144362
+    second: Elephant Sleeping Spritesheet_23
+  - first:
+      213: -1798078670233070867
+    second: Elephant Sleeping Spritesheet_24
+  - first:
+      213: -5499571849198272572
+    second: Elephant Sleeping Spritesheet_25
+  - first:
+      213: 4368426943222803672
+    second: Elephant Sleeping Spritesheet_26
+  - first:
+      213: 248682284272327262
+    second: Elephant Sleeping Spritesheet_27
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Elephant Sleeping Spritesheet_0
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 1829
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c615b69277bd474c0800000000000000
+      internalID: -4290563240134749844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Elephant Sleeping Spritesheet_1
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 1652
+        width: 388
+        height: 301
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4284a021e60e62fd0800000000000000
+      internalID: -2366957790782928860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Elephant Sleeping Spritesheet_2
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 1829
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f68bd60cc2889ff0800000000000000
+      internalID: -29129584777918729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Elephant Sleeping Spritesheet_3
+      rect:
+        serializedVersion: 2
+        x: 562
+        y: 1652
+        width: 393
+        height: 296
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cdc17bf5d8fd12d90800000000000000
+      internalID: -7124167337234195236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Elephant Sleeping Spritesheet_4
+      rect:
+        serializedVersion: 2
+        x: 1064
+        y: 1652
+        width: 403
+        height: 303
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb21b9bbf0d4729b0800000000000000
+      internalID: -5105026922633817409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Elephant Sleeping Spritesheet_5
+      rect:
+        serializedVersion: 2
+        x: 1574
+        y: 1830
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8538435187a551db0800000000000000
+      internalID: -4821848354231909544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Elephant Sleeping Spritesheet_6
+      rect:
+        serializedVersion: 2
+        x: 1582
+        y: 1652
+        width: 397
+        height: 301
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3aa97759506bac30800000000000000
+      internalID: 4371693800129145407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Elephant Sleeping Spritesheet_7
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 1818
+        width: 5
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c25a26e8390e95bf0800000000000000
+      internalID: -334989772908747476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Elephant Sleeping Spritesheet_8
+      rect:
+        serializedVersion: 2
+        x: 549
+        y: 1818
+        width: 5
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61e3e4aa4996d3150800000000000000
+      internalID: 5853951177884843542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Elephant Sleeping Spritesheet_9
+      rect:
+        serializedVersion: 2
+        x: 1062
+        y: 1819
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0fa1d98187c561e50800000000000000
+      internalID: 6779707959931640560
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Elephant Sleeping Spritesheet_10
+      rect:
+        serializedVersion: 2
+        x: 1573
+        y: 1819
+        width: 5
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 904137459905d4500800000000000000
+      internalID: 382050162873406473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Elephant Sleeping Spritesheet_11
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 1809
+        width: 5
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b53977e5d1a49cb0800000000000000
+      internalID: -4858080157942336075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Elephant Sleeping Spritesheet_12
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 1809
+        width: 5
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d464243a630224b0800000000000000
+      internalID: -5466803242998143792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Elephant Sleeping Spritesheet_13
+      rect:
+        serializedVersion: 2
+        x: 1061
+        y: 1809
+        width: 5
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4f7a0fea4bc01bb0800000000000000
+      internalID: -4967246866291196085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Elephant Sleeping Spritesheet_14
+      rect:
+        serializedVersion: 2
+        x: 1574
+        y: 1810
+        width: 5
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6929fabceb83f0540800000000000000
+      internalID: 4976258505379910294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Elephant Sleeping Spritesheet_15
+      rect:
+        serializedVersion: 2
+        x: 1062
+        y: 1799
+        width: 4
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d049643d22309d50800000000000000
+      internalID: 6741943811907862740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Elephant Sleeping Spritesheet_16
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 1140
+        width: 393
+        height: 298
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b3dd5afe135d2440800000000000000
+      internalID: 4912674161045656502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Elephant Sleeping Spritesheet_17
+      rect:
+        serializedVersion: 2
+        x: 578
+        y: 1140
+        width: 377
+        height: 294
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18c59d3bda8f42530800000000000000
+      internalID: 3829459008102161537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Elephant Sleeping Spritesheet_18
+      rect:
+        serializedVersion: 2
+        x: 639
+        y: 1428
+        width: 7
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16fa5db97b7e87000800000000000000
+      internalID: 34031772984782689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Elephant Sleeping Spritesheet_19
+      rect:
+        serializedVersion: 2
+        x: 1091
+        y: 1140
+        width: 376
+        height: 301
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 540dc44ac671ba360800000000000000
+      internalID: 7181859786152792133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Elephant Sleeping Spritesheet_20
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 1317
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6034ba823ddf92070800000000000000
+      internalID: 8082270089655304966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Elephant Sleeping Spritesheet_21
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 1306
+        width: 6
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7bc193526da8a470800000000000000
+      internalID: 8406159342307494780
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Elephant Sleeping Spritesheet_22
+      rect:
+        serializedVersion: 2
+        x: 1074
+        y: 1317
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9aae83dffcd00f8c0800000000000000
+      internalID: -3967656084755649879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Elephant Sleeping Spritesheet_23
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 1306
+        width: 5
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6dfa379d3a609b590800000000000000
+      internalID: -7658082390569144362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Elephant Sleeping Spritesheet_24
+      rect:
+        serializedVersion: 2
+        x: 1073
+        y: 1306
+        width: 5
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de21d8ed9f0fb07e0800000000000000
+      internalID: -1798078670233070867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Elephant Sleeping Spritesheet_25
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 1297
+        width: 5
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4cf7cc78a889da3b0800000000000000
+      internalID: -5499571849198272572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Elephant Sleeping Spritesheet_26
+      rect:
+        serializedVersion: 2
+        x: 562
+        y: 1297
+        width: 4
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8dc6a02f825cf9c30800000000000000
+      internalID: 4368426943222803672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Elephant Sleeping Spritesheet_27
+      rect:
+        serializedVersion: 2
+        x: 1074
+        y: 1297
+        width: 5
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5a1cff483f737300800000000000000
+      internalID: 248682284272327262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
