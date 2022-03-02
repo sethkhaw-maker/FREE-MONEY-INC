@@ -23,6 +23,11 @@ public class GameplayManager : MonoBehaviour
     private GameObject gameOverInstance;
     public GameObject gameOverPrefab;
 
+    //Particle Prefabs
+    public GameObject RainParticles;
+    private ParticleSystem rainParticleSystem;
+    private SpriteRenderer rainOverlay;
+
     //In game variables
     [HideInInspector] public int animalsCollected = 0;                //Number of animals collected in this session
 
@@ -47,6 +52,8 @@ public class GameplayManager : MonoBehaviour
     {
         instance = this;
         rainChance = rainChanceBase;
+        rainParticleSystem = RainParticles.GetComponent<ParticleSystem>();
+        rainOverlay = RainParticles.GetComponentInChildren<SpriteRenderer>();
     }
 
     void Update()
@@ -97,6 +104,8 @@ public class GameplayManager : MonoBehaviour
                     //Rain occurred, set weather to rain
                     weatherState = WeatherState.RAINY;
                     weatherTimer = rainDuration;
+                    rainParticleSystem.Play();
+                    StartCoroutine(RainOverlayFadeOut());
                 }
                 else
                 {
@@ -116,6 +125,8 @@ public class GameplayManager : MonoBehaviour
             {
                 weatherState = WeatherState.CLEAR;
                 weatherTimer = 0;
+                rainParticleSystem.Stop();
+                StartCoroutine(RainOverlayFadeIn());
             }
         }
     }
@@ -198,6 +209,39 @@ public class GameplayManager : MonoBehaviour
         }
     }
 
+    //Fade In and Fade Out Effects for rain overlay
+    private IEnumerator RainOverlayFadeIn()
+    {
+        float alphaValue = rainOverlay.color.a;
+        Color temp = rainOverlay.color;
+
+        //When it isn't transparent -
+        while (rainOverlay.color.a > 0)
+        {
+            alphaValue -= 0.01f;
+            temp.a = alphaValue;
+            rainOverlay.color = temp;
+
+            yield return new WaitForSeconds(0.05f);
+        }
+    }
+    private IEnumerator RainOverlayFadeOut()
+    {
+        float alphaValue = rainOverlay.color.a;
+        Color temp = rainOverlay.color;
+
+        //When it isn't transparent -
+        while (rainOverlay.color.a < 0.35)
+        {
+            alphaValue += 0.01f;
+            temp.a = alphaValue;
+            rainOverlay.color = temp;
+
+            yield return new WaitForSeconds(0.05f);
+        }
+    }
+
+
     //////////////////////////////////////////////
     //Check win con
     private void CheckWin()
@@ -207,5 +251,4 @@ public class GameplayManager : MonoBehaviour
             gameOverInstance = Instantiate(gameOverPrefab);
         }
     }
-
 }
