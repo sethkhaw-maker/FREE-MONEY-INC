@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+//Obsolete, use SceneLoader
+
 public class MainMenu : MonoBehaviour
 {
     public AudioClip[] SFXClips;

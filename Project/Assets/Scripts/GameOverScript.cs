@@ -1,12 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class GameOverScript : MonoBehaviour
 {
     public void EndGame()
     {
-        SceneManager.LoadScene(0);
+        SceneLoader sceneLoader = FindObjectOfType<SceneLoader>();
+
+        if (sceneLoader != null)
+        {
+            sceneLoader.LoadScene(0);
+            sceneLoader.ChangeBGM(0);
+        }
     }
 }
