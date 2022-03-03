@@ -5,24 +5,34 @@ using UnityEngine;
 public class STATE_Flee : SYS_FSMState
 {
     Vector3 endPos;
-    float leniency = 0.1f;
     bool fleeing;
+    float timer;
+    float timerRun = 2f;
+    float timerWalk = 3.5f;
 
     public override void OnEnter() { }
     public override void OnExit()
     {
+        Debug.Log("leaving state");
         endPos = Vector3.zero;
         fleeing = false;
         progress = false;
+        self.rb.velocity = Vector2.zero;
+        timer = 0f;
     }
 
     public override void Running()
     {
         if (!fleeing)
             GetEndPosition();
-        FleeFromTarget();
-        if (OutOfRange())
+
+        if (!StopRunning())
+            RunFromTarget();
+        else if (!StopWalking())
+            WalkFromTarget();
+        else
         {
+            // Debug.Log(self.gameObject.name + " | outOfRange");
             LoseTarget();
             EnterNextState();
         }
@@ -30,17 +40,14 @@ public class STATE_Flee : SYS_FSMState
 
     void GetEndPosition()
     {
-        // OLD: ah jeez. T_T)a i need to figure out the following for endPos:
-        /* a. get target flip position
-         * b. do self position + (self.runRange * flip)
-         * c. if any offsets are wanted, should be modified to the position here???
-         */
-
-        endPos = -SYS_AnimalTools.MoveTowards(self.target.transform.position, self, self.runRange);
-        Debug.Log("self.target: " + self.target.name + " | startPos: " + self.transform.position + " | endPos: " + endPos);
+        endPos = -SYS_AnimalTools.MoveTowards(self.target.transform.position, self, 100f);
+        // Debug.Log(self.gameObject.name + " | self.target: " + self.target.name + " | startPos: " + self.transform.position + " | endPos: " + endPos); 
         fleeing = true;
     }
-    void FleeFromTarget() => self.rb.velocity = SYS_AnimalTools.MoveTowards(endPos, self, self.runSpeed);
-    bool OutOfRange() => Vector3.Distance(self.transform.position, endPos) <= leniency ? true : false;
+    void RunFromTarget() { self.rb.velocity = SYS_AnimalTools.MoveTowards(endPos, self, self.runSpeed); timer += Time.deltaTime; }
+    void WalkFromTarget() { self.rb.velocity = SYS_AnimalTools.MoveTowards(endPos, self, self.wanderSpeed); timer += Time.deltaTime; }
     void LoseTarget() { self.target = null; self.shouldFlee = false; }
+    bool StopRunning() => timer >= timerRun;
+    bool StopWalking() => timer >= timerWalk;
+    //bool OutOfRange() => Vector3.Distance(self.transform.position, endPos) <= leniency ? true : false;
 }

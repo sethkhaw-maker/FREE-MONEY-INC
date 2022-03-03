@@ -5,7 +5,7 @@ using UnityEngine;
 public class STATE_AlertFollowers : SYS_FSMState
 {
     public override void OnEnter() { }
-    public override void OnExit() { }
+    public override void OnExit() { progress = false; }
 
     public override void Running()
     {

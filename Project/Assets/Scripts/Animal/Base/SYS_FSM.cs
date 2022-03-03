@@ -9,6 +9,8 @@ public abstract class SYS_FSM : MonoBehaviour
     [HideInInspector] public Animal self;
     [HideInInspector] public bool active = true;
 
+    public List<eSTATE> defaultBehaviour = new List<eSTATE> { eSTATE.IDLE, eSTATE.WANDER };
+
     public void Init(Animal _s) => self = _s;
 
     public void Update()
@@ -35,7 +37,7 @@ public abstract class SYS_FSM : MonoBehaviour
 
     protected void SwitchToState(SYS_FSMState newState)
     {
-        //Debug.Log("changing states. " + newState);
+        Debug.Log("changing states. " + gameObject.name + " | from: " + currState + " to: " + newState);
         if (currState != null)
             currState.OnExit();
         currState = newState;
@@ -48,7 +50,7 @@ public abstract class SYS_FSM : MonoBehaviour
         {
             case eSTATE.IDLE:           return states.Find(x => x is STATE_Idle);
             case eSTATE.WANDER:         return states.Find(x => x is STATE_Wander);
-            case eSTATE.LOOKTOCHASE:    return states.Find(x => x is STATE_LookToChase);
+            //case eSTATE.LOOKTOCHASE:    return states.Find(x => x is STATE_LookToChase);
             case eSTATE.LOOKTOFLEE:     return states.Find(x => x is STATE_Flee);
             case eSTATE.CHASE:          return states.Find(x => x is STATE_Chase);
             case eSTATE.FLEE:           return states.Find(x => x is STATE_Flee);

@@ -14,6 +14,7 @@ public class STATE_Wander : SYS_FSMState
         wandering = false;
         progress = false;
         endPos = Vector3.zero;
+        self.rb.velocity = Vector2.zero;
     }
 
     public override void Running()
