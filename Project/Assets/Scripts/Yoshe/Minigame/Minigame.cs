@@ -64,7 +64,15 @@ public class Minigame : MonoBehaviour
     //Set the difficulty of the minigame
     public void SetDifficulty()
     {
-        int animalDifficulty = PlayerController.instance.targetAnimal.difficultyLevel;
+        int animalDifficulty = 0;
+        if (PlayerController.instance != null)
+        {
+            animalDifficulty = PlayerController.instance.targetAnimal.difficultyLevel;
+        }
+        else
+        {
+            Debug.LogWarning("Player instance does not exist!");
+        }
 
         switch (animalDifficulty)
         {

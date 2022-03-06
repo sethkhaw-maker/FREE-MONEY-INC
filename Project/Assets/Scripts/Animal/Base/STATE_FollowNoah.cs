@@ -9,6 +9,9 @@ public class STATE_FollowNoah : SYS_FSMState
 
     public override void OnEnter()
     {
+        //Hotfix target becomes Ark before follow Noah
+        if (self.target != null) return;
+
         // Assume follow target is Noah.
         GameObject followTarget = PlayerController.instance.gameObject;
         

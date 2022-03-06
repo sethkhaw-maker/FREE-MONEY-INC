@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+//Obsolete, use Audio Manager
 public class MusicTransition : MonoBehaviour
 {
     public static MusicTransition instance;
@@ -61,7 +62,7 @@ public class MusicTransition : MonoBehaviour
                 audiosourceref.clip = audioTracks[1];
             }
 
-            audiosourceref.Play();
+            //audiosourceref.Play();
         }
         else audiosourceref.Stop();
 
