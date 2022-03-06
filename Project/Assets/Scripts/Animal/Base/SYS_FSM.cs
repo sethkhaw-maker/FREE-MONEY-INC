@@ -16,8 +16,8 @@ public abstract class SYS_FSM : MonoBehaviour
     {
         if (!active || self == null) return;
         //if (GameOver()) return;
-        if (gameObject.name.Contains("Zebra"))
-            Debug.Log("Running State: " + currState);
+        //if (gameObject.name.Contains("Zebra"))
+        //    Debug.Log("Running State: " + currState);
         currState.Running();
         CheckForStateSwitch();
     }
@@ -37,8 +37,8 @@ public abstract class SYS_FSM : MonoBehaviour
 
     protected void SwitchToState(SYS_FSMState newState)
     {
-        if (gameObject.name.Contains("Zebra"))
-            Debug.Log("changing states. " + gameObject.name + " | from: " + currState + " to: " + newState);
+        //if (gameObject.name.Contains("Zebra"))
+        //    Debug.Log("changing states. " + gameObject.name + " | from: " + currState + " to: " + newState);
         if (currState != null)
             currState.OnExit();
         currState = newState;

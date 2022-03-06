@@ -93,7 +93,6 @@ public class STATE_InteractionPredator : SYS_FSMState
         Vector3 targetPos = self.target.transform.position;
         targetPos.y -= 0.5f;    // to address layering
         self.rb.velocity = SYS_AnimalTools.MoveTowards(targetPos, self, speed);
-        Debug.Log("dist: " + CalcDist());
         if (CaughtPrey())
         {
             self.targetAsAnimal.isDespawning = true;
