@@ -14,6 +14,7 @@ public class FSM_GenericPrey : SYS_FSM
         states.Add(new STATE_CheckForThreats());
         states.Add(new STATE_Flee());
         states.Add(new STATE_FindLeader());
+        states.Add(new STATE_InteractionPrey());
     }
 
     public override void SetupStates()
@@ -24,6 +25,8 @@ public class FSM_GenericPrey : SYS_FSM
 
     protected override void CheckForStateSwitch()
     {
+        if (!active) return;
+        if (self.isDespawning) { DeactivateFSM(); return; }
         if (self.isLeader)
         {
             if (!(currState is STATE_FollowNoah) && self.isInParty) SwitchToState(states.Find(x => x is STATE_FollowNoah));
@@ -45,13 +48,20 @@ public class FSM_GenericPrey : SYS_FSM
                 if (currState is STATE_Flee && currState.progress) SwitchToState(states.Find(x => x is STATE_FindLeader));
             }
         }
-        if (currState.progress && self.shouldFlee) SwitchToState(states.Find(x => x is STATE_Flee));
+        if (!(currState is STATE_Flee) && self.shouldFlee) SwitchToState(states.Find(x => x is STATE_Flee));
         if (currState is STATE_Idle && currState.progress) SwitchToState(states.Find(x => x is STATE_Wander));
         if (currState is STATE_Wander && currState.progress) SwitchToState(states.Find(x => x is STATE_Idle));
         if (currState is STATE_FindLeader && currState.progress) RandomizeState(defaultBehaviour);
+        if (currState is STATE_InteractionPrey && currState.progress) { if (!self.shouldFlee) RandomizeState(defaultBehaviour); else SwitchToState(states.Find(x => x is STATE_Flee)); }
+        if (self.preyPredatorInteraction > 0 && !(currState is STATE_InteractionPrey || currState is STATE_Flee)) SwitchToState(states.Find(x => x is STATE_InteractionPrey));
     }
 
     void RandomizeState(List<eSTATE> eStates) => SwitchToState(eStates[Mathf.RoundToInt(Random.Range(0, eStates.Count))]);
     bool ThreatFound() { STATE_CheckForThreats state = currState as STATE_CheckForThreats; return state.threatFound; }
     bool NeedToCheckForThreats() => currState is STATE_Wander || currState is STATE_Idle;
+    void DeactivateFSM()
+    {
+        self.rb.velocity = Vector2.zero;
+        active = false;
+    }
 }

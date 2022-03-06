@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class STATE_FollowNoah : SYS_FSMState
 {
+    public override bool IsInteractable => false;
     //public float offset = 1.5f; // needs recalc next time.
 
     public override void OnEnter()

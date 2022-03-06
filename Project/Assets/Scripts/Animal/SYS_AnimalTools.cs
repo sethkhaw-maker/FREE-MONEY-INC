@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class SYS_AnimalTools 
+public static class SYS_AnimalTools
 {
     public static Vector2 MoveTowards(Vector2 targetPos, Animal self, float speed)
     {
@@ -10,4 +10,6 @@ public static class SYS_AnimalTools
         dir = dir.normalized;
         return dir * speed;
     }
+
+    public static int RollDice(int sides) => Random.Range(0, sides) + 1;
 }

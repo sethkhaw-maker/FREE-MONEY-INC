@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class STATE_Chase : SYS_FSMState
 {
+    public override bool IsInteractable => false;
     float leniency = 0.1f;
     Vector3 endPos;
     bool chasing;

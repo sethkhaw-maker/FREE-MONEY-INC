@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class STATE_AlertFollowers : SYS_FSMState
 {
+    public override bool IsInteractable => true;
     public override void OnEnter() { }
     public override void OnExit() { progress = false; }
 

@@ -499,6 +499,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   self: {fileID: 0}
   active: 1
+  defaultBehaviour: 0000000001000000
 --- !u!50 &408944931
 Rigidbody2D:
   serializedVersion: 4
@@ -536,7 +537,7 @@ MonoBehaviour:
   wanderRange: 3
   wanderSpeed: 3
   runRange: 10
-  runSpeed: 8
+  runSpeed: 5
   idleTime: 1.5
   spawnTime: 0
   spawnWeather: 0
@@ -548,6 +549,7 @@ MonoBehaviour:
   targetAsAnimal: {fileID: 0}
   followOffset: 1.5
   isLeader: 0
+  isHungry: 0
   animalFSM: {fileID: 408944930}
   animalSprite: {fileID: 0}
   animalAnimator: {fileID: 0}
@@ -556,6 +558,7 @@ MonoBehaviour:
   isDespawning: 0
   isInParty: 0
   shouldFlee: 0
+  preyPredatorInteraction: 0
   difficultyLevel: 0
   thoughtBubble: {fileID: 795239204}
 --- !u!114 &408944933
@@ -571,6 +574,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   facingRight: 0
+  dontFlip: 0
 --- !u!61 &408944934
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -675,7 +679,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 408944929}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.37, y: 0.62, z: 0}
+  m_LocalPosition: {x: 12.710001, y: 2.2399998, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 795239207}
@@ -883,6 +887,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   self: {fileID: 0}
   active: 1
+  defaultBehaviour: 0000000001000000
 --- !u!50 &504380959
 Rigidbody2D:
   serializedVersion: 4
@@ -920,7 +925,7 @@ MonoBehaviour:
   wanderRange: 3
   wanderSpeed: 3
   runRange: 10
-  runSpeed: 8
+  runSpeed: 5
   idleTime: 1.5
   spawnTime: 0
   spawnWeather: 0
@@ -932,6 +937,7 @@ MonoBehaviour:
   targetAsAnimal: {fileID: 0}
   followOffset: 1.5
   isLeader: 0
+  isHungry: 0
   animalFSM: {fileID: 504380958}
   animalSprite: {fileID: 0}
   animalAnimator: {fileID: 0}
@@ -940,6 +946,7 @@ MonoBehaviour:
   isDespawning: 0
   isInParty: 0
   shouldFlee: 0
+  preyPredatorInteraction: 0
   difficultyLevel: 0
   thoughtBubble: {fileID: 225318109}
 --- !u!114 &504380961
@@ -955,6 +962,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   facingRight: 0
+  dontFlip: 0
 --- !u!61 &504380962
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1059,7 +1067,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 504380957}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.37, y: 0.62, z: 0}
+  m_LocalPosition: {x: 6.69, y: 1.5199999, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 225318112}
@@ -1379,6 +1387,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   self: {fileID: 0}
   active: 1
+  defaultBehaviour: 0000000001000000
 --- !u!50 &730466403
 Rigidbody2D:
   serializedVersion: 4
@@ -1416,7 +1425,7 @@ MonoBehaviour:
   wanderRange: 3
   wanderSpeed: 3
   runRange: 10
-  runSpeed: 8
+  runSpeed: 5
   idleTime: 1.5
   spawnTime: 0
   spawnWeather: 0
@@ -1428,6 +1437,7 @@ MonoBehaviour:
   targetAsAnimal: {fileID: 0}
   followOffset: 1.5
   isLeader: 0
+  isHungry: 0
   animalFSM: {fileID: 730466402}
   animalSprite: {fileID: 0}
   animalAnimator: {fileID: 0}
@@ -1436,6 +1446,7 @@ MonoBehaviour:
   isDespawning: 0
   isInParty: 0
   shouldFlee: 0
+  preyPredatorInteraction: 0
   difficultyLevel: 0
   thoughtBubble: {fileID: 1303559831}
 --- !u!114 &730466405
@@ -1451,6 +1462,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   facingRight: 0
+  dontFlip: 0
 --- !u!61 &730466406
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1555,7 +1567,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 730466401}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.37, y: 0.62, z: 0}
+  m_LocalPosition: {x: 7.9100003, y: 0.83999985, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1303559834}
@@ -1805,6 +1817,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   self: {fileID: 0}
   active: 1
+  defaultBehaviour: 0000000001000000
 --- !u!50 &902118600
 Rigidbody2D:
   serializedVersion: 4
@@ -1842,7 +1855,7 @@ MonoBehaviour:
   wanderRange: 3
   wanderSpeed: 3
   runRange: 10
-  runSpeed: 8
+  runSpeed: 5
   idleTime: 1.5
   spawnTime: 0
   spawnWeather: 0
@@ -1854,6 +1867,7 @@ MonoBehaviour:
   targetAsAnimal: {fileID: 0}
   followOffset: 1.5
   isLeader: 0
+  isHungry: 0
   animalFSM: {fileID: 902118599}
   animalSprite: {fileID: 0}
   animalAnimator: {fileID: 0}
@@ -1862,6 +1876,7 @@ MonoBehaviour:
   isDespawning: 0
   isInParty: 0
   shouldFlee: 0
+  preyPredatorInteraction: 0
   difficultyLevel: 0
   thoughtBubble: {fileID: 1208588244}
 --- !u!114 &902118602
@@ -1877,6 +1892,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   facingRight: 0
+  dontFlip: 0
 --- !u!61 &902118603
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1981,7 +1997,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 902118598}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.37, y: 0.62, z: 0}
+  m_LocalPosition: {x: 4.7, y: -1.96, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1208588247}
@@ -2231,6 +2247,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   self: {fileID: 0}
   active: 1
+  defaultBehaviour: 0000000001000000
 --- !u!50 &1564272578
 Rigidbody2D:
   serializedVersion: 4
@@ -2268,7 +2285,7 @@ MonoBehaviour:
   wanderRange: 3
   wanderSpeed: 3
   runRange: 10
-  runSpeed: 8
+  runSpeed: 5
   idleTime: 1.5
   spawnTime: 0
   spawnWeather: 0
@@ -2280,6 +2297,7 @@ MonoBehaviour:
   targetAsAnimal: {fileID: 0}
   followOffset: 1.5
   isLeader: 0
+  isHungry: 0
   animalFSM: {fileID: 1564272577}
   animalSprite: {fileID: 0}
   animalAnimator: {fileID: 0}
@@ -2288,6 +2306,7 @@ MonoBehaviour:
   isDespawning: 0
   isInParty: 0
   shouldFlee: 0
+  preyPredatorInteraction: 0
   difficultyLevel: 0
   thoughtBubble: {fileID: 818559828}
 --- !u!114 &1564272580
@@ -2303,6 +2322,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   facingRight: 0
+  dontFlip: 0
 --- !u!61 &1564272581
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2407,7 +2427,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1564272576}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.37, y: 0.62, z: 0}
+  m_LocalPosition: {x: 7.06, y: 3.81, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 818559831}
@@ -2451,6 +2471,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   self: {fileID: 0}
   active: 1
+  defaultBehaviour: 0000000001000000
 --- !u!4 &274124980850349876
 Transform:
   m_ObjectHideFlags: 0
@@ -2505,6 +2526,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   facingRight: 0
+  dontFlip: 0
 --- !u!212 &1200612804387911814
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2577,20 +2599,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &2076988610264604674
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8057081831399329154}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 888d8d24f0ef33f43adacd3f5d06c754, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  self: {fileID: 0}
-  active: 1
 --- !u!95 &2212193147365032551
 Animator:
   serializedVersion: 3
@@ -3019,22 +3027,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animalName: Tiger
-  wanderRange: 0
-  wanderSpeed: 0
-  runRange: 0
-  runSpeed: 0
+  wanderRange: 5
+  wanderSpeed: 3
+  runRange: 10
+  runSpeed: 8
   idleTime: 1.5
   spawnTime: 0
   spawnWeather: 0
   state: 0
   firstState: 1
-  chaseTargets: 
+  chaseTargets: Zebra,
   fleeTargets: 
   target: {fileID: 0}
   targetAsAnimal: {fileID: 0}
   followOffset: 1.5
   isLeader: 0
-  animalFSM: {fileID: 2076988610264604674}
+  isHungry: 1
+  animalFSM: {fileID: 8057081831399329155}
   animalSprite: {fileID: 0}
   animalAnimator: {fileID: 0}
   flipAnimal: {fileID: 0}
@@ -3042,6 +3051,7 @@ MonoBehaviour:
   isDespawning: 0
   isInParty: 0
   shouldFlee: 0
+  preyPredatorInteraction: 0
   difficultyLevel: 1
   thoughtBubble: {fileID: 4219240816577263391}
 --- !u!50 &5660953985214085050
@@ -3078,6 +3088,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   facingRight: 0
+  dontFlip: 0
 --- !u!95 &7647174975523129958
 Animator:
   serializedVersion: 3
@@ -3125,6 +3136,7 @@ MonoBehaviour:
   targetAsAnimal: {fileID: 0}
   followOffset: 1.5
   isLeader: 1
+  isHungry: 0
   animalFSM: {fileID: 190437505128329968}
   animalSprite: {fileID: 0}
   animalAnimator: {fileID: 0}
@@ -3133,6 +3145,7 @@ MonoBehaviour:
   isDespawning: 0
   isInParty: 0
   shouldFlee: 0
+  preyPredatorInteraction: 0
   difficultyLevel: 0
   thoughtBubble: {fileID: 5337202227539218850}
 --- !u!1 &8057081831399329154
@@ -3147,10 +3160,10 @@ GameObject:
   - component: {fileID: 8057081831399329180}
   - component: {fileID: 4630997398506944928}
   - component: {fileID: 876579810090974615}
-  - component: {fileID: 2076988610264604674}
   - component: {fileID: 5429156376432050626}
   - component: {fileID: 2212193147365032551}
   - component: {fileID: 5660953985214085050}
+  - component: {fileID: 8057081831399329155}
   m_Layer: 8
   m_Name: Tiger
   m_TagString: Untagged
@@ -3158,6 +3171,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &8057081831399329155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8057081831399329154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe6c5d7cce3d51e48a5dcb9d569fa71f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  self: {fileID: 0}
+  active: 1
+  defaultBehaviour: 0000000001000000
 --- !u!212 &8057081831399329180
 SpriteRenderer:
   m_ObjectHideFlags: 0

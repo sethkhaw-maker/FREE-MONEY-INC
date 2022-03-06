@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class STATE_CheckForThreats : SYS_FSMState
 {
+    public override bool IsInteractable => true;
     public float range = 10f;   // can be set on fsm setupstates if needed to be changed. default value for testing = 10f.
     public bool threatFound = false;
     List<Animal> listOfPredators = new List<Animal>();

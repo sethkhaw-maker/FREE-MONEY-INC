@@ -4,46 +4,36 @@ using UnityEngine;
 
 public class FlipAnimal : MonoBehaviour
 {
+    Animal self;
     private float speed = 10;
-
     private Vector2 originalSize;
+    public int facingRight = 1;
+    public bool dontFlip = false;
 
-    public bool facingRight;
-
-    // Start is called before the first frame update
-    void Start()
+    public void Init(Animal a)
     {
+        self = a;
         float randomStartSize = Random.Range(1f, 1.3f);
         transform.localScale *= randomStartSize;
         originalSize = transform.localScale;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        float rnd = Input.GetAxisRaw("Horizontal");
-        if (rnd == 1)
-        {
-            facingRight = true;
-        }
-        else if (rnd == -1)
-        {
-            facingRight = false;
-        }
-
-        //Squash and stretch vertically
-        transform.localScale = new Vector3(transform.localScale.x, originalSize.y + (Mathf.Sin(Time.time)/10*originalSize.y), transform.localScale.z);
+        DecideFlip();
+        if (!dontFlip) AnimateFlip();
+        AnimateSquashStretch();
     }
 
-    public void FlipSide(Vector3 target)
+    void DecideFlip()
     {
-        if (facingRight)
-        {
-            transform.localScale = new Vector3(Mathf.Lerp(transform.localScale.x, originalSize.x, Time.deltaTime * speed), transform.localScale.y, transform.localScale.z);
-        }
-        else
-        {
-            transform.localScale = new Vector3(Mathf.Lerp(transform.localScale.x, -originalSize.x, Time.deltaTime * speed), transform.localScale.y, transform.localScale.z);
-        }
+        if (self.rb.velocity == Vector2.zero) return;
+        if (self.rb.velocity.x > 0) facingRight = 1;
+        if (self.rb.velocity.x < 0) facingRight = -1;
     }
+
+    public void Flip() => facingRight = -facingRight;
+    public bool IsFacingRight() => facingRight == 1 ? true : false;
+    void AnimateSquashStretch() => transform.localScale = new Vector3(transform.localScale.x, originalSize.y + (Mathf.Sin(Time.time) / 10 * originalSize.y), transform.localScale.z);
+    public void AnimateFlip() => transform.localScale = new Vector3(Mathf.Lerp(transform.localScale.x, originalSize.x * facingRight, Time.deltaTime * speed), transform.localScale.y, transform.localScale.z);
 }

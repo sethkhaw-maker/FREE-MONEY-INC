@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class STATE_Idle : SYS_FSMState
 {
+    public override bool IsInteractable => true;
+
     float timer;
 
     public override void OnEnter() { }

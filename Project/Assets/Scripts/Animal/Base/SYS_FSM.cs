@@ -8,8 +8,7 @@ public abstract class SYS_FSM : MonoBehaviour
     [HideInInspector] public List<SYS_FSMState> states = new List<SYS_FSMState>();
     [HideInInspector] public Animal self;
     [HideInInspector] public bool active = true;
-
-    public List<eSTATE> defaultBehaviour = new List<eSTATE> { eSTATE.IDLE, eSTATE.WANDER };
+    [HideInInspector] public List<eSTATE> defaultBehaviour = new List<eSTATE> { eSTATE.IDLE, eSTATE.WANDER };
 
     public void Init(Animal _s) => self = _s;
 
@@ -17,7 +16,8 @@ public abstract class SYS_FSM : MonoBehaviour
     {
         if (!active || self == null) return;
         //if (GameOver()) return;
-        Debug.Log("Running State: " + currState);
+        if (gameObject.name.Contains("Zebra"))
+            Debug.Log("Running State: " + currState);
         currState.Running();
         CheckForStateSwitch();
     }
@@ -37,7 +37,8 @@ public abstract class SYS_FSM : MonoBehaviour
 
     protected void SwitchToState(SYS_FSMState newState)
     {
-        Debug.Log("changing states. " + gameObject.name + " | from: " + currState + " to: " + newState);
+        if (gameObject.name.Contains("Zebra"))
+            Debug.Log("changing states. " + gameObject.name + " | from: " + currState + " to: " + newState);
         if (currState != null)
             currState.OnExit();
         currState = newState;

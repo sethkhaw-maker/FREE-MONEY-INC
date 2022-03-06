@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class STATE_Flee : SYS_FSMState
 {
+    public override bool IsInteractable => false;
     Vector3 endPos;
     bool fleeing;
     float timer;
@@ -19,6 +20,7 @@ public class STATE_Flee : SYS_FSMState
         progress = false;
         self.rb.velocity = Vector2.zero;
         timer = 0f;
+        self.preyPredatorInteraction = 0;
     }
 
     public override void Running()
@@ -26,6 +28,7 @@ public class STATE_Flee : SYS_FSMState
         if (!fleeing)
             GetEndPosition();
 
+        if (PredatorChasing()) timer = 0;
         if (!StopRunning())
             RunFromTarget();
         else if (!StopWalking())
@@ -49,5 +52,6 @@ public class STATE_Flee : SYS_FSMState
     void LoseTarget() { self.target = null; self.shouldFlee = false; }
     bool StopRunning() => timer >= timerRun;
     bool StopWalking() => timer >= timerWalk;
+    bool PredatorChasing() => self.preyPredatorInteraction > 0 && Vector3.Distance(self.target.transform.position, self.transform.position) < self.runRange;
     //bool OutOfRange() => Vector3.Distance(self.transform.position, endPos) <= leniency ? true : false;
 }

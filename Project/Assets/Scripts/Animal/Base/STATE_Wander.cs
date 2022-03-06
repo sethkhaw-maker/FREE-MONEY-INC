@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class STATE_Wander : SYS_FSMState
 {
+    public override bool IsInteractable => true;
+
     float leniency = 0.1f;
     Vector3 endPos;
     bool wandering;
