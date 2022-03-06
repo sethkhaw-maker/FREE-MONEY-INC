@@ -71,7 +71,7 @@ public class PlayerController : MonoBehaviour
         }
 
         //Chase target if exist
-        if (targetAnimal != null)
+        if (CanInteractWithAnimal())
         {
             //Enter the minigame if player is near the animal
             if (Vector2.Distance(transform.position, targetAnimal.transform.position) < checkDist)
@@ -217,7 +217,6 @@ public class PlayerController : MonoBehaviour
 
         //print(Mathf.Sqrt ((rb.velocity.x * rb.velocity.x) + (rb.velocity.y * rb.velocity.y)));
     }
-
     private void UpdateAnimation()
     {
         //Animation States
@@ -275,7 +274,13 @@ public class PlayerController : MonoBehaviour
                 break;
         }
     }
-
+    bool CanInteractWithAnimal()
+    {
+        if (targetAnimal == null) return false;
+        if (!targetAnimal.isLeader) return false;
+        if (!targetAnimal.animalFSM.currState.IsInteractable) return false;
+        return true;
+    }
     void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(transform.position, checkDist);
