@@ -15,7 +15,7 @@ public class SceneLoader : MonoBehaviour
     //Change bgm through Audio Manager, transitions inside
     public void ChangeBGM(int bgmIndex)
     {
-        FindObjectOfType<AudioManager>().ChangeBGM(bgmIndex);
+        FindObjectOfType<AudioManager>()?.ChangeBGM(bgmIndex);
     }
 
     //Quit the application
