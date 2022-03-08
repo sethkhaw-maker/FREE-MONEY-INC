@@ -22,7 +22,8 @@ public class Minigame : MonoBehaviour
     private bool isGaming = true;       //true = minigame slider is moving
 
     [Range(0.25f,1.75f)]
-    public float speedModifier = 1;     //Speed of the slider based on weather
+    public float sliderSpeed = 1;     //Speed of the slider based on weather
+    public float sliderSpeedModifier = 1f;
 
     public int timesToAttract = 2;
     public Text attractCountText;   //Temporary display for attract count
@@ -45,6 +46,9 @@ public class Minigame : MonoBehaviour
         //Set the minigame difficulty
         SetDifficulty();
 
+        //Set the slider speed
+        SetSliderSpeed();
+
         //Generate the starting hitbox
         GenerateHitbox();
     }
@@ -57,6 +61,11 @@ public class Minigame : MonoBehaviour
         {
             //Update the slider to move in real time
             UpdateSlider();
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                HitMinigameButton();
+            }
         }
 
         //Temporary count display
@@ -66,8 +75,24 @@ public class Minigame : MonoBehaviour
     //Slider which moves left and right
     private void UpdateSlider()
     {
-        sliderValue = Mathf.PingPong(rate * speedModifier, 1);
+        sliderValue = Mathf.PingPong(rate * sliderSpeed, 1);
         hitSlider.value = sliderValue;
+    }
+
+    //Set the slider speed based on weather
+    public void SetSliderSpeed()
+    {
+        switch (GameplayManager.instance.weatherState)
+        {
+            case GameplayManager.WeatherState.CLEAR:
+                sliderSpeed = 0.75f * sliderSpeedModifier;
+                break;
+            case GameplayManager.WeatherState.RAINY:
+                sliderSpeed = 1.25f * sliderSpeedModifier;
+                break;
+            default:
+                break;
+        }
     }
 
     //Set the difficulty of the minigame
@@ -87,12 +112,15 @@ public class Minigame : MonoBehaviour
         {
             case 0:
                 difficultyLevel = DifficultyLevel.EASY;
+                sliderSpeedModifier = 0.75f;
                 break;
             case 1:
                 difficultyLevel = DifficultyLevel.NORMAL;
+                sliderSpeedModifier = 1f;
                 break;
             case 2:
                 difficultyLevel = DifficultyLevel.HARD;
+                sliderSpeedModifier = 1.5f;
                 break;
             default:
                 break;

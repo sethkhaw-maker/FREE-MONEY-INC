@@ -98,7 +98,7 @@ public class AnimalGenerator : MonoBehaviour
         if (rnd < AnimalSpawnRates.probabilityPrey)
         {
             //Spawn a prey
-            SpawnAnimal(preys);
+            SpawnAnimal(animalType = AnimalType.PREY);
 
             //Modify spawn rates
             ModifySpawnRates(AnimalType.PREY);
@@ -107,7 +107,7 @@ public class AnimalGenerator : MonoBehaviour
         else if (rnd > AnimalSpawnRates.probabilityPrey + AnimalSpawnRates.probabilityPredator)
         {
             //Spawn a mediator
-            SpawnAnimal(mediators);
+            SpawnAnimal(animalType = AnimalType.MEDIATOR);
 
             //Modify spawn rates
             ModifySpawnRates(AnimalType.MEDIATOR);
@@ -116,7 +116,7 @@ public class AnimalGenerator : MonoBehaviour
         else
         {
             //Spawn a predator
-            SpawnAnimal(predators);
+            SpawnAnimal(animalType = AnimalType.PREDATOR);
 
             //Modify spawn rates
             ModifySpawnRates(AnimalType.PREDATOR);
@@ -125,10 +125,38 @@ public class AnimalGenerator : MonoBehaviour
     }
 
     //Spawn the chosen animal at selected spawn point
-    private void SpawnAnimal(GameObject[] typeOfAnimal)
+    private void SpawnAnimal(AnimalType typeOfAnimal)
     {
-        int randomAnimal = Random.Range(0, typeOfAnimal.Length);
-        Instantiate(typeOfAnimal[randomAnimal], spawnPoint, Quaternion.identity);
+        int randomAnimal = 0;
+
+        switch (typeOfAnimal)
+        {
+            case AnimalType.PREY:
+                randomAnimal = Random.Range(0, preys.Length);
+                Instantiate(preys[randomAnimal], spawnPoint, Quaternion.identity);
+
+                //Chance of being a leader
+                bool isLeader = Random.Range(0, 10) <= 2 ? true : false;
+
+                if (isLeader)
+                {
+                    //Set this animal as the leader
+
+                }
+
+                break;
+            case AnimalType.PREDATOR:
+                randomAnimal = Random.Range(0, predators.Length);
+                Instantiate(predators[randomAnimal], spawnPoint, Quaternion.identity);
+                break;
+            case AnimalType.MEDIATOR:
+                randomAnimal = Random.Range(0, mediators.Length);
+                Instantiate(mediators[randomAnimal], spawnPoint, Quaternion.identity);
+                break;
+            default:
+                break;
+        }
+        
         spawnedQuantity++;
     }
 
