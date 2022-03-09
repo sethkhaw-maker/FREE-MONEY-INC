@@ -26,6 +26,7 @@ public class Animal : MonoBehaviour
     public Animal targetAsAnimal;
     public float followOffset = 1.5f;
     public bool isLeader, isHungry;
+    public int herdNum;
 
     [Header("Class References")]
     public SYS_FSM animalFSM;
@@ -116,7 +117,7 @@ public class Animal : MonoBehaviour
 
     public List<Animal> GetAllSameAnimals() => allAnimals.FindAll(x => x.animalName == animalName);
     public List<Animal> GetAllSameAnimals(string givenName) => allAnimals.FindAll(x => x.animalName == givenName);
-    public Animal GetLeader() => allAnimalLeaders.Find(x => x.animalName == animalName);
+    public Animal GetLeader() => allAnimalLeaders.Find(x => x.animalName == animalName && x.herdNum == herdNum);
     public void SetTargetAs(Animal a) { target = a.gameObject; targetAsAnimal = a; }
     public void RemoveLeader() { allAnimalLeaders.Remove(this); isLeader = false; }
     public void ClearTarget() { target = null; targetAsAnimal = null; }
