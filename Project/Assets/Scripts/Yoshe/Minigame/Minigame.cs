@@ -18,10 +18,15 @@ public class Minigame : MonoBehaviour
     private float sliderValue;
 
     //Gameplay Variables
+    private float rate = 0;
     private bool isGaming = true;       //true = minigame slider is moving
 
     [Range(0.25f,1.75f)]
-    public float speedModifier = 1;     //Speed of the slider based on weather
+    public float sliderSpeed = 1;     //Speed of the slider based on weather
+    public float sliderSpeedModifier = 1f;
+
+    public int timesToAttract = 2;
+    public Text attractCountText;   //Temporary display for attract count
 
     public enum DifficultyLevel
     {
@@ -41,24 +46,53 @@ public class Minigame : MonoBehaviour
         //Set the minigame difficulty
         SetDifficulty();
 
+        //Set the slider speed
+        SetSliderSpeed();
+
         //Generate the starting hitbox
         GenerateHitbox();
     }
 
     private void Update()
     {
+        rate += Time.deltaTime;
+
         if (isGaming)
         {
             //Update the slider to move in real time
             UpdateSlider();
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                HitMinigameButton();
+            }
         }
+
+        //Temporary count display
+        attractCountText.text = timesToAttract.ToString();
     }
 
     //Slider which moves left and right
     private void UpdateSlider()
     {
-        sliderValue = Mathf.PingPong(Time.time * speedModifier, 1);
+        sliderValue = Mathf.PingPong(rate * sliderSpeed, 1);
         hitSlider.value = sliderValue;
+    }
+
+    //Set the slider speed based on weather
+    public void SetSliderSpeed()
+    {
+        switch (GameplayManager.instance.weatherState)
+        {
+            case GameplayManager.WeatherState.CLEAR:
+                sliderSpeed = 0.75f * sliderSpeedModifier;
+                break;
+            case GameplayManager.WeatherState.RAINY:
+                sliderSpeed = 1.25f * sliderSpeedModifier;
+                break;
+            default:
+                break;
+        }
     }
 
     //Set the difficulty of the minigame
@@ -78,12 +112,15 @@ public class Minigame : MonoBehaviour
         {
             case 0:
                 difficultyLevel = DifficultyLevel.EASY;
+                sliderSpeedModifier = 0.75f;
                 break;
             case 1:
                 difficultyLevel = DifficultyLevel.NORMAL;
+                sliderSpeedModifier = 1f;
                 break;
             case 2:
                 difficultyLevel = DifficultyLevel.HARD;
+                sliderSpeedModifier = 1.5f;
                 break;
             default:
                 break;
@@ -138,24 +175,54 @@ public class Minigame : MonoBehaviour
     public void HitMinigameButton()
     {
         if (isGaming == false) return;
-        isGaming = false;
 
         float hitboxLeft = (hitboxOffset + finalOffset) / minigameWidth;
 
         float hitboxRight = (hitboxOffset + finalOffset + hitBoxSize) / minigameWidth;
+
+        //Success
         if (sliderValue > hitboxLeft && sliderValue < hitboxRight)
         {
             //GenerateHitbox();
 
-            //Return back to gameplay
-            if (GameplayManager.instance != null)
-                GameplayManager.instance.EndMinigame(true);
+            //Decrease number of times to attract
+            timesToAttract--;
+            rate = 0;
+
+            //Animal has been attracted
+            if (timesToAttract <= 0)
+            {
+                //Return back to gameplay
+                if (GameplayManager.instance != null)
+                {
+                    isGaming = false;
+                    GameplayManager.instance.EndMinigame(true);
+                }
+                //Play minigame success sfx
+                FindObjectOfType<AudioManager>()?.Play("Minigame Success");
+            }
+            //Animal is still being attracted
+            else
+            {
+                //Regenerate the hitbox area
+                GenerateHitbox();
+
+                //Play passing sfx
+                FindObjectOfType<AudioManager>()?.Play("Minigame Passing");
+            }
         }
+        //Failed to attract
         else
         {
             //Return back to gameplay
             if (GameplayManager.instance != null)
+            {
+                isGaming = false;
                 GameplayManager.instance.EndMinigame(false);
+            }
+
+            //Play minigame failed sfx
+            FindObjectOfType<AudioManager>()?.Play("Minigame Fail");
         }
     }
 }

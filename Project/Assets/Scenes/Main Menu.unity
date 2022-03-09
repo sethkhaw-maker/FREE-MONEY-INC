@@ -1062,6 +1062,24 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: Minigame Passing
+    clip: {fileID: 8300000, guid: abcb3e42d4243474cb41ecc3b7a2b50a, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Minigame Success
+    clip: {fileID: 8300000, guid: 55e0f7f786fd95844bc2ed00e57b3928, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Minigame Fail
+    clip: {fileID: 8300000, guid: bc1d90ce90cbcd74197e8b990939eec0, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
 --- !u!1 &414884858
 GameObject:
   m_ObjectHideFlags: 0
