@@ -133,7 +133,7 @@ public class AnimalGenerator : MonoBehaviour
         {
             case AnimalType.PREY:
                 randomAnimal = Random.Range(0, preys.Length);
-                Instantiate(preys[randomAnimal], spawnPoint, Quaternion.identity);
+                Instantiate(preys[randomAnimal], gameObject.transform).transform.position = spawnPoint;
 
                 //Chance of being a leader
                 bool isLeader = Random.Range(0, 10) <= 2 ? true : false;
@@ -147,11 +147,11 @@ public class AnimalGenerator : MonoBehaviour
                 break;
             case AnimalType.PREDATOR:
                 randomAnimal = Random.Range(0, predators.Length);
-                Instantiate(predators[randomAnimal], spawnPoint, Quaternion.identity);
+                Instantiate(predators[randomAnimal], gameObject.transform).transform.position = spawnPoint;
                 break;
             case AnimalType.MEDIATOR:
                 randomAnimal = Random.Range(0, mediators.Length);
-                Instantiate(mediators[randomAnimal], spawnPoint, Quaternion.identity);
+                Instantiate(mediators[randomAnimal], gameObject.transform).transform.position = spawnPoint;
                 break;
             default:
                 break;
