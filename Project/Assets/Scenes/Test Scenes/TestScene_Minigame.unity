@@ -371,5 +371,9 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8647733002666144193, guid: 358213872dc64ad4980f9c0b6eec5f20, type: 3}
+      propertyPath: crossBox
+      value: 
+      objectReference: {fileID: 21300000, guid: 9a55cdb917aa344478c38d543405bc57, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 358213872dc64ad4980f9c0b6eec5f20, type: 3}
