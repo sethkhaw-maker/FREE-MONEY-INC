@@ -16,8 +16,9 @@ public class STATE_InteractionPredator : SYS_FSMState
     bool shakeDir = false;
     float leniency = 0.5f;
 
-    float speed, timer, intervalTimer;
-    Vector2 shakeForce;
+    float speed, timer;
+
+    bool hasShaken = false;
 
     public override void OnEnter() 
     {
@@ -35,7 +36,7 @@ public class STATE_InteractionPredator : SYS_FSMState
         speed = 0;
         timer = 0;
         miniState = 0;
-        intervalTimer = 0;
+        hasShaken = false;
     }
 
     public override void Running()
@@ -55,23 +56,21 @@ public class STATE_InteractionPredator : SYS_FSMState
 
     void Shake()
     {
-        intervalTimer += Time.deltaTime;
-        self.flipAnimal.dontFlip = true;
-        if (intervalTimer < shakeInterval) return;
-        if (!shakeDir) shakeForce = Vector2.left * shakeIntensity;
-        if (shakeDir) shakeForce = Vector2.right * shakeIntensity;
-
-        self.rb.velocity = shakeForce;
-        shakeDir = !shakeDir;
-
-        intervalTimer = 0;
-
-        if (timer > shakeTime)
+        if (!hasShaken)
+        {
+            self.PlayShakeEmote();
+            hasShaken = true;
+        }
+        if (hasShaken && self.animalEmote.isShaking)
         {
             ProgressMiniState();
             if (self.preyPredatorInteraction == 2) miniState = 10;
-            self.flipAnimal.dontFlip = false;
         }
+
+        //if (timer > shakeTime)
+        //{
+
+        //}
     }
     void ShuffleBackwards()
     {

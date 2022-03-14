@@ -42,6 +42,7 @@ public class STATE_CheckForPrey : SYS_FSMState
             {
                 closestPrey = a;
                 shortestDist = distToPrey;
+                Debug.Log("closestPrey: " + a.gameObject.name + " | shortestDist: " + shortestDist);
             }
         }
     }

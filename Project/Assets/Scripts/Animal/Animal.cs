@@ -130,4 +130,5 @@ public class Animal : MonoBehaviour
     public void SetTargetAs(Animal a) { target = a.gameObject; targetAsAnimal = a; }
     public void RemoveLeader() { allAnimalLeaders.Remove(this); isLeader = false; }
     public void ClearTarget() { target = null; targetAsAnimal = null; }
+    public void PlayShakeEmote() { if (!animalEmote.isShaking) StartCoroutine(animalEmote.ShakeCoroutine()); }
 }

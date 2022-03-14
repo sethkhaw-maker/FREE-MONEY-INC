@@ -39,7 +39,6 @@ public class STATE_InteractionPrey : SYS_FSMState
             case 2: Flee(); break;
             case 3: EnterNextState(); break;
         }
-        Debug.Log("miniState: " + miniState);
     }
 
     void DecideBehaviours()

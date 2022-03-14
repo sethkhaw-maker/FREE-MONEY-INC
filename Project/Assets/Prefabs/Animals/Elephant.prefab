@@ -179,8 +179,8 @@ MonoBehaviour:
   animalType: 2
   wanderRange: 5
   wanderSpeed: 5
-  runRange: 0
-  runSpeed: 0
+  runRange: 15
+  runSpeed: 8
   idleTime: 1.5
   spawnTime: 0
   spawnWeather: 0
@@ -205,7 +205,6 @@ MonoBehaviour:
   preyPredatorInteraction: 0
   maxHerdSize: 5
   difficultyLevel: 2
-  thoughtBubble: {fileID: 6897764276916739324}
 --- !u!50 &1206212595650023477
 Rigidbody2D:
   serializedVersion: 4
@@ -221,7 +220,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -288,11 +287,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa1c4845070b03f4b81c7c31fcf6bc5e, type: 3}
---- !u!1 &6897764276916739324 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7479614995957321032, guid: fa1c4845070b03f4b81c7c31fcf6bc5e, type: 3}
-  m_PrefabInstance: {fileID: 4068199781249896884}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6897764276916739327 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7479614995957321035, guid: fa1c4845070b03f4b81c7c31fcf6bc5e, type: 3}
