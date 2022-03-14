@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 7675842848813188347}
   - component: {fileID: -8850379495609006363}
   - component: {fileID: -1934177987346909800}
-  - component: {fileID: -9210054186356706765}
   - component: {fileID: -1304275467107649419}
   - component: {fileID: -7552101727780672495}
+  - component: {fileID: 7590037773236550706}
   m_Layer: 8
   m_Name: Zebra
   m_TagString: Untagged
@@ -147,20 +147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   facingRight: 0
---- !u!114 &-9210054186356706765
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 144883327298337906}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 888d8d24f0ef33f43adacd3f5d06c754, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  self: {fileID: 0}
-  active: 1
+  dontFlip: 0
 --- !u!114 &-1304275467107649419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,6 +161,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animalName: Zebra
+  animalType: 0
   wanderRange: 5
   wanderSpeed: 5
   runRange: 0
@@ -189,13 +177,18 @@ MonoBehaviour:
   targetAsAnimal: {fileID: 0}
   followOffset: 1.5
   isLeader: 0
-  animalFSM: {fileID: -9210054186356706765}
+  isHungry: 0
+  herdNum: 0
+  animalFSM: {fileID: 0}
   animalSprite: {fileID: 0}
   animalAnimator: {fileID: 0}
   flipAnimal: {fileID: 0}
   rb: {fileID: 0}
   isDespawning: 0
   isInParty: 0
+  shouldFlee: 0
+  preyPredatorInteraction: 0
+  maxHerdSize: 5
   difficultyLevel: 0
   thoughtBubble: {fileID: 5383954799224790847}
 --- !u!50 &-7552101727780672495
@@ -219,6 +212,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &7590037773236550706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 144883327298337906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c24059bf01fcd341ab7172d909e0f68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  self: {fileID: 0}
+  active: 1
+  defaultBehaviour: 0000000001000000
 --- !u!1001 &3277292767574037111
 PrefabInstance:
   m_ObjectHideFlags: 0

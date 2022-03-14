@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 8619062383704742461}
   - component: {fileID: -2879747157694665216}
   - component: {fileID: -7753032383545677257}
-  - component: {fileID: 333121839363667874}
   - component: {fileID: -3236484652676999582}
   - component: {fileID: 6606257162861853106}
+  - component: {fileID: 2789810048616990564}
   m_Layer: 8
   m_Name: Lion
   m_TagString: Untagged
@@ -147,20 +147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   facingRight: 0
---- !u!114 &333121839363667874
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8619062383704742434}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 888d8d24f0ef33f43adacd3f5d06c754, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  self: {fileID: 0}
-  active: 1
+  dontFlip: 0
 --- !u!114 &-3236484652676999582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,6 +161,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animalName: Lion
+  animalType: 1
   wanderRange: 5
   wanderSpeed: 5
   runRange: 0
@@ -189,13 +177,18 @@ MonoBehaviour:
   targetAsAnimal: {fileID: 0}
   followOffset: 1.5
   isLeader: 0
-  animalFSM: {fileID: 333121839363667874}
+  isHungry: 0
+  herdNum: 0
+  animalFSM: {fileID: 0}
   animalSprite: {fileID: 0}
   animalAnimator: {fileID: 0}
   flipAnimal: {fileID: 0}
   rb: {fileID: 0}
   isDespawning: 0
   isInParty: 0
+  shouldFlee: 0
+  preyPredatorInteraction: 0
+  maxHerdSize: 5
   difficultyLevel: 1
   thoughtBubble: {fileID: 2504088828529221823}
 --- !u!50 &6606257162861853106
@@ -219,6 +212,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &2789810048616990564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8619062383704742434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe6c5d7cce3d51e48a5dcb9d569fa71f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  self: {fileID: 0}
+  active: 1
+  defaultBehaviour: 0000000001000000
 --- !u!1001 &4975529467708091895
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -10,6 +10,7 @@ public class Animal : MonoBehaviour
 
     [Header("Animal Details")]
     public string animalName;
+    public ANIMALTYPE animalType;
     public float wanderRange, wanderSpeed;
     public float runRange, runSpeed;
     public float idleTime = 2.5f;
@@ -29,7 +30,7 @@ public class Animal : MonoBehaviour
     public int herdNum;
 
     [Header("Class References")]
-    public SYS_FSM animalFSM;
+    [HideInInspector] public SYS_FSM animalFSM;
     [HideInInspector] public SYS_Emote animalEmote = new SYS_Emote();
 
     [HideInInspector] public SpriteRenderer animalSprite;
@@ -38,6 +39,7 @@ public class Animal : MonoBehaviour
     [HideInInspector] public Rigidbody2D rb;
     [HideInInspector] public bool isDespawning, isInParty, shouldFlee;
     [HideInInspector] public int preyPredatorInteraction = 0;
+    [HideInInspector] public int maxHerdSize = 5;
 
     public int difficultyLevel = 0;
 
@@ -45,6 +47,7 @@ public class Animal : MonoBehaviour
 
     private void Start()
     {
+        if (animalType == ANIMALTYPE.PREY) firstState = eSTATE.FOLLOWLEADER;
         flipAnimal.Init(this);
         animalFSM.Init(this);
         animalFSM.SetupStates();
@@ -59,6 +62,7 @@ public class Animal : MonoBehaviour
 
         flipAnimal = GetComponent<FlipAnimal>();
         rb = GetComponent<Rigidbody2D>();
+        animalFSM = GetComponent(typeof(SYS_FSM)) as SYS_FSM;
     }
 
     public void RegisterAnimalToParty()
@@ -85,8 +89,9 @@ public class Animal : MonoBehaviour
     public void RegisterAnimalAsLeader()
     {
         isLeader = true;
-        int index = allAnimalLeaders.FindIndex(x => x.animalName == animalName);
-        allAnimalLeaders[index] = this;
+        allAnimalLeaders.Add(this);
+        //int index = allAnimalLeaders.FindIndex(x => x.animalName == animalName);
+        //allAnimalLeaders[index] = this;
         animalFSM.SetupStates();
     }
 
@@ -97,7 +102,7 @@ public class Animal : MonoBehaviour
         rb.velocity = Vector2.zero;
     }
 
-    public Animal SetLeader()
+    public Animal SetNewLeader()
     {
         List<Animal> animalsOfSameType = GetAllSameAnimals();
 
@@ -117,7 +122,11 @@ public class Animal : MonoBehaviour
 
     public List<Animal> GetAllSameAnimals() => allAnimals.FindAll(x => x.animalName == animalName);
     public List<Animal> GetAllSameAnimals(string givenName) => allAnimals.FindAll(x => x.animalName == givenName);
+    public List<Animal> GetAllSameHerd() => allAnimals.FindAll(x => x.animalName == animalName && x.herdNum == herdNum);
     public Animal GetLeader() => allAnimalLeaders.Find(x => x.animalName == animalName && x.herdNum == herdNum);
+    public int CountLeaders() => allAnimalLeaders.FindAll(x => x.animalName == animalName).Count;
+    public List<Animal> GetLeaders() => allAnimalLeaders.FindAll(x => x.animalName == animalName);
+    public int GetHerdSize(int herdIndex) => allAnimalLeaders.FindAll(x => x.animalName == animalName && x.herdNum == herdIndex).Count;
     public void SetTargetAs(Animal a) { target = a.gameObject; targetAsAnimal = a; }
     public void RemoveLeader() { allAnimalLeaders.Remove(this); isLeader = false; }
     public void ClearTarget() { target = null; targetAsAnimal = null; }

@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 8057081832173341695}
   - component: {fileID: 4630997399349641155}
   - component: {fileID: 876579809860123636}
-  - component: {fileID: 2076988609493673569}
   - component: {fileID: 5429156376670242721}
   - component: {fileID: 2212193147059078148}
   - component: {fileID: -3562418051402305063}
+  - component: {fileID: 2130184510856615037}
   m_Layer: 8
   m_Name: Tiger
   m_TagString: Untagged
@@ -128,20 +128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   facingRight: 0
---- !u!114 &2076988609493673569
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8057081832173341665}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 888d8d24f0ef33f43adacd3f5d06c754, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  self: {fileID: 0}
-  active: 1
+  dontFlip: 0
 --- !u!114 &5429156376670242721
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,6 +142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animalName: Tiger
+  animalType: 1
   wanderRange: 5
   wanderSpeed: 5
   runRange: 0
@@ -170,13 +158,18 @@ MonoBehaviour:
   targetAsAnimal: {fileID: 0}
   followOffset: 1.5
   isLeader: 0
-  animalFSM: {fileID: 2076988609493673569}
+  isHungry: 0
+  herdNum: 0
+  animalFSM: {fileID: 0}
   animalSprite: {fileID: 0}
   animalAnimator: {fileID: 0}
   flipAnimal: {fileID: 0}
   rb: {fileID: 0}
   isDespawning: 0
   isInParty: 0
+  shouldFlee: 0
+  preyPredatorInteraction: 0
+  maxHerdSize: 5
   difficultyLevel: 1
   thoughtBubble: {fileID: 4219240817414844796}
 --- !u!95 &2212193147059078148
@@ -219,6 +212,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &2130184510856615037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8057081832173341665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe6c5d7cce3d51e48a5dcb9d569fa71f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  self: {fileID: 0}
+  active: 1
+  defaultBehaviour: 0000000001000000
 --- !u!1001 &6719703929026755636
 PrefabInstance:
   m_ObjectHideFlags: 0

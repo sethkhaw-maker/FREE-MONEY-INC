@@ -277,7 +277,6 @@ public class PlayerController : MonoBehaviour
     bool CanInteractWithAnimal()
     {
         if (targetAnimal == null) return false;
-        if (!targetAnimal.isLeader) return false;
         if (!targetAnimal.animalFSM.currState.IsInteractable) return false;
         return true;
     }

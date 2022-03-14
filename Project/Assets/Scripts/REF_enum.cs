@@ -37,3 +37,10 @@ public enum EMOTE
     ANGRY,
     CONFUSED
 }
+
+public enum ANIMALTYPE
+{
+    PREY,
+    PREDATOR,
+    MEDIATOR
+}

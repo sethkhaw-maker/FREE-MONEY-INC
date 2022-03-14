@@ -8,6 +8,7 @@ public class FSM_GenericPrey : SYS_FSM
     {
         states.Add(new STATE_Idle());
         states.Add(new STATE_Wander());
+        states.Add(new STATE_JoiningParty());
         states.Add(new STATE_FollowNoah());
         states.Add(new STATE_FollowLeader());
         states.Add(new STATE_AlertFollowers());
@@ -17,20 +18,15 @@ public class FSM_GenericPrey : SYS_FSM
         states.Add(new STATE_InteractionPrey());
     }
 
-    public override void SetupStates()
-    {
-        base.SetupStates();
-        if (!self.isLeader) self.targetAsAnimal = self.GetLeader();
-    }
-
     protected override void CheckForStateSwitch()
     {
+        if (currState == null) return;
         if (!active) return;
         if (self.isDespawning) { DeactivateFSM(); return; }
         if (self.isLeader)
         {
-            if (!(currState is STATE_FollowNoah) && self.isInParty) SwitchToState(states.Find(x => x is STATE_FollowNoah));
             if (NeedToCheckForThreats() && currState.progress) SwitchToState(states.Find(x => x is STATE_CheckForThreats));
+            if (currState is STATE_FollowLeader) SwitchToState(states.Find(x => x is STATE_Wander));
             if (currState is STATE_CheckForThreats && currState.progress) { if (ThreatFound()) SwitchToState(states.Find(x => x is STATE_AlertFollowers)); else RandomizeState(defaultBehaviour); }
             if (currState is STATE_AlertFollowers && currState.progress) SwitchToState(states.Find(x => x is STATE_Flee));
             if (currState is STATE_Flee && currState.progress) SwitchToState(states.Find(x => x is STATE_CheckForThreats));  
@@ -48,6 +44,8 @@ public class FSM_GenericPrey : SYS_FSM
                 if (currState is STATE_Flee && currState.progress) SwitchToState(states.Find(x => x is STATE_FindLeader));
             }
         }
+        if (!(currState is STATE_FollowNoah) && self.isInParty) SwitchToState(states.Find(x => x is STATE_JoiningParty));
+        if (currState is STATE_JoiningParty && currState.progress) SwitchToState(states.Find(x => x is STATE_FollowNoah));
         if (!(currState is STATE_Flee) && self.shouldFlee) SwitchToState(states.Find(x => x is STATE_Flee));
         if (currState is STATE_Idle && currState.progress) SwitchToState(states.Find(x => x is STATE_Wander));
         if (currState is STATE_Wander && currState.progress) SwitchToState(states.Find(x => x is STATE_Idle));
