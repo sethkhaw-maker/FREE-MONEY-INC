@@ -9,6 +9,7 @@ public class FSM_GenericPredator : SYS_FSM
         states.Add(new STATE_Idle());
         states.Add(new STATE_Wander());
         states.Add(new STATE_FollowNoah());
+        states.Add(new STATE_JoiningParty());
         states.Add(new STATE_CheckForPrey());
         states.Add(new STATE_Sneak());
         states.Add(new STATE_CheckEatPrey());
@@ -21,7 +22,7 @@ public class FSM_GenericPredator : SYS_FSM
     protected override void CheckForStateSwitch()
     {
         if (currState == null) return;
-        if (!(currState is STATE_FollowNoah) && self.isInParty) SwitchToState(states.Find(x => x is STATE_JoiningParty));
+        if (!(currState is STATE_JoiningParty || currState is STATE_FollowNoah) && self.isInParty) SwitchToState(states.Find(x => x is STATE_JoiningParty));
         if (currState is STATE_JoiningParty && currState.progress) SwitchToState(states.Find(x => x is STATE_FollowNoah));
 
         if (InDefaultBehaviour() && currState.progress) SwitchToState(states.Find(x => x is STATE_CheckForPrey));
