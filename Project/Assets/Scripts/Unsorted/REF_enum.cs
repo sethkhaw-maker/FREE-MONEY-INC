@@ -30,8 +30,9 @@ public enum SPAWNWEATHER
 
 public enum EMOTE
 {
-    NORMAL,
-    HUNGRY,
+    NULL,
+    HUNGRY_PREDATOR,
+    HUNGRY_PREY,
     SCARED,
     HAPPY,
     ANGRY,

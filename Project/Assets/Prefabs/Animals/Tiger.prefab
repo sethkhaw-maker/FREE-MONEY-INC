@@ -152,7 +152,7 @@ MonoBehaviour:
   spawnWeather: 0
   state: 0
   firstState: 1
-  chaseTargets: 
+  chaseTargets: Zebra,
   fleeTargets: 
   target: {fileID: 0}
   targetAsAnimal: {fileID: 0}

@@ -34,7 +34,7 @@ public class FSM_GenericPrey : SYS_FSM
         }
         else
         {
-            if (self.targetAsAnimal.isLeader)
+            if (self.targetAsAnimal != null && self.targetAsAnimal.isLeader)
             {
                 if (self.targetAsAnimal.animalFSM.currState is STATE_Wander) SwitchToState(states.Find(x => x is STATE_FollowLeader));
                 if (currState is STATE_FollowLeader && currState.progress) RandomizeState(defaultBehaviour);
@@ -44,7 +44,7 @@ public class FSM_GenericPrey : SYS_FSM
                 if (currState is STATE_Flee && currState.progress) SwitchToState(states.Find(x => x is STATE_FindLeader));
             }
         }
-        if (!(currState is STATE_FollowNoah) && self.isInParty) SwitchToState(states.Find(x => x is STATE_JoiningParty));
+        if (!(currState is STATE_JoiningParty || currState is STATE_FollowNoah) && self.isInParty) SwitchToState(states.Find(x => x is STATE_JoiningParty));
         if (currState is STATE_JoiningParty && currState.progress) SwitchToState(states.Find(x => x is STATE_FollowNoah));
         if (!(currState is STATE_Flee) && self.shouldFlee) SwitchToState(states.Find(x => x is STATE_Flee));
         if (currState is STATE_Idle && currState.progress) SwitchToState(states.Find(x => x is STATE_Wander));

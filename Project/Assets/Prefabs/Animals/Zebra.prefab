@@ -172,7 +172,7 @@ MonoBehaviour:
   state: 0
   firstState: 1
   chaseTargets: 
-  fleeTargets: 
+  fleeTargets: Lion,Tiger,Hyena
   target: {fileID: 0}
   targetAsAnimal: {fileID: 0}
   followOffset: 1.5

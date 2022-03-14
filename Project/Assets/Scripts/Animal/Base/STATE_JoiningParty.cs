@@ -22,6 +22,7 @@ public class STATE_JoiningParty : SYS_FSMState
         self.shouldFlee = false;
         self.preyPredatorInteraction = 0;
         self.herdNum = 0;
+        self.ClearTarget();
         EnterNextState();
     }
 }
