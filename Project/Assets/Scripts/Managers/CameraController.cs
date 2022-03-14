@@ -10,7 +10,7 @@ public class CameraController : MonoBehaviour
     private float scopeCooldown = 2f;
     private float scopeTimer = 0;
 
-    private float mouseSensitivity = 20f;
+    public float mouseSensitivity = 70f;
     public GameObject customCursor;
     public GameObject gameplayHud;
     public Animator fadeAnim;
