@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class STATE_Wander : SYS_FSMState
 {
+    public override bool IsInteractable => true;
+
     float leniency = 0.1f;
     Vector3 endPos;
     bool wandering;
@@ -14,6 +16,7 @@ public class STATE_Wander : SYS_FSMState
         wandering = false;
         progress = false;
         endPos = Vector3.zero;
+        self.rb.velocity = Vector2.zero;
     }
 
     public override void Running()

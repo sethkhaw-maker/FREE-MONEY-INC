@@ -147,6 +147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   facingRight: 0
+  dontFlip: 0
 --- !u!114 &1580656281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,6 +162,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   self: {fileID: 0}
   active: 1
+  defaultBehaviour: 0000000001000000
 --- !u!114 &1580656287
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,6 +176,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animalName: Elephant
+  animalType: 2
   wanderRange: 5
   wanderSpeed: 5
   runRange: 0
@@ -189,6 +192,8 @@ MonoBehaviour:
   targetAsAnimal: {fileID: 0}
   followOffset: 1.5
   isLeader: 0
+  isHungry: 0
+  herdNum: 0
   animalFSM: {fileID: 1580656281}
   animalSprite: {fileID: 0}
   animalAnimator: {fileID: 0}
@@ -196,6 +201,9 @@ MonoBehaviour:
   rb: {fileID: 0}
   isDespawning: 0
   isInParty: 0
+  shouldFlee: 0
+  preyPredatorInteraction: 0
+  maxHerdSize: 5
   difficultyLevel: 2
   thoughtBubble: {fileID: 6897764276916739324}
 --- !u!50 &1206212595650023477

@@ -33,13 +33,7 @@ public class AnimalGenerator : MonoBehaviour
     public int predatorSpawned;
     public int mediatorSpawned;
 
-    private enum AnimalType
-    {
-        PREY,
-        PREDATOR,
-        MEDIATOR
-    }
-    private AnimalType animalType;
+    private ANIMALTYPE animalType;
 
     void Start()
     {
@@ -98,60 +92,51 @@ public class AnimalGenerator : MonoBehaviour
         if (rnd < AnimalSpawnRates.probabilityPrey)
         {
             //Spawn a prey
-            SpawnAnimal(animalType = AnimalType.PREY);
+            SpawnAnimal(animalType = ANIMALTYPE.PREY);
 
             //Modify spawn rates
-            ModifySpawnRates(AnimalType.PREY);
+            ModifySpawnRates(ANIMALTYPE.PREY);
         }
         //Mediator selected
         else if (rnd > AnimalSpawnRates.probabilityPrey + AnimalSpawnRates.probabilityPredator)
         {
             //Spawn a mediator
-            SpawnAnimal(animalType = AnimalType.MEDIATOR);
+            SpawnAnimal(animalType = ANIMALTYPE.MEDIATOR);
 
             //Modify spawn rates
-            ModifySpawnRates(AnimalType.MEDIATOR);
+            ModifySpawnRates(ANIMALTYPE.MEDIATOR);
         }
         //Predator selected
         else
         {
             //Spawn a predator
-            SpawnAnimal(animalType = AnimalType.PREDATOR);
+            SpawnAnimal(animalType = ANIMALTYPE.PREDATOR);
 
             //Modify spawn rates
-            ModifySpawnRates(AnimalType.PREDATOR);
+            ModifySpawnRates(ANIMALTYPE.PREDATOR);
         }
 
     }
 
     //Spawn the chosen animal at selected spawn point
-    private void SpawnAnimal(AnimalType typeOfAnimal)
+    private void SpawnAnimal(ANIMALTYPE typeOfAnimal)
     {
         int randomAnimal = 0;
 
         switch (typeOfAnimal)
         {
-            case AnimalType.PREY:
+            case ANIMALTYPE.PREY:
                 randomAnimal = Random.Range(0, preys.Length);
-                Instantiate(preys[randomAnimal], gameObject.transform).transform.position = spawnPoint;
-
-                //Chance of being a leader
-                bool isLeader = Random.Range(0, 10) <= 2 ? true : false;
-
-                if (isLeader)
-                {
-                    //Set this animal as the leader
-
-                }
-
+                GameObject preyGO = Instantiate(preys[randomAnimal], spawnPoint, Quaternion.identity);
+                LeaderOrPrey(preyGO);
                 break;
-            case AnimalType.PREDATOR:
+            case ANIMALTYPE.PREDATOR:
                 randomAnimal = Random.Range(0, predators.Length);
-                Instantiate(predators[randomAnimal], gameObject.transform).transform.position = spawnPoint;
+                Instantiate(predators[randomAnimal], spawnPoint, Quaternion.identity);
                 break;
-            case AnimalType.MEDIATOR:
+            case ANIMALTYPE.MEDIATOR:
                 randomAnimal = Random.Range(0, mediators.Length);
-                Instantiate(mediators[randomAnimal], gameObject.transform).transform.position = spawnPoint;
+                Instantiate(mediators[randomAnimal], spawnPoint, Quaternion.identity);
                 break;
             default:
                 break;
@@ -161,27 +146,65 @@ public class AnimalGenerator : MonoBehaviour
     }
 
     //Modify the probability of animal spawn rates
-    private void ModifySpawnRates(AnimalType spawnType)
+    private void ModifySpawnRates(ANIMALTYPE spawnType)
     {
         switch (spawnType)
         {
-            case AnimalType.PREY:
+            case ANIMALTYPE.PREY:
                 AnimalSpawnRates.probabilityPredator += predatorIncrement;
                 AnimalSpawnRates.probabilityMediator += mediatorIncrement;
                 preySpawned++;
                 break;
-            case AnimalType.PREDATOR:
+            case ANIMALTYPE.PREDATOR:
                 AnimalSpawnRates.probabilityPrey += preyIncrement;
                 AnimalSpawnRates.probabilityMediator += mediatorIncrement;
                 predatorSpawned++;
                 break;
-            case AnimalType.MEDIATOR:
+            case ANIMALTYPE.MEDIATOR:
                 AnimalSpawnRates.probabilityPrey += preyIncrement;
                 AnimalSpawnRates.probabilityPredator += predatorIncrement;
                 mediatorSpawned++;
                 break;
             default:
                 break;
+        }
+    }
+
+    void LeaderOrPrey(GameObject go)
+    {
+        Animal prey = go.GetComponent<Animal>();
+
+        // ensure that there is always 1 leader
+        if (prey.GetLeaders().Count == 0) { prey.isLeader = true; }
+        else prey.isLeader = Random.Range(0, 15) <= 2 ? true : false;
+
+        // for generic prey, find closest leader & add to herd if there is space in herd.
+        if (!prey.isLeader) 
+        {
+            List<Animal> allLeadersOfPreyType = prey.GetLeaders();
+            float closestDist = 99999f;
+            Animal closestLeader = null;
+            foreach (Animal leader in allLeadersOfPreyType)
+            {
+                float currDist = Vector3.Distance(leader.transform.position, prey.transform.position);
+                Debug.Log("herdNum: " + leader.herdNum + " | getHerdSize: " + prey.GetHerdSize(leader.herdNum));
+                if (currDist < closestDist && prey.GetHerdSize(leader.herdNum) < prey.maxHerdSize)
+                {
+                    closestDist = currDist;
+                    closestLeader = leader;
+                }
+            }
+
+            if (closestLeader != null) { prey.herdNum = closestLeader.herdNum; prey.SetTargetAs(closestLeader); }
+            else prey.isLeader = true; // assuming all leaders checked + no space in herd, make new herd
+        }
+
+        // placed after generic prey check to reuse code if prey is made leader due to full herds.
+        if (prey.isLeader)  
+        {
+            prey.gameObject.name = prey.animalName + " Leader";
+            prey.RegisterAnimalAsLeader();
+            prey.herdNum = prey.CountLeaders();
         }
     }
 

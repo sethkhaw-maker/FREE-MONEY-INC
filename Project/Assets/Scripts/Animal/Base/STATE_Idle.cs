@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class STATE_Idle : SYS_FSMState
 {
+    public override bool IsInteractable => true;
+
     float timer;
 
-    public override void OnEnter() 
-    {
-        self.rb.velocity = Vector2.zero;
-    }
+    public override void OnEnter() { }
     public override void OnExit()
     {
         timer = 0f;

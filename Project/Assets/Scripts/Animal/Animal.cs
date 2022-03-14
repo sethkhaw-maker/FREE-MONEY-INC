@@ -6,9 +6,11 @@ public class Animal : MonoBehaviour
 {
     public static List<Animal> allAnimals = new List<Animal>();
     public static List<Animal> allAnimalLeaders = new List<Animal>();
+    public static List<Animal> allAnimalPrey = new List<Animal>();
 
     [Header("Animal Details")]
     public string animalName;
+    public ANIMALTYPE animalType;
     public float wanderRange, wanderSpeed;
     public float runRange, runSpeed;
     public float idleTime = 2.5f;
@@ -24,24 +26,28 @@ public class Animal : MonoBehaviour
     public GameObject target;
     public Animal targetAsAnimal;
     public float followOffset = 1.5f;
-    public bool isLeader;
+    public bool isLeader, isHungry;
+    public int herdNum;
 
     [Header("Class References")]
-    public SYS_FSM animalFSM;
+    [HideInInspector] public SYS_FSM animalFSM;
     [HideInInspector] public SYS_Emote animalEmote = new SYS_Emote();
 
     [HideInInspector] public SpriteRenderer animalSprite;
     [HideInInspector] public Animator animalAnimator;
     [HideInInspector] public FlipAnimal flipAnimal;
     [HideInInspector] public Rigidbody2D rb;
-    [HideInInspector] public bool isDespawning, isInParty;
+    [HideInInspector] public bool isDespawning, isInParty, shouldFlee;
+    [HideInInspector] public int preyPredatorInteraction = 0;
+    [HideInInspector] public int maxHerdSize = 5;
 
     public int difficultyLevel = 0;
 
-    public GameObject thoughtBubble;
-
     private void Start()
     {
+        if (animalType == ANIMALTYPE.PREY) firstState = eSTATE.FOLLOWLEADER;
+        flipAnimal.Init(this);
+        animalEmote.Init(this);
         animalFSM.Init(this);
         animalFSM.SetupStates();
         animalFSM.SwitchToState(firstState);
@@ -55,6 +61,8 @@ public class Animal : MonoBehaviour
 
         flipAnimal = GetComponent<FlipAnimal>();
         rb = GetComponent<Rigidbody2D>();
+        animalFSM = GetComponent(typeof(SYS_FSM)) as SYS_FSM;
+        animalEmote.thoughtBubble = transform.GetChild(0).gameObject;
     }
 
     public void RegisterAnimalToParty()
@@ -62,7 +70,10 @@ public class Animal : MonoBehaviour
         PlayerController.party.Add(this);
         isInParty = true;
 
-        StartCoroutine(animalEmote.EmoteShowBubble(thoughtBubble, 1.5f, EMOTE.HAPPY));
+        if (isLeader)
+            RemoveLeader();
+
+        StartCoroutine(animalEmote.EmoteShowBubble(EMOTE.HAPPY));
     }
 
     public void RegisterAnimalToArk()
@@ -78,20 +89,45 @@ public class Animal : MonoBehaviour
     public void RegisterAnimalAsLeader()
     {
         isLeader = true;
-        int index = allAnimalLeaders.FindIndex(x => x.animalName == animalName);
-        allAnimalLeaders[index] = this;
+        allAnimalLeaders.Add(this);
+        //int index = allAnimalLeaders.FindIndex(x => x.animalName == animalName);
+        //allAnimalLeaders[index] = this;
         animalFSM.SetupStates();
     }
 
     public void MinigameIsStarting()
     {
-        if (!animalFSM.currState.isInteractable) return;
-        Debug.Log("trying to stop animal from moving during minigame");
+        if (!animalFSM.currState.IsInteractable) return;
         animalFSM.active = false;
         rb.velocity = Vector2.zero;
     }
 
-    public List<Animal> GetAllSameAnimals() => allAnimals.FindAll(x => x.animalName == animalName);
-    public Animal GetLeader() => allAnimalLeaders.Find(x => x.animalName == animalName);
+    public Animal SetNewLeader()
+    {
+        List<Animal> animalsOfSameType = GetAllSameAnimals();
 
+        foreach (Animal a in animalsOfSameType)
+            if (!a.isInParty && !a.isLeader)
+            {
+                a.isLeader = true;
+                allAnimalLeaders.Add(a);
+                return a;
+            }
+        return null;
+    }
+
+    public void MarkAnimalAsPrey(Animal a) => allAnimalPrey.Add(a);
+    public void Eaten(Animal a) => allAnimalPrey.Remove(a);
+    public bool AlreadyBeingStalked(Animal a) => allAnimalPrey.Contains(a);
+
+    public List<Animal> GetAllSameAnimals() => allAnimals.FindAll(x => x.animalName == animalName);
+    public List<Animal> GetAllSameAnimals(string givenName) => allAnimals.FindAll(x => x.animalName == givenName);
+    public List<Animal> GetAllSameHerd() => allAnimals.FindAll(x => x.animalName == animalName && x.herdNum == herdNum);
+    public Animal GetLeader() => allAnimalLeaders.Find(x => x.animalName == animalName && x.herdNum == herdNum);
+    public int CountLeaders() => allAnimalLeaders.FindAll(x => x.animalName == animalName).Count;
+    public List<Animal> GetLeaders() => allAnimalLeaders.FindAll(x => x.animalName == animalName);
+    public int GetHerdSize(int herdIndex) => allAnimals.FindAll(x => x.animalName == animalName && x.herdNum == herdIndex).Count;
+    public void SetTargetAs(Animal a) { target = a.gameObject; targetAsAnimal = a; }
+    public void RemoveLeader() { allAnimalLeaders.Remove(this); isLeader = false; }
+    public void ClearTarget() { target = null; targetAsAnimal = null; }
 }

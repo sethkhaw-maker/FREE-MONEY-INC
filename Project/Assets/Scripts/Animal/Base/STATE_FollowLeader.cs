@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class STATE_FollowLeader : SYS_FSMState
 {
+    public override bool IsInteractable => true;
     float offset = 3f;
 
     public override void OnEnter()
