@@ -57,7 +57,7 @@ public class PlayerController : MonoBehaviour
         {
             isClearingAnimals = false;
         }
-        if (GameplayManager.gameState == GameplayManager.GameState.MINIGAME || GameplayManager.gameState == GameplayManager.GameState.SCOPING || isClearingAnimals == true)
+        if (GameplayManager.gameState == GameplayManager.GameState.MINIGAME || isClearingAnimals == true)
         {
             targetMove = transform.position;
             rb.velocity = Vector2.zero;

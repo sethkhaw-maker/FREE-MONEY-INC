@@ -5,8 +5,10 @@ using UnityEngine;
 public class SYS_AnimalDB : MonoBehaviour
 {
     [Header("Emote Icons")]
-    public Sprite hungryMeat, hungryWheat, scared, happy, angry, confused;
-    [HideInInspector] public static Dictionary<EMOTE, Sprite> emoteIcons;
+    public Sprite hungryMeat;
+    public Sprite hungryWheat, scared, happy, angry, confused;
+
+    [HideInInspector] public static Dictionary<EMOTE, Sprite> emoteIcons = new Dictionary<EMOTE, Sprite>();
 
     private void OnEnable()
     {
