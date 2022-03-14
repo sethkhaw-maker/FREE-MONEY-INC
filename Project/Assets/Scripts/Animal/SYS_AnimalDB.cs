@@ -12,6 +12,7 @@ public class SYS_AnimalDB : MonoBehaviour
 
     private void OnEnable()
     {
+        if (emoteIcons.Count != 0) return;
         emoteIcons.Add(EMOTE.HUNGRY_PREY, hungryWheat);
         emoteIcons.Add(EMOTE.HUNGRY_PREDATOR, hungryMeat);
         emoteIcons.Add(EMOTE.SCARED, scared);
