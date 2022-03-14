@@ -6,7 +6,7 @@ using UnityEngine;
 public class GameplayManager : MonoBehaviour
 {
     //Enums
-    public enum GameState { PLAYING, MINIGAME, PAUSED }
+    public enum GameState { PLAYING, MINIGAME, SCOPING, PAUSED }
     public enum ClockState { DAY, NIGHT }
     public enum WeatherState { CLEAR, RAINY }
 
