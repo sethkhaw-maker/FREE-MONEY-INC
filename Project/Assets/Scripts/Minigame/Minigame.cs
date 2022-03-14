@@ -10,12 +10,15 @@ public class Minigame : MonoBehaviour
     private float hitboxPercentage;     //Percentage of the hitbox will cover on minigame screen
     private float hitBoxSize;
     private float hitboxOffset;
-
     private float finalOffset;
 
     public RectTransform hitboxDisplay; //Size of the hitbox area
     private Slider hitSlider;           //The slider which moves back and forth
     private float sliderValue;
+    public Image[] attractBoxDisplay;   //Display boxes for attract counter
+    public Sprite emptyBox;
+    public Sprite tickBox;
+    public Sprite crossBox;
 
     //Gameplay Variables
     private float rate = 0;
@@ -25,8 +28,8 @@ public class Minigame : MonoBehaviour
     public float sliderSpeed = 1;     //Speed of the slider based on weather
     public float sliderSpeedModifier = 1f;
 
-    public int timesToAttract = 2;
-    public Text attractCountText;   //Temporary display for attract count
+    public int maxAttractCount = 2;
+    private int attractCounter = 0;
 
     public enum DifficultyLevel
     {
@@ -68,8 +71,8 @@ public class Minigame : MonoBehaviour
             }
         }
 
-        //Temporary count display
-        attractCountText.text = timesToAttract.ToString();
+        //Display attract counter
+        UpdateAttractCounter();
     }
 
     //Slider which moves left and right
@@ -82,6 +85,7 @@ public class Minigame : MonoBehaviour
     //Set the slider speed based on weather
     public void SetSliderSpeed()
     {
+        if (GameplayManager.instance == null) return;
         switch (GameplayManager.instance.weatherState)
         {
             case GameplayManager.WeatherState.CLEAR:
@@ -105,22 +109,28 @@ public class Minigame : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("Player instance does not exist!");
+            Debug.LogWarning("Player instance does not exist, Speed set to 1.");
+            sliderSpeedModifier = 1f;
+            maxAttractCount = 3;
+            return;
         }
 
         switch (animalDifficulty)
         {
             case 0:
                 difficultyLevel = DifficultyLevel.EASY;
-                sliderSpeedModifier = 0.75f;
+                sliderSpeedModifier = 1.1f;
+                maxAttractCount = 1;
                 break;
             case 1:
                 difficultyLevel = DifficultyLevel.NORMAL;
-                sliderSpeedModifier = 1f;
+                sliderSpeedModifier = 1.15f;
+                maxAttractCount = 2;
                 break;
             case 2:
                 difficultyLevel = DifficultyLevel.HARD;
-                sliderSpeedModifier = 1.5f;
+                sliderSpeedModifier = 1.2f;
+                maxAttractCount = 3;
                 break;
             default:
                 break;
@@ -186,17 +196,22 @@ public class Minigame : MonoBehaviour
             //GenerateHitbox();
 
             //Decrease number of times to attract
-            timesToAttract--;
+            attractCounter++;
             rate = 0;
 
             //Animal has been attracted
-            if (timesToAttract <= 0)
+            if (attractCounter == maxAttractCount)
             {
+                isGaming = false;
+
                 //Return back to gameplay
                 if (GameplayManager.instance != null)
                 {
-                    isGaming = false;
                     GameplayManager.instance.EndMinigame(true);
+                }
+                else
+                {
+                    Debug.LogWarning("No GameplayManager detected.");
                 }
                 //Play minigame success sfx
                 FindObjectOfType<AudioManager>()?.Play("Minigame Success");
@@ -220,9 +235,35 @@ public class Minigame : MonoBehaviour
                 isGaming = false;
                 GameplayManager.instance.EndMinigame(false);
             }
+            else
+            {
+                Debug.LogWarning("No GameplayManager detected.");
+            }
 
             //Play minigame failed sfx
             FindObjectOfType<AudioManager>()?.Play("Minigame Fail");
+        }
+    }
+
+    private void UpdateAttractCounter()
+    {
+        for (int i = 0; i < attractBoxDisplay.Length; i++)
+        {
+            if (i < maxAttractCount)
+            {
+                if (i < attractCounter)
+                {
+                    attractBoxDisplay[i].sprite = tickBox;
+                }
+                else
+                {
+                    attractBoxDisplay[i].sprite = emptyBox;
+                }
+            }
+            else
+            {
+                attractBoxDisplay[i].sprite = crossBox;
+            }
         }
     }
 }

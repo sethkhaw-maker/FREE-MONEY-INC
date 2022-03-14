@@ -1,0 +1,89 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2157903884836401351
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2157903884836401348}
+  - component: {fileID: 2157903884836401349}
+  m_Layer: 0
+  m_Name: Audio Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2157903884836401348
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2157903884836401351}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2157903884836401349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2157903884836401351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05c95252d11ca1f4cbdd78dd5cc82524, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  masterVolume: 1
+  bgmVolume: 1
+  sfxVolume: 1
+  bgms:
+  - {fileID: 8300000, guid: 95b2bd3cd98dc954d96fabba4c282272, type: 3}
+  - {fileID: 8300000, guid: 8ed9d63732304f0439202a0439192968, type: 3}
+  bgmSource: {fileID: 0}
+  sounds:
+  - name: Twinkle
+    clip: {fileID: 8300000, guid: 736893ad03c00234595159c9bb8942b1, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Giraffe Cry
+    clip: {fileID: 8300000, guid: 545168cb2b1d18b4eaba321dc69d9ec9, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Giraffe Yell
+    clip: {fileID: 8300000, guid: 9f8a1ad5b99a77b468b6fb96f17d9b0e, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Minigame Passing
+    clip: {fileID: 8300000, guid: abcb3e42d4243474cb41ecc3b7a2b50a, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Minigame Success
+    clip: {fileID: 8300000, guid: 55e0f7f786fd95844bc2ed00e57b3928, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Minigame Fail
+    clip: {fileID: 8300000, guid: bc1d90ce90cbcd74197e8b990939eec0, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
