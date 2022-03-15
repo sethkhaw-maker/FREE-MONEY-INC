@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 851992766639425929}
   - component: {fileID: 230610610883927316}
   m_Layer: 0
-  m_Name: Animal Emote DB
+  m_Name: AnimalDB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hungryMeat: {fileID: 21300000, guid: ee34d32c679cb744a868faf4186f6b45, type: 3}
   hungryWheat: {fileID: 21300000, guid: 419788bf2cd71324291d323eeab8a8c9, type: 3}
-  scared: {fileID: 21300000, guid: 419788bf2cd71324291d323eeab8a8c9, type: 3}
+  scared: {fileID: 21300000, guid: 684fc5b01df72d9418f443d87525ec40, type: 3}
   happy: {fileID: 21300000, guid: 419788bf2cd71324291d323eeab8a8c9, type: 3}
   angry: {fileID: 21300000, guid: 66e566d5aabe0f94c9c48fc8ac93178b, type: 3}
   confused: {fileID: 21300000, guid: d379414d83682b442925de60dddd410e, type: 3}

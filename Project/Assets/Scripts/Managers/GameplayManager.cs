@@ -197,12 +197,11 @@ public class GameplayManager : MonoBehaviour
         if (win)
         {
             PlayerController.instance.targetAnimal.RegisterAnimalToParty();
-            PlayerController.instance.targetAnimal.animalFSM.active = true;
         }
         //Otherwise just let it go
         else
         {
-            PlayerController.instance.targetAnimal.animalFSM.active = true;
+            PlayerController.instance.targetAnimal.MinigameFailed();
         }
 
         //Reset target animal from player

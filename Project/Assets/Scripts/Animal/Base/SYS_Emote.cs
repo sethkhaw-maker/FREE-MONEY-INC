@@ -25,6 +25,8 @@ public class SYS_Emote
         Sprite tryIcon = null;
         SYS_AnimalDB.emoteIcons.TryGetValue(emote, out tryIcon);
         if (tryIcon != null) icon.sprite = tryIcon;
+        if (self.flipAnimal.facingRight == -1) icon.flipX = true; else icon.flipX = false;
+
 
         thoughtBubble.SetActive(true);
         yield return new WaitForSeconds(displayDuration);
