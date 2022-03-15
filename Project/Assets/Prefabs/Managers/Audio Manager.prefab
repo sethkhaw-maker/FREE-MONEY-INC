@@ -87,3 +87,39 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: Test
+    clip: {fileID: 8300000, guid: 52aad65b5901d354a80216af78136831, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Rain SFX
+    clip: {fileID: 8300000, guid: 97b12f2ba8aba04418888f35db98037e, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Night SFX
+    clip: {fileID: 8300000, guid: bcf988a3c423b994f87e18bfef70db94, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Elephant Roar
+    clip: {fileID: 8300000, guid: 325f799dd7ed13d44b713d28b1f10f5d, type: 3}
+    volume: 0.7
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Predator Roar
+    clip: {fileID: 8300000, guid: 52aad65b5901d354a80216af78136831, type: 3}
+    volume: 0.8
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Prey Roar
+    clip: {fileID: 8300000, guid: aa4eccc1397f6e5469311d4e68a907f1, type: 3}
+    volume: 0.8
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}

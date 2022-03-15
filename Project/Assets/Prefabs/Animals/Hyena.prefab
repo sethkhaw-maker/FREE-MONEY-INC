@@ -163,7 +163,7 @@ MonoBehaviour:
   animalName: Hyena
   animalType: 1
   wanderRange: 5
-  wanderSpeed: 5
+  wanderSpeed: 4
   runRange: 15
   runSpeed: 8
   idleTime: 1.5

@@ -7,14 +7,11 @@ public class STATE_InteractionPrey : SYS_FSMState
     bool willNoticePredator, willShake, willFlee;
     public override bool IsInteractable => false;
 
-    float shakeIntensity = 0.5f;
-    float shakeInterval = 0.1f;
-    bool shakeDir = false;
-    float shakeTimer = 1f;
     float flipTimer = 1f;
 
     int miniState = 0;
-    float timer, intervalTimer;
+    float timer;
+    bool hasShaken = false;
     Vector2 shakeForce;
 
     public override void OnEnter() 
@@ -24,7 +21,7 @@ public class STATE_InteractionPrey : SYS_FSMState
     public override void OnExit() 
     { 
         progress = false;
-        intervalTimer = 0;
+        hasShaken = false;
         timer = 0;
         miniState = 0;
     }
@@ -44,9 +41,14 @@ public class STATE_InteractionPrey : SYS_FSMState
     void DecideBehaviours()
     {
         willNoticePredator = SYS_AnimalTools.RollDice(3) <= 2 ? true : false;
-        willShake = willNoticePredator ? true : SYS_AnimalTools.RollDice(2) <= 1 ? true : false;
+        willShake = WillShake();
         willFlee = ShouldFlee();
-    
+
+        bool WillShake()
+        {
+            if (willNoticePredator) return true;
+            else return SYS_AnimalTools.RollDice(2) <= 1 ? true : false;
+        }
         bool ShouldFlee()
         {
             if (willNoticePredator || willShake) return true;
@@ -74,20 +76,19 @@ public class STATE_InteractionPrey : SYS_FSMState
 
     void Shake()
     {
-        if (timer > shakeTimer) ProgressMiniState();
         if (!willShake) return;
+        if (!hasShaken)
+        {
+            self.PlayShakeEmote();
+            hasShaken = true;
+            return;
+        }
 
-        self.flipAnimal.dontFlip = true;
-
-        intervalTimer += Time.deltaTime;
-        if (intervalTimer < shakeInterval) return;
-        if (!shakeDir) shakeForce = Vector2.left * shakeIntensity;
-        if (shakeDir) shakeForce = Vector2.right * shakeIntensity;
-
-        self.rb.velocity = shakeForce;
-        shakeDir = !shakeDir;
-
-        intervalTimer = 0;
+        if (hasShaken && !self.animalEmote.isShaking)
+        {
+            ProgressMiniState();
+            if (self.preyPredatorInteraction == 2) miniState = 10;
+        }
     }
 
     void ProgressMiniState()
