@@ -14,7 +14,7 @@ public class STATE_Flee : SYS_FSMState
     public override void OnEnter() { }
     public override void OnExit()
     {
-        Debug.Log("leaving state");
+        //Debug.Log("leaving state");
         endPos = Vector3.zero;
         fleeing = false;
         progress = false;
