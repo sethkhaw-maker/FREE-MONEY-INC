@@ -163,7 +163,7 @@ MonoBehaviour:
   animalName: Zebra
   animalType: 0
   wanderRange: 5
-  wanderSpeed: 5
+  wanderSpeed: 4
   runRange: 10
   runSpeed: 5
   idleTime: 1.5
