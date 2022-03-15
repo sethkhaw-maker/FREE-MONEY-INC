@@ -39,7 +39,7 @@ public class FSM_GenericPrey : SYS_FSM
         {
             if (self.targetAsAnimal != null && self.targetAsAnimal.isLeader)
             {
-                if (currState is STATE_FollowLeader && self.targetAsAnimal.isInParty) SwitchToState(eSTATE.IDLE);
+                //if (self.targetAsAnimal.animalFSM.currState is STATE_FollowNoah) SwitchToState(eSTATE.IDLE);
                 if (currState is STATE_FollowLeader && currState.progress) RandomizeState(defaultBehaviour);
                 if (self.targetAsAnimal.animalFSM.currState is STATE_FindOasis && self.targetAsAnimal.rb.velocity == Vector2.zero) RandomizeState(defaultBehaviour);
                 if (self.targetAsAnimal.animalFSM.currState is STATE_Wander || self.targetAsAnimal.animalFSM.currState is STATE_FindOasis) SwitchToState(states.Find(x => x is STATE_FollowLeader));

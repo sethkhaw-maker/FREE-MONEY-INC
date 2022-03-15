@@ -166,7 +166,6 @@ public class AnimalGenerator : MonoBehaviour
     void LeaderOrPrey(GameObject go)
     {
         Animal prey = go.GetComponent<Animal>();
-        go.name = "#" + animalCount++ + " | " + prey.animalName;
 
         // ensure that there is always 1 leader
         if (prey.GetLeaders().Count == 0) { prey.isLeader = true; }
@@ -196,10 +195,11 @@ public class AnimalGenerator : MonoBehaviour
         // placed after generic prey check to reuse code if prey is made leader due to full herds.
         if (prey.isLeader)  
         {
-            go.name += " | Leader";
             prey.RegisterAnimalAsLeader();
             prey.herdNum = prey.CountLeaders();
         }
+
+        go.name = "#" + animalCount++ + " | " + prey.animalName + " | herdNum: " + prey.herdNum + (prey.isLeader ? " | Leader" : "");
     }
 
     private void OnDrawGizmos()
