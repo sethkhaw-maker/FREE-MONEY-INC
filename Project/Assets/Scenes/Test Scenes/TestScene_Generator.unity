@@ -1188,7 +1188,7 @@ Transform:
   - {fileID: 1276427725}
   - {fileID: 1968756515}
   m_Father: {fileID: 2117889497}
-  m_RootOrder: 8
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &159043305
 PrefabInstance:
@@ -2559,6 +2559,63 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8112850736728729954, guid: f13753d1522270a4a84993c36a2f5ed3, type: 3}
   m_PrefabInstance: {fileID: 261850175}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &271425566
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 271425567}
+  - component: {fileID: 271425568}
+  m_Layer: 0
+  m_Name: Water Boundaries (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &271425567
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 271425566}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 2.5, y: 34.85, z: 0}
+  m_LocalScale: {x: 6.25, y: 13.480469, z: 25}
+  m_Children: []
+  m_Father: {fileID: 2117889497}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!61 &271425568
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 271425566}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &276409579
 GameObject:
   m_ObjectHideFlags: 0
@@ -4984,7 +5041,7 @@ Transform:
   m_Children:
   - {fileID: 2146298173}
   m_Father: {fileID: 2117889497}
-  m_RootOrder: 9
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &553085020
 GameObject:
@@ -98324,6 +98381,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be1d2cd1fa6a6cf4ab3b6f61ca77c0b7, type: 3}
+--- !u!1 &1852029249
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1852029250}
+  - component: {fileID: 1852029251}
+  m_Layer: 0
+  m_Name: Water Boundaries
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1852029250
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1852029249}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 25.1, y: 4.93, z: 0}
+  m_LocalScale: {x: 6.25, y: 18.125, z: 25}
+  m_Children: []
+  m_Father: {fileID: 2117889497}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!61 &1852029251
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1852029249}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &1881690278
 GameObject:
   m_ObjectHideFlags: 0
@@ -99811,6 +99925,8 @@ Transform:
   - {fileID: 1970721973}
   - {fileID: 1382598996}
   - {fileID: 1432031354}
+  - {fileID: 1852029250}
+  - {fileID: 271425567}
   - {fileID: 151311805}
   - {fileID: 545389616}
   m_Father: {fileID: 0}
@@ -100392,7 +100508,7 @@ Tilemap:
       - {fileID: 4247474584674989083, guid: f2a07ee9072b33249846e00fd5966990, type: 3}
       - {fileID: 3653068583935972814, guid: f2a07ee9072b33249846e00fd5966990, type: 3}
       - {fileID: -1064556854447004182, guid: f2a07ee9072b33249846e00fd5966990, type: 3}
-      m_AnimationSpeed: 15
+      m_AnimationSpeed: 15.000001
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 0, y: 6, z: 0}
@@ -100432,7 +100548,7 @@ Tilemap:
       - {fileID: 4247474584674989083, guid: f2a07ee9072b33249846e00fd5966990, type: 3}
       - {fileID: 3653068583935972814, guid: f2a07ee9072b33249846e00fd5966990, type: 3}
       - {fileID: -1064556854447004182, guid: f2a07ee9072b33249846e00fd5966990, type: 3}
-      m_AnimationSpeed: 15.000001
+      m_AnimationSpeed: 15
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: -1, y: 7, z: 0}
