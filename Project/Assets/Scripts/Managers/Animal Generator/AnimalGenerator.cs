@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class AnimalGenerator : MonoBehaviour
 {
+    public GameObject animalPool;
+
     //Internal timers
     private float spawnTimer;
 
@@ -32,6 +34,8 @@ public class AnimalGenerator : MonoBehaviour
     public int preySpawned;
     public int predatorSpawned;
     public int mediatorSpawned;
+
+    int animalCount = 0;
 
     private ANIMALTYPE animalType;
 
@@ -83,65 +87,54 @@ public class AnimalGenerator : MonoBehaviour
         return randomPoint;
     }
 
-    //Select a type of animal
-    private void SelectAnimalType()
+    
+    private void SelectAnimalType() //Select a type of animal
     {
         float rnd = Random.Range(0, AnimalSpawnRates.GetTotalProbability());
 
-        //Prey selected
-        if (rnd < AnimalSpawnRates.probabilityPrey)
+        if (rnd < AnimalSpawnRates.probabilityPrey) //Prey selected
         {
-            //Spawn a prey
-            SpawnAnimal(animalType = ANIMALTYPE.PREY);
-
-            //Modify spawn rates
-            ModifySpawnRates(ANIMALTYPE.PREY);
+            SpawnAnimal(animalType = ANIMALTYPE.PREY);  //Spawn a prey
+            ModifySpawnRates(ANIMALTYPE.PREY);          //Modify spawn rates
         }
-        //Mediator selected
-        else if (rnd > AnimalSpawnRates.probabilityPrey + AnimalSpawnRates.probabilityPredator)
+        else if (rnd > AnimalSpawnRates.probabilityPrey + AnimalSpawnRates.probabilityPredator) //Mediator selected
         {
-            //Spawn a mediator
-            SpawnAnimal(animalType = ANIMALTYPE.MEDIATOR);
-
-            //Modify spawn rates
-            ModifySpawnRates(ANIMALTYPE.MEDIATOR);
+            SpawnAnimal(animalType = ANIMALTYPE.MEDIATOR);  //Spawn a mediator
+            ModifySpawnRates(ANIMALTYPE.MEDIATOR);          //Modify spawn rates
         }
-        //Predator selected
-        else
+        else //Predator selected
         {
-            //Spawn a predator
-            SpawnAnimal(animalType = ANIMALTYPE.PREDATOR);
-
-            //Modify spawn rates
-            ModifySpawnRates(ANIMALTYPE.PREDATOR);
+            SpawnAnimal(animalType = ANIMALTYPE.PREDATOR);  //Spawn a predator
+            ModifySpawnRates(ANIMALTYPE.PREDATOR);          //Modify spawn rates
         }
-
     }
 
-    //Spawn the chosen animal at selected spawn point
-    private void SpawnAnimal(ANIMALTYPE typeOfAnimal)
+    private void SpawnAnimal(ANIMALTYPE typeOfAnimal) //Spawn the chosen animal at selected spawn point
     {
         int randomAnimal = 0;
+        GameObject animalGO = null;
 
         switch (typeOfAnimal)
         {
             case ANIMALTYPE.PREY:
                 randomAnimal = Random.Range(0, preys.Length);
-                GameObject preyGO = Instantiate(preys[randomAnimal], spawnPoint, Quaternion.identity);
-                LeaderOrPrey(preyGO);
+                animalGO = Instantiate(preys[randomAnimal], spawnPoint, Quaternion.identity);
+                LeaderOrPrey(animalGO);
                 break;
             case ANIMALTYPE.PREDATOR:
                 randomAnimal = Random.Range(0, predators.Length);
-                Instantiate(predators[randomAnimal], spawnPoint, Quaternion.identity);
+                animalGO = Instantiate(predators[randomAnimal], spawnPoint, Quaternion.identity);
+                animalGO.name = "#" + animalCount++ + " | "+ animalGO.GetComponent<Animal>().animalName;
                 break;
             case ANIMALTYPE.MEDIATOR:
                 randomAnimal = Random.Range(0, mediators.Length);
-                Instantiate(mediators[randomAnimal], spawnPoint, Quaternion.identity);
+                animalGO = Instantiate(mediators[randomAnimal], spawnPoint, Quaternion.identity);
+                animalGO.name = "#" + animalCount++ + " | " + animalGO.GetComponent<Animal>().animalName;
                 break;
             default:
                 break;
         }
-        
+        animalGO.transform.parent = animalPool.transform;
         spawnedQuantity++;
     }
 
@@ -202,10 +195,11 @@ public class AnimalGenerator : MonoBehaviour
         // placed after generic prey check to reuse code if prey is made leader due to full herds.
         if (prey.isLeader)  
         {
-            prey.gameObject.name = prey.animalName + " Leader";
             prey.RegisterAnimalAsLeader();
             prey.herdNum = prey.CountLeaders();
         }
+
+        go.name = "#" + animalCount++ + " | " + prey.animalName + " | herdNum: " + prey.herdNum + (prey.isLeader ? " | Leader" : "");
     }
 
     private void OnDrawGizmos()

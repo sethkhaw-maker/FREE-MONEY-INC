@@ -69,7 +69,7 @@ public class Animal : MonoBehaviour
         PlayerController.party.Add(this);
         isInParty = true;
 
-        if (isLeader) RemoveLeader();
+        //if (isLeader) RemoveLeader();
 
         StartCoroutine(animalEmote.EmoteShowBubble(EMOTE.HAPPY));
     }
@@ -105,6 +105,7 @@ public class Animal : MonoBehaviour
         foreach (Animal a in animalsOfSameType)
             if (a.herdNum == herdNum && !a.isInParty && !a.isLeader)
             {
+                //Debug.Log(a.name + " | is becoming a leader. herdnum: " + herdNum);
                 a.isLeader = true;
                 allAnimalLeaders.Add(a);
                 return a;

@@ -41,10 +41,30 @@ public class SYS_HungerManager : MonoBehaviour
             a.isHungry = true;
             //Debug.Log("Animal " + a.gameObject.name + " is hungry!");
         }
+        ProvokeLeadersForHerdHunger();  
     }
-
-    void ProvokeLeadersForHerdHunger()
+    void ProvokeLeadersForHerdHunger() // if enough herd members are hungry, leader will go find food (become hungry as well).
     {
+        foreach (Animal a in Animal.allAnimalLeaders)
+        {
+            if (a.isHungry) continue;
 
+            float herdSize = a.GetHerdSize(a.herdNum);
+            if (herdSize >= 2 && CheckToInvokeHunger(a.GetAllSameHerd())) a.isHungry = true;
+            if (herdSize < 2 && CheckToInvokeHunger(a.GetAllSameHerd(), 1)) a.isHungry = true;
+
+            if (a.isHungry) Debug.Log("leader " + a.name + " is getting hungry. | herdcount: " + herdSize);
+        }
+    }
+    bool CheckToInvokeHunger(List<Animal> animals, int min = 2)
+    {
+        int i = 0;
+
+        foreach (Animal a in animals)
+        {
+            if (a.isHungry) i++;
+            if (i >= min) return true;
+        }
+        return false;
     }
 }

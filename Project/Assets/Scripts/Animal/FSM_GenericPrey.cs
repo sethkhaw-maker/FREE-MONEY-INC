@@ -16,6 +16,7 @@ public class FSM_GenericPrey : SYS_FSM
         states.Add(new STATE_Flee());
         states.Add(new STATE_FindLeader());
         states.Add(new STATE_InteractionPrey());
+        states.Add(new STATE_FindOasis());
     }
 
     protected override void CheckForStateSwitch()
@@ -27,17 +28,21 @@ public class FSM_GenericPrey : SYS_FSM
         {
             if (NeedToCheckForThreats() && currState.progress) SwitchToState(states.Find(x => x is STATE_CheckForThreats));
             if (currState is STATE_FollowLeader) SwitchToState(states.Find(x => x is STATE_Wander));
+            if (self.isHungry && currState.progress && !(currState is STATE_FindOasis)) SwitchToState(states.Find(x => x is STATE_FindOasis));
             if (currState is STATE_CheckForThreats && currState.progress) { if (ThreatFound()) SwitchToState(states.Find(x => x is STATE_AlertFollowers)); else RandomizeState(defaultBehaviour); }
             if (currState is STATE_AlertFollowers && currState.progress) SwitchToState(states.Find(x => x is STATE_Flee));
-            if (currState is STATE_Flee && currState.progress) SwitchToState(states.Find(x => x is STATE_CheckForThreats));  
+            if (currState is STATE_Flee && currState.progress) SwitchToState(states.Find(x => x is STATE_CheckForThreats));
+            if (currState is STATE_FindOasis && currState.progress) RandomizeState(defaultBehaviour);
             // re:line34 | need to polish this, likely; ensure that leader 'wanders' away from predator in a way that calls herd back to leader.
         }
         else
         {
             if (self.targetAsAnimal != null && self.targetAsAnimal.isLeader)
             {
-                if (self.targetAsAnimal.animalFSM.currState is STATE_Wander) SwitchToState(states.Find(x => x is STATE_FollowLeader));
+                //if (self.targetAsAnimal.animalFSM.currState is STATE_FollowNoah) SwitchToState(eSTATE.IDLE);
                 if (currState is STATE_FollowLeader && currState.progress) RandomizeState(defaultBehaviour);
+                if (self.targetAsAnimal.animalFSM.currState is STATE_FindOasis && self.targetAsAnimal.rb.velocity == Vector2.zero) RandomizeState(defaultBehaviour);
+                if (self.targetAsAnimal.animalFSM.currState is STATE_Wander || self.targetAsAnimal.animalFSM.currState is STATE_FindOasis) SwitchToState(states.Find(x => x is STATE_FollowLeader));
             }
             else
             {
