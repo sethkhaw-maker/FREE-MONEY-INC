@@ -1935,38 +1935,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2157903884836401349, guid: 860d4fd5bd94f2d45bc045b10cc0b111, type: 3}
-      propertyPath: sounds.Array.size
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 2157903884836401349, guid: 860d4fd5bd94f2d45bc045b10cc0b111, type: 3}
-      propertyPath: sounds.Array.data[1].volume
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2157903884836401349, guid: 860d4fd5bd94f2d45bc045b10cc0b111, type: 3}
-      propertyPath: masterVolume
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2157903884836401349, guid: 860d4fd5bd94f2d45bc045b10cc0b111, type: 3}
-      propertyPath: bgmVolume
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2157903884836401349, guid: 860d4fd5bd94f2d45bc045b10cc0b111, type: 3}
-      propertyPath: sounds.Array.data[6].name
-      value: Test
-      objectReference: {fileID: 0}
-    - target: {fileID: 2157903884836401349, guid: 860d4fd5bd94f2d45bc045b10cc0b111, type: 3}
-      propertyPath: sounds.Array.data[6].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 52aad65b5901d354a80216af78136831, type: 3}
-    - target: {fileID: 2157903884836401349, guid: 860d4fd5bd94f2d45bc045b10cc0b111, type: 3}
-      propertyPath: sounds.Array.data[6].volume
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2157903884836401349, guid: 860d4fd5bd94f2d45bc045b10cc0b111, type: 3}
-      propertyPath: sounds.Array.data[6].pitch
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2157903884836401351, guid: 860d4fd5bd94f2d45bc045b10cc0b111, type: 3}
       propertyPath: m_Name
       value: Audio Manager
@@ -7234,14 +7202,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1267526553}
     m_Modifications:
-    - target: {fileID: 94224167993579244, guid: 33b6b4fafd6ad34429bf32773be43458, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1497.8717
-      objectReference: {fileID: 0}
-    - target: {fileID: 94224167993579244, guid: 33b6b4fafd6ad34429bf32773be43458, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 101.77867
-      objectReference: {fileID: 0}
     - target: {fileID: 94224168269211044, guid: 33b6b4fafd6ad34429bf32773be43458, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -7290,11 +7250,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rain VFX
       objectReference: {fileID: 0}
-    - target: {fileID: 94224168269211050, guid: 33b6b4fafd6ad34429bf32773be43458, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 930ff109d8f524e40860e3ac0ad9426f, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 875347852234621335, guid: 33b6b4fafd6ad34429bf32773be43458, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 33b6b4fafd6ad34429bf32773be43458, type: 3}
 --- !u!1001 &3740287956209349615
 PrefabInstance:
