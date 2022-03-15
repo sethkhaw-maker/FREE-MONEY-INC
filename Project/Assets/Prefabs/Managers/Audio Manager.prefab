@@ -123,3 +123,9 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: Ark Bell
+    clip: {fileID: 8300000, guid: dd3eb86aa54a9eb40834ddf8d742396f, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}

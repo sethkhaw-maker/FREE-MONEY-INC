@@ -147,6 +147,7 @@ public class PlayerController : MonoBehaviour
         RaycastHit2D hitArk = Physics2D.Raycast(mousePos, transform.forward, 1f, arkLayer);
         if (hitArk.collider != null)
         {
+            FindObjectOfType<AudioManager>()?.Play("Ark Bell");
             GameplayManager.instance.SendAnimalsIntoArk(hitArk.collider.gameObject);
             targetMove = transform.position;
             isClearingAnimals = true;
