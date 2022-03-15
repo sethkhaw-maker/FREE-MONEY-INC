@@ -116,7 +116,6 @@ public class GameplayManager : MonoBehaviour
                     weatherState = WeatherState.RAINY;
                     weatherTimer = rainDuration;
                     rainParticleSystem.Play();
-                    FindObjectOfType<AudioManager>()?.Play("Rain SFX");
                     StartCoroutine(RainOverlayFadeOut());
                 }
                 else
@@ -251,7 +250,6 @@ public class GameplayManager : MonoBehaviour
 
             yield return new WaitForSeconds(0.05f);
         }
-
     }
 
     private void DisableNightVFX()
@@ -262,7 +260,6 @@ public class GameplayManager : MonoBehaviour
     }
     private void EnableNightVFX()
     {
-        FindObjectOfType<AudioManager>()?.Play("Night SFX");
         globalLight.GetComponent<Light2D>().intensity = 0.8f;
         nightEffect.SetActive(true);
         firefliesParticles.SetActive(true);

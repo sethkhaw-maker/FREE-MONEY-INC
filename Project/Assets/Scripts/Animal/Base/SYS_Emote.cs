@@ -14,14 +14,12 @@ public class SYS_Emote
     public void Init(Animal _a)
     {
         self = _a;
-        icon = thoughtBubble.transform.GetChild(0).GetComponentInChildren<SpriteRenderer>();
+        icon = thoughtBubble.GetComponentInChildren<SpriteRenderer>();
     }
 
     // sprite showing goes here; not sure what input is yet.
-    public IEnumerator EmoteShowBubble(EMOTE emote, float displayDuration = 1.5f, bool isPartyInteraction = false)
+    public IEnumerator EmoteShowBubble(EMOTE emote, float displayDuration = 1.5f)
     {
-        if (isPartyInteraction) self.animalFSM.active = false;
-
         Sprite tryIcon = null;
         SYS_AnimalDB.emoteIcons.TryGetValue(emote, out tryIcon);
         if (tryIcon != null) icon.sprite = tryIcon;
@@ -29,8 +27,6 @@ public class SYS_Emote
         thoughtBubble.SetActive(true);
         yield return new WaitForSeconds(displayDuration);
         thoughtBubble.SetActive(false);
-
-        if (isPartyInteraction) self.animalFSM.active = true;
     }
 
     public IEnumerator ShakeCoroutine()
@@ -43,7 +39,8 @@ public class SYS_Emote
 
         while (timer < shakeTime)
         {
-            shakeForce = (!shakeDir ? Vector2.left : Vector2.right) * shakeIntensity;
+            if (!shakeDir) shakeForce = Vector2.left * shakeIntensity;
+            if (shakeDir) shakeForce = Vector2.right * shakeIntensity;
             self.rb.velocity = shakeForce;
             shakeDir = !shakeDir;
             timer += Time.deltaTime;

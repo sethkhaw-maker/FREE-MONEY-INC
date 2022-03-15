@@ -79,11 +79,24 @@ public class PlayerController : MonoBehaviour
                 //Noah has reached destination
                 rb.velocity = Vector2.zero;
 
-                if (PartyHasInteraction()) StartAnimalInteraction();
-                else StartMinigame();
+                //Tell Animal that the Minigame is starting
+                targetAnimal.MinigameIsStarting();
+
+                //Activate the minigame
+                if (GameplayManager.instance != null)
+                    GameplayManager.instance.InitMinigame();
+
+                //Reset the target animal to null
+                targetMove = transform.position;
                 return;
             }
-            MoveTowardsAnimal();
+
+            //Get normalized target direction
+            Vector2 dir = targetAnimal.transform.position - transform.position;
+            dir = dir.normalized;
+
+            //Move towards target direction
+            rb.velocity = dir * speed;
         }
         else
         {
@@ -261,27 +274,6 @@ public class PlayerController : MonoBehaviour
                 break;
         }
     }
-    void MoveTowardsAnimal()
-    {
-        //Get normalized target direction
-        Vector2 dir = targetAnimal.transform.position - transform.position;
-        dir = dir.normalized;
-
-        //Move towards target direction
-        rb.velocity = dir * speed;
-    }
-    void StartMinigame()
-    {
-        //Tell Animal that the Minigame is starting
-        targetAnimal.MinigameIsStarting();
-
-        //Activate the minigame
-        if (GameplayManager.instance != null)
-            GameplayManager.instance.InitMinigame();
-
-        //Reset the target animal to null
-        targetMove = transform.position;
-    }
     bool CanInteractWithAnimal()
     {
         if (targetAnimal == null) return false;
@@ -292,25 +284,5 @@ public class PlayerController : MonoBehaviour
     {
         Gizmos.DrawWireSphere(transform.position, checkDist);
     }
-    bool PartyHasInteraction()
-    {
-        if (PartyContains(ANIMALTYPE.MEDIATOR)) return false;
-        if (targetAnimal.animalType == ANIMALTYPE.PREDATOR && PartyContains(ANIMALTYPE.PREY)) return true;
-        if (targetAnimal.animalType == ANIMALTYPE.PREY && PartyContains(ANIMALTYPE.PREDATOR)) return true;
-        return false;
-    }
-    bool PartyContains(ANIMALTYPE type)
-    {
-        foreach(Animal a in party)
-            if (a.animalType == type) return true;
-        return false;
-    }
-    void StartAnimalInteraction()
-    {
-        targetAnimal.PlayPartyInteraction();
-        ANIMALTYPE type = targetAnimal.animalType == ANIMALTYPE.PREDATOR ? ANIMALTYPE.PREY : ANIMALTYPE.PREDATOR;
 
-        foreach (Animal a in party)
-            if (a.animalType == type) a.PlayPartyInteraction();
-    }
 }
