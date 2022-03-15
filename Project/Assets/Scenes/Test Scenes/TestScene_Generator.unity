@@ -3357,7 +3357,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1159463899916235453, guid: b24a1c4be3219754c9f9a8d75adde7ae, type: 3}
       propertyPath: m_AnimatedTiles.Array.data[2].second.m_AnimationSpeed
-      value: 15.000001
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1159463899916235453, guid: b24a1c4be3219754c9f9a8d75adde7ae, type: 3}
+      propertyPath: m_AnimatedTiles.Array.data[12].second.m_AnimationSpeed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1159463899916235453, guid: b24a1c4be3219754c9f9a8d75adde7ae, type: 3}
+      propertyPath: m_AnimatedTiles.Array.data[8].second.m_AnimationSpeed
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1159463900564514732, guid: b24a1c4be3219754c9f9a8d75adde7ae, type: 3}
       propertyPath: m_Name

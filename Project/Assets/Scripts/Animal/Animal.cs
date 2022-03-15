@@ -69,9 +69,25 @@ public class Animal : MonoBehaviour
         PlayerController.party.Add(this);
         isInParty = true;
 
-        //if (isLeader) RemoveLeader();
-
         StartCoroutine(animalEmote.EmoteShowBubble(EMOTE.HAPPY));
+        animalFSM.active = true;
+    }
+
+    public void MinigameFailed()
+    {
+        switch (animalType)
+        {
+            case ANIMALTYPE.PREY:
+                StartCoroutine(animalEmote.EmoteShowBubble(EMOTE.SCARED, isPartyInteraction: true));
+                PlayShakeEmote();
+                break;
+            case ANIMALTYPE.PREDATOR:
+                StartCoroutine(animalEmote.EmoteShowBubble(EMOTE.ANGRY, isPartyInteraction: true));
+                break;
+            case ANIMALTYPE.MEDIATOR:
+                StartCoroutine(animalEmote.EmoteShowBubble(EMOTE.CONFUSED, isPartyInteraction: true));
+                break;
+        }
     }
 
     public void RegisterAnimalToArk()
