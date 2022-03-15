@@ -60,17 +60,13 @@ public class STATE_InteractionPredator : SYS_FSMState
         {
             self.PlayShakeEmote();
             hasShaken = true;
+            return;
         }
         if (hasShaken && self.animalEmote.isShaking)
         {
             ProgressMiniState();
             if (self.preyPredatorInteraction == 2) miniState = 10;
         }
-
-        //if (timer > shakeTime)
-        //{
-
-        //}
     }
     void ShuffleBackwards()
     {

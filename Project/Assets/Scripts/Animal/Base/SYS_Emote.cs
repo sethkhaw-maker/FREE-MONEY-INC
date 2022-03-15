@@ -18,8 +18,10 @@ public class SYS_Emote
     }
 
     // sprite showing goes here; not sure what input is yet.
-    public IEnumerator EmoteShowBubble(EMOTE emote, float displayDuration = 1.5f)
+    public IEnumerator EmoteShowBubble(EMOTE emote, float displayDuration = 1.5f, bool isPartyInteraction = false)
     {
+        if (isPartyInteraction) self.animalFSM.active = false;
+
         Sprite tryIcon = null;
         SYS_AnimalDB.emoteIcons.TryGetValue(emote, out tryIcon);
         if (tryIcon != null) icon.sprite = tryIcon;
@@ -27,6 +29,8 @@ public class SYS_Emote
         thoughtBubble.SetActive(true);
         yield return new WaitForSeconds(displayDuration);
         thoughtBubble.SetActive(false);
+
+        if (isPartyInteraction) self.animalFSM.active = true;
     }
 
     public IEnumerator ShakeCoroutine()

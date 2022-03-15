@@ -8,7 +8,11 @@ public class STATE_CheckForPrey : SYS_FSMState
     List<Animal> allPrey = new List<Animal>();
     Animal closestPrey;
 
-    public override void OnEnter() { }
+    public override void OnEnter() 
+    {
+        allPrey.Clear();
+        GetAllPrey();
+    }
     public override void OnExit() 
     {
         closestPrey = null;
@@ -17,9 +21,6 @@ public class STATE_CheckForPrey : SYS_FSMState
 
     public override void Running()
     {
-        if (allPrey.Count <= 0)
-            GetAllPrey();
-
         if (self.isHungry)
         {
             GetNearestPrey();
@@ -32,7 +33,7 @@ public class STATE_CheckForPrey : SYS_FSMState
     void GetNearestPrey()
     {
         float shortestDist = 99999f;
-
+        Debug.Log("allPrey.Count: " + allPrey.Count);
         foreach(Animal a in allPrey)
         {
             if (a.isLeader || a.isInParty || a.isDespawning) continue;
