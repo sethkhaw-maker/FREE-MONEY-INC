@@ -14,7 +14,7 @@ public class SYS_Emote
     public void Init(Animal _a)
     {
         self = _a;
-        icon = thoughtBubble.GetComponentInChildren<SpriteRenderer>();
+        icon = thoughtBubble.transform.GetChild(0).GetComponentInChildren<SpriteRenderer>();
     }
 
     // sprite showing goes here; not sure what input is yet.
@@ -43,8 +43,7 @@ public class SYS_Emote
 
         while (timer < shakeTime)
         {
-            if (!shakeDir) shakeForce = Vector2.left * shakeIntensity;
-            if (shakeDir) shakeForce = Vector2.right * shakeIntensity;
+            shakeForce = (!shakeDir ? Vector2.left : Vector2.right) * shakeIntensity;
             self.rb.velocity = shakeForce;
             shakeDir = !shakeDir;
             timer += Time.deltaTime;
