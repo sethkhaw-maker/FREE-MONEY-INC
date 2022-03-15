@@ -187,7 +187,7 @@ public class AnimalGenerator : MonoBehaviour
             foreach (Animal leader in allLeadersOfPreyType)
             {
                 float currDist = Vector3.Distance(leader.transform.position, prey.transform.position);
-                Debug.Log("herdNum: " + leader.herdNum + " | getHerdSize: " + prey.GetHerdSize(leader.herdNum));
+                //Debug.Log("herdNum: " + leader.herdNum + " | getHerdSize: " + prey.GetHerdSize(leader.herdNum));
                 if (currDist < closestDist && prey.GetHerdSize(leader.herdNum) < prey.maxHerdSize)
                 {
                     closestDist = currDist;

@@ -69,8 +69,7 @@ public class Animal : MonoBehaviour
         PlayerController.party.Add(this);
         isInParty = true;
 
-        if (isLeader)
-            RemoveLeader();
+        if (isLeader) RemoveLeader();
 
         StartCoroutine(animalEmote.EmoteShowBubble(EMOTE.HAPPY));
     }
@@ -89,8 +88,6 @@ public class Animal : MonoBehaviour
     {
         isLeader = true;
         allAnimalLeaders.Add(this);
-        //int index = allAnimalLeaders.FindIndex(x => x.animalName == animalName);
-        //allAnimalLeaders[index] = this;
         animalFSM.SetupStates();
     }
 

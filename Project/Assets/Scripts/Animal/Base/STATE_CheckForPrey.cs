@@ -33,7 +33,7 @@ public class STATE_CheckForPrey : SYS_FSMState
     void GetNearestPrey()
     {
         float shortestDist = 99999f;
-        Debug.Log("allPrey.Count: " + allPrey.Count);
+        //Debug.Log("allPrey.Count: " + allPrey.Count);
         foreach(Animal a in allPrey)
         {
             if (a.isLeader || a.isInParty || a.isDespawning) continue;
@@ -43,7 +43,7 @@ public class STATE_CheckForPrey : SYS_FSMState
             {
                 closestPrey = a;
                 shortestDist = distToPrey;
-                Debug.Log("closestPrey: " + a.gameObject.name + " | shortestDist: " + shortestDist);
+                //Debug.Log("closestPrey: " + a.gameObject.name + " | shortestDist: " + shortestDist);
             }
         }
     }
