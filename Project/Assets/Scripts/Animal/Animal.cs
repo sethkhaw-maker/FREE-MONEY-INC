@@ -51,6 +51,7 @@ public class Animal : MonoBehaviour
         animalFSM.Init(this);
         animalFSM.SetupStates();
         animalFSM.SwitchToState(firstState);
+        //RegisterAnimalToParty();
     }
 
     private void OnEnable()
@@ -88,6 +89,8 @@ public class Animal : MonoBehaviour
     {
         isLeader = true;
         allAnimalLeaders.Add(this);
+        //int index = allAnimalLeaders.FindIndex(x => x.animalName == animalName);
+        //allAnimalLeaders[index] = this;
         animalFSM.SetupStates();
     }
 
@@ -103,7 +106,7 @@ public class Animal : MonoBehaviour
         List<Animal> animalsOfSameType = GetAllSameAnimals();
 
         foreach (Animal a in animalsOfSameType)
-            if (a.herdNum == herdNum && !a.isInParty && !a.isLeader)
+            if (!a.isInParty && !a.isLeader)
             {
                 //Debug.Log(a.name + " | is becoming a leader. herdnum: " + herdNum);
                 a.isLeader = true;
@@ -113,48 +116,19 @@ public class Animal : MonoBehaviour
         return null;
     }
 
-    public void SetHerdFollowNewLeader()
-    {
-        foreach (Animal a in GetAllSameHerd())
-        {
-            if (!a.animalFSM.currState.IsInteractable) continue;
-            a.targetAsAnimal = GetLeader();
-            a.target = a.targetAsAnimal.gameObject;
-        }
-    }
-
     public void MarkAnimalAsPrey(Animal a) => allAnimalPrey.Add(a);
     public void Eaten(Animal a) => allAnimalPrey.Remove(a);
     public bool AlreadyBeingStalked(Animal a) => allAnimalPrey.Contains(a);
 
-    public void RemoveLeader() { allAnimalLeaders.Remove(this); isLeader = false; }
-    public void SetTargetAs(Animal a) { target = a.gameObject; targetAsAnimal = a; }
-    public void ClearTarget() { target = null; targetAsAnimal = null; }
-
-    public List<Animal> GetAllAnimalsOfType(ANIMALTYPE type) => allAnimals.FindAll(x => x.animalType == type);
     public List<Animal> GetAllSameAnimals() => allAnimals.FindAll(x => x.animalName == animalName);
     public List<Animal> GetAllSameAnimals(string givenName) => allAnimals.FindAll(x => x.animalName == givenName);
     public List<Animal> GetAllSameHerd() => allAnimals.FindAll(x => x.animalName == animalName && x.herdNum == herdNum);
-    public List<Animal> GetLeaders() => allAnimalLeaders.FindAll(x => x.animalName == animalName);
     public Animal GetLeader() => allAnimalLeaders.Find(x => x.animalName == animalName && x.herdNum == herdNum);
     public int CountLeaders() => allAnimalLeaders.FindAll(x => x.animalName == animalName).Count;
+    public List<Animal> GetLeaders() => allAnimalLeaders.FindAll(x => x.animalName == animalName);
     public int GetHerdSize(int herdIndex) => allAnimals.FindAll(x => x.animalName == animalName && x.herdNum == herdIndex).Count;
-
+    public void SetTargetAs(Animal a) { target = a.gameObject; targetAsAnimal = a; }
+    public void RemoveLeader() { allAnimalLeaders.Remove(this); isLeader = false; }
+    public void ClearTarget() { target = null; targetAsAnimal = null; }
     public void PlayShakeEmote() { if (!animalEmote.isShaking) StartCoroutine(animalEmote.ShakeCoroutine()); }
-    public void PlayPartyInteraction()
-    {
-        switch (animalType)
-        {
-            case ANIMALTYPE.PREY:
-                StartCoroutine(animalEmote.EmoteShowBubble(EMOTE.SCARED, isPartyInteraction: true));
-                PlayShakeEmote();
-                break;
-            case ANIMALTYPE.PREDATOR:
-                StartCoroutine(animalEmote.EmoteShowBubble(EMOTE.HUNGRY_PREDATOR, isPartyInteraction: true));
-                break;
-            case ANIMALTYPE.MEDIATOR:
-                StartCoroutine(animalEmote.EmoteShowBubble(EMOTE.CONFUSED, isPartyInteraction: true));
-                break;
-        }
-    }
 }

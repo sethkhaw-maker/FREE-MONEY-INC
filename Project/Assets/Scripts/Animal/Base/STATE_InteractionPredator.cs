@@ -8,8 +8,12 @@ public class STATE_InteractionPredator : SYS_FSMState
     public int miniState = 0;
 
     float prepareTime = 1.5f;
+    float shakeTime = 1.5f;
     float feedingTime = 5f;
     float failChaseTime = 5f;
+    float shakeIntensity = 0.5f;
+    float shakeInterval = 0.1f;
+    bool shakeDir = false;
     float leniency = 0.5f;
 
     float speed, timer;
@@ -56,13 +60,17 @@ public class STATE_InteractionPredator : SYS_FSMState
         {
             self.PlayShakeEmote();
             hasShaken = true;
-            return;
         }
         if (hasShaken && self.animalEmote.isShaking)
         {
             ProgressMiniState();
             if (self.preyPredatorInteraction == 2) miniState = 10;
         }
+
+        //if (timer > shakeTime)
+        //{
+
+        //}
     }
     void ShuffleBackwards()
     {

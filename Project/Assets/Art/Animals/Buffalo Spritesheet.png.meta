@@ -50,24 +50,6 @@ TextureImporter:
   - first:
       213: -5368814794904348668
     second: Buffalo Spritesheet_15
-  - first:
-      213: -5399799885766820145
-    second: Buffalo Spritesheet_0
-  - first:
-      213: -5646722502298119850
-    second: Buffalo Spritesheet_1
-  - first:
-      213: 3757552249831406762
-    second: Buffalo Spritesheet_2
-  - first:
-      213: -4835405283814342729
-    second: Buffalo Spritesheet_3
-  - first:
-      213: -2595549572260850983
-    second: Buffalo Spritesheet_4
-  - first:
-      213: -3705005629083186617
-    second: Buffalo Spritesheet_5
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -194,10 +176,10 @@ TextureImporter:
       name: Buffalo Spritesheet_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 1536
-        width: 512
-        height: 512
+        x: 26
+        y: 1629
+        width: 451
+        height: 320
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -205,8 +187,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fce7caefc9e0015b0800000000000000
-      internalID: -5399799885766820145
+      spriteID: d202be22397794fc0800000000000000
+      internalID: -3510142960728858579
       vertices: []
       indices: 
       edges: []
@@ -215,10 +197,10 @@ TextureImporter:
       name: Buffalo Spritesheet_1
       rect:
         serializedVersion: 2
-        x: 512
-        y: 1536
-        width: 512
-        height: 512
+        x: 554
+        y: 1629
+        width: 435
+        height: 315
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -226,8 +208,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 651d0514dcfc2a1b0800000000000000
-      internalID: -5646722502298119850
+      spriteID: a5ac0c80ef3fd9f00800000000000000
+      internalID: 1125323754306587226
       vertices: []
       indices: 
       edges: []
@@ -236,10 +218,10 @@ TextureImporter:
       name: Buffalo Spritesheet_2
       rect:
         serializedVersion: 2
-        x: 1024
-        y: 1536
-        width: 512
-        height: 512
+        x: 1103
+        y: 1629
+        width: 396
+        height: 304
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -247,8 +229,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aacbb24ecd1852430800000000000000
-      internalID: 3757552249831406762
+      spriteID: b7e444f666f531260800000000000000
+      internalID: 7067097133832490619
       vertices: []
       indices: 
       edges: []
@@ -257,10 +239,10 @@ TextureImporter:
       name: Buffalo Spritesheet_3
       rect:
         serializedVersion: 2
-        x: 1536
-        y: 1536
-        width: 512
-        height: 512
+        x: 1628
+        y: 1807
+        width: 5
+        height: 5
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -268,8 +250,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7bff231738035ecb0800000000000000
-      internalID: -4835405283814342729
+      spriteID: 431d88e797a191450800000000000000
+      internalID: 6059903882719973684
       vertices: []
       indices: 
       edges: []
@@ -278,10 +260,10 @@ TextureImporter:
       name: Buffalo Spritesheet_4
       rect:
         serializedVersion: 2
-        x: 0
-        y: 1024
-        width: 512
-        height: 512
+        x: 1641
+        y: 1629
+        width: 370
+        height: 305
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -289,8 +271,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9d299747a61cafbd0800000000000000
-      internalID: -2595549572260850983
+      spriteID: 9141492320cc70540800000000000000
+      internalID: 4974168623264568345
       vertices: []
       indices: 
       edges: []
@@ -299,10 +281,10 @@ TextureImporter:
       name: Buffalo Spritesheet_5
       rect:
         serializedVersion: 2
-        x: 512
-        y: 1024
-        width: 512
-        height: 512
+        x: 1085
+        y: 1795
+        width: 5
+        height: 9
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -310,8 +292,218 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 74a8ca3a20d259cc0800000000000000
-      internalID: -3705005629083186617
+      spriteID: 55be98c5f46d25c30800000000000000
+      internalID: 4346772226709252949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buffalo Spritesheet_6
+      rect:
+        serializedVersion: 2
+        x: 1606
+        y: 1795
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de92bb4b707ffcc00800000000000000
+      internalID: 923228061103237613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buffalo Spritesheet_7
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 1629
+        width: 28
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32e4fa75f2ec580c0800000000000000
+      internalID: -4574023143794979293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buffalo Spritesheet_8
+      rect:
+        serializedVersion: 2
+        x: 819
+        y: 1629
+        width: 28
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a048934f93a767e0800000000000000
+      internalID: -1772268023917821787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buffalo Spritesheet_9
+      rect:
+        serializedVersion: 2
+        x: 1331
+        y: 1629
+        width: 28
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab3e49a172af6e3c0800000000000000
+      internalID: -4330498945813519430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buffalo Spritesheet_10
+      rect:
+        serializedVersion: 2
+        x: 1843
+        y: 1629
+        width: 28
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa82ef0c379b14960800000000000000
+      internalID: 7584547154278885546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buffalo Spritesheet_11
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 1283
+        width: 5
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 538fa4058eb09c110800000000000000
+      internalID: 1281568661371025461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buffalo Spritesheet_12
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 1117
+        width: 396
+        height: 312
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7d60259fd7c51ab0800000000000000
+      internalID: -5037900845050466948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buffalo Spritesheet_13
+      rect:
+        serializedVersion: 2
+        x: 554
+        y: 1117
+        width: 433
+        height: 318
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c648db92a5e5ce030800000000000000
+      internalID: 3525296349664609388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buffalo Spritesheet_14
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 1117
+        width: 28
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a31a449ea14c683e0800000000000000
+      internalID: -2051736960358899398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buffalo Spritesheet_15
+      rect:
+        serializedVersion: 2
+        x: 819
+        y: 1117
+        width: 28
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4085dd4a3632e75b0800000000000000
+      internalID: -5368814794904348668
       vertices: []
       indices: 
       edges: []

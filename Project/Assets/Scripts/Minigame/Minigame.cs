@@ -277,13 +277,13 @@ public class Minigame : MonoBehaviour
             switch (PlayerController.instance.targetAnimal.animalType)
             {
                 case ANIMALTYPE.PREY:
-                    FindObjectOfType<AudioManager>()?.Play("Prey Roar");
+                    FindObjectOfType<AudioManager>()?.Play("Prey Noise");
                     break;
                 case ANIMALTYPE.PREDATOR:
                     FindObjectOfType<AudioManager>()?.Play("Predator Roar");
                     break;
                 case ANIMALTYPE.MEDIATOR:
-                    FindObjectOfType<AudioManager>()?.Play("Elephant Roar");
+                    FindObjectOfType<AudioManager>()?.Play("Mediator Noise");
                     break;
             }
         }
@@ -295,7 +295,7 @@ public class Minigame : MonoBehaviour
                     FindObjectOfType<AudioManager>()?.Play("Predator Roar");
                     break;
                 case ANIMALTYPE.PREDATOR:
-                    FindObjectOfType<AudioManager>()?.Play("Prey Roar");
+                    FindObjectOfType<AudioManager>()?.Play("Prey Noise");
                     break;
                 case ANIMALTYPE.MEDIATOR:
                     FindObjectOfType<AudioManager>()?.Play("Predator Roar");

@@ -18,7 +18,6 @@ public class STATE_JoiningParty : SYS_FSMState
         {
             self.SetNewLeader();
             self.RemoveLeader();
-            self.SetHerdFollowNewLeader();
         }
         self.shouldFlee = false;
         self.preyPredatorInteraction = 0;

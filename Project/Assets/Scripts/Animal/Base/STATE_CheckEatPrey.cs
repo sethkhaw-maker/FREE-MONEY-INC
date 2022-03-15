@@ -5,6 +5,7 @@ using UnityEngine;
 public class STATE_CheckEatPrey : SYS_FSMState
 {
     public override bool IsInteractable => false;
+    bool preyInvalid = false;
     bool fail = false;
     Animal prey;
 
@@ -15,6 +16,7 @@ public class STATE_CheckEatPrey : SYS_FSMState
     {
         if (PreyChangedWhileStalking())
         {
+            preyInvalid = true;
             EnterNextState();
             return;
         }
@@ -36,7 +38,7 @@ public class STATE_CheckEatPrey : SYS_FSMState
         if (prey.shouldFlee) return true;
 
         float rnd = Random.Range(0,3);
-        //Debug.Log("is prey catchable?: " + (rnd > 0 ? "yes" : "no"));
+        Debug.Log("is prey catchable?: " + (rnd > 0 ? "yes" : "no"));
         if (rnd > 0) return true;
         else return false;
     }

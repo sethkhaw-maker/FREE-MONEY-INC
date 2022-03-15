@@ -178,7 +178,7 @@ MonoBehaviour:
   animalName: Elephant
   animalType: 2
   wanderRange: 5
-  wanderSpeed: 4
+  wanderSpeed: 5
   runRange: 15
   runSpeed: 8
   idleTime: 1.5
