@@ -11,10 +11,9 @@ public class PauseMenu : MonoBehaviour
     public GameObject optionsUICanvas;
     public GameObject htpUICanvas;
 
-    public GameObject pauseButton;
+    //public GameObject pauseButton;
 
     private AudioSource audiosourceref;
-
     public static PauseMenu instance;
 
     private void Awake()
@@ -82,7 +81,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Resume()
     {
-        pauseButton.SetActive(true);
+        //pauseButton.SetActive(true);
         pauseMenuUICanvas.SetActive(false);
         confirmationUICanvas.SetActive(false);
         pauseMenuUICanvas.SetActive(false);
@@ -96,7 +95,7 @@ public class PauseMenu : MonoBehaviour
     public void Pause()
     {
         pauseMenuUICanvas.SetActive(true);
-        pauseButton.SetActive(false);
+        // pauseButton.SetActive(false);
 
 
         Time.timeScale = 0f;
