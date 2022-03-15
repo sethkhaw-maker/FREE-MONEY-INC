@@ -32,8 +32,8 @@ public class PauseMenu : MonoBehaviour
 
     private void Start()
     {
-        audiosourceref = MusicTransition.instance.GetComponent<AudioSource>();
-        audiosourceref.volume = 5f;
+        //audiosourceref = MusicTransition.instance.GetComponent<AudioSource>();
+        //audiosourceref.volume = 5f;
 
         if (GameIsPaused)
         {
@@ -74,7 +74,7 @@ public class PauseMenu : MonoBehaviour
 
         if (GameIsPaused)
         {
-            audiosourceref.volume = 0f;
+            //audiosourceref.volume = 0f;
         }
 
     }
@@ -89,7 +89,7 @@ public class PauseMenu : MonoBehaviour
         htpUICanvas.SetActive(false);
 
         Time.timeScale = 1f;
-        audiosourceref.volume = 1f;
+        //audiosourceref.volume = 1f;
         GameIsPaused = false;
     }
     public void Pause()
@@ -99,7 +99,7 @@ public class PauseMenu : MonoBehaviour
 
 
         Time.timeScale = 0f;
-        audiosourceref.volume = 0f;
+       // audiosourceref.volume = 0f;
         GameIsPaused = true;
     }
 
