@@ -42,3 +42,18 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Ground
+    uniqueID: 211679473
+    locked: 0
+  - name: Cloud Shadows
+    uniqueID: 3451805803
+    locked: 0
+  - name: Trees
+    uniqueID: 2137855293
+    locked: 0
+  - name: Player
+    uniqueID: 1343230997
+    locked: 0
+  - name: Animals
+    uniqueID: 1165608371
+    locked: 0

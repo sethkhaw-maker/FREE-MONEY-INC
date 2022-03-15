@@ -1,0 +1,376 @@
+fileFormatVersion: 2
+guid: 8173195cc78c30a4287e707cc74c2498
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8234736518944787050
+    second: Tree_SpriteSheet_Outlined_0
+  - first:
+      213: -2959416180063818091
+    second: Tree_SpriteSheet_Outlined_1
+  - first:
+      213: 8503656572146538354
+    second: Tree_SpriteSheet_Outlined_2
+  - first:
+      213: -2390153498740328486
+    second: Tree_SpriteSheet_Outlined_3
+  - first:
+      213: -4716680540013022168
+    second: Tree_SpriteSheet_Outlined_4
+  - first:
+      213: 5014620813335210679
+    second: Tree_SpriteSheet_Outlined_5
+  - first:
+      213: 4198238685444448748
+    second: Tree_SpriteSheet_Outlined_6
+  - first:
+      213: 3979157148984881430
+    second: Tree_SpriteSheet_Outlined_7
+  - first:
+      213: 2859806486852778
+    second: Tree_SpriteSheet_Outlined_8
+  - first:
+      213: 6786754311648593473
+    second: Tree_SpriteSheet_Outlined_9
+  - first:
+      213: -913853290136217889
+    second: Tree_SpriteSheet_Outlined_0
+  - first:
+      213: -1448740763529566382
+    second: Tree_SpriteSheet_Outlined_1
+  - first:
+      213: 5201111650542767510
+    second: Tree_SpriteSheet_Outlined_2
+  - first:
+      213: -5880742305830419205
+    second: Tree_SpriteSheet_Outlined_3
+  - first:
+      213: -6504483010428359211
+    second: Tree_SpriteSheet_Outlined_4
+  - first:
+      213: 2562687620306057918
+    second: Tree_SpriteSheet_Outlined_5
+  - first:
+      213: 7126828609109052822
+    second: Tree_SpriteSheet_Outlined_6
+  - first:
+      213: 2768679891717122786
+    second: Tree_SpriteSheet_Outlined_7
+  - first:
+      213: -7473996474518235661
+    second: Tree_SpriteSheet_Outlined_8
+  - first:
+      213: -6868446437042829015
+    second: Tree_SpriteSheet_Outlined_9
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Tree_SpriteSheet_Outlined_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 96
+        width: 70
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd6db9046475153f0800000000000000
+      internalID: -913853290136217889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tree_SpriteSheet_Outlined_1
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 96
+        width: 114
+        height: 106
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 257213a83f905ebe0800000000000000
+      internalID: -1448740763529566382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tree_SpriteSheet_Outlined_2
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 96
+        width: 64
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69d4fbf4d7f0e2840800000000000000
+      internalID: 5201111650542767510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tree_SpriteSheet_Outlined_3
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 96
+        width: 62
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf4cd55c708636ea0800000000000000
+      internalID: -5880742305830419205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tree_SpriteSheet_Outlined_4
+      rect:
+        serializedVersion: 2
+        x: 375
+        y: 96
+        width: 66
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ddaadb0a2f6bb5a0800000000000000
+      internalID: -6504483010428359211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tree_SpriteSheet_Outlined_5
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 0
+        width: 47
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eba32ae10de709320800000000000000
+      internalID: 2562687620306057918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tree_SpriteSheet_Outlined_6
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 64
+        width: 96
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69d49054cd497e260800000000000000
+      internalID: 7126828609109052822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tree_SpriteSheet_Outlined_7
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 0
+        width: 43
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2eae09241b35c6620800000000000000
+      internalID: 2768679891717122786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tree_SpriteSheet_Outlined_8
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 32
+        width: 96
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f591db2ec7074890800000000000000
+      internalID: -7473996474518235661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tree_SpriteSheet_Outlined_9
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 32
+        width: 32
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 929c3492b506ea0a0800000000000000
+      internalID: -6868446437042829015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
