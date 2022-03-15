@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering.Universal;
 
 //This script runs the world logic for day/night cycle and weather system
 public class GameplayManager : MonoBehaviour
@@ -27,6 +28,11 @@ public class GameplayManager : MonoBehaviour
     public GameObject RainParticles;
     private ParticleSystem rainParticleSystem;
     private SpriteRenderer rainOverlay;
+    public GameObject firefliesParticles;
+
+    //Post Processing Objects
+    public GameObject globalLight;
+    public GameObject nightEffect;
 
     //In game variables
     [HideInInspector] public int animalsCollected = 0;                //Number of animals collected in this session
@@ -37,7 +43,7 @@ public class GameplayManager : MonoBehaviour
     [HideInInspector] public float oneDayRevolution = 180f;          //Seconds before a full day is over
 
     //Weather stuffs
-    
+
     [Header("Rain Variables")]
     [HideInInspector] public WeatherState weatherState = WeatherState.CLEAR;
 
@@ -52,8 +58,10 @@ public class GameplayManager : MonoBehaviour
     {
         instance = this;
         rainChance = rainChanceBase;
+        globalLight = GameObject.Find("Global Light 2D");
         rainParticleSystem = RainParticles.GetComponent<ParticleSystem>();
         rainOverlay = RainParticles.GetComponentInChildren<SpriteRenderer>();
+        DisableNightVFX();
     }
 
     void Update()
@@ -73,18 +81,21 @@ public class GameplayManager : MonoBehaviour
         //Increase timer by clockspeed, 360 for 1 revolution
         clockTimer += Time.deltaTime;
 
-        
+
         //Reset to day
         if (clockTimer >= oneDayRevolution)
         {
             //Reset to 0
             clockTimer = 0;
             clockState = ClockState.DAY;
+            DisableNightVFX();
         }
         //Set to night
-        else if (clockTimer >= (oneDayRevolution/2))
+        else if (clockTimer >= (oneDayRevolution / 2))
         {
             clockState = ClockState.NIGHT;
+            EnableNightVFX();
+
         }
     }
 
@@ -113,7 +124,7 @@ public class GameplayManager : MonoBehaviour
                     weatherTimer = 15;
                 }
             }
-            
+
         }
         else
         {
@@ -192,7 +203,7 @@ public class GameplayManager : MonoBehaviour
         {
             PlayerController.instance.targetAnimal.animalFSM.active = true;
         }
-        
+
         //Reset target animal from player
         PlayerController.instance.targetAnimal = null;
     }
@@ -241,6 +252,18 @@ public class GameplayManager : MonoBehaviour
         }
     }
 
+    private void DisableNightVFX()
+    {
+        globalLight.GetComponent<Light2D>().intensity = 1f;
+        nightEffect.SetActive(false);
+        firefliesParticles.SetActive(false);
+    }
+    private void EnableNightVFX()
+    {
+        globalLight.GetComponent<Light2D>().intensity = 0.8f;
+        nightEffect.SetActive(true);
+        firefliesParticles.SetActive(true);
+    }
 
     //////////////////////////////////////////////
     //Check win con

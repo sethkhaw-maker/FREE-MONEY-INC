@@ -24,7 +24,7 @@ public class Minigame : MonoBehaviour
     private float rate = 0;
     private bool isGaming = true;       //true = minigame slider is moving
 
-    [Range(0.25f,1.75f)]
+    [Range(0.25f, 1.75f)]
     public float sliderSpeed = 1;     //Speed of the slider based on weather
     public float sliderSpeedModifier = 1f;
 
@@ -165,7 +165,7 @@ public class Minigame : MonoBehaviour
 
         //Convert value to localised width length
         hitBoxSize = hitboxPercentage / 100 * minigameWidth;
-        
+
         //Set the hitbox width
         hitboxDisplay.sizeDelta = new Vector2(hitBoxSize, hitboxDisplay.sizeDelta.y);
 
@@ -174,7 +174,7 @@ public class Minigame : MonoBehaviour
 
         //Randomize hitbox offset within minigame screen
         finalOffset = Random.Range(-hitboxOffset, hitboxOffset);
-        
+
         hitboxDisplay.anchoredPosition = new Vector2(finalOffset, hitboxDisplay.anchoredPosition.y);
 
         isGaming = true;
@@ -214,6 +214,7 @@ public class Minigame : MonoBehaviour
                     Debug.LogWarning("No GameplayManager detected.");
                 }
                 //Play minigame success sfx
+                MakeNoise(true);
                 FindObjectOfType<AudioManager>()?.Play("Minigame Success");
             }
             //Animal is still being attracted
@@ -241,7 +242,9 @@ public class Minigame : MonoBehaviour
             }
 
             //Play minigame failed sfx
+            MakeNoise(false);
             FindObjectOfType<AudioManager>()?.Play("Minigame Fail");
+
         }
     }
 
@@ -265,5 +268,41 @@ public class Minigame : MonoBehaviour
                 attractBoxDisplay[i].sprite = crossBox;
             }
         }
+    }
+
+    private void MakeNoise(bool success)
+    {
+        if (success)
+        {
+            switch (PlayerController.instance.targetAnimal.animalType)
+            {
+                case ANIMALTYPE.PREY:
+                    FindObjectOfType<AudioManager>()?.Play("Prey Noise");
+                    break;
+                case ANIMALTYPE.PREDATOR:
+                    FindObjectOfType<AudioManager>()?.Play("Predator Roar");
+                    break;
+                case ANIMALTYPE.MEDIATOR:
+                    FindObjectOfType<AudioManager>()?.Play("Mediator Noise");
+                    break;
+            }
+        }
+        else
+        {
+            switch (PlayerController.instance.targetAnimal.animalType)
+            {
+                case ANIMALTYPE.PREY:
+                    FindObjectOfType<AudioManager>()?.Play("Predator Roar");
+                    break;
+                case ANIMALTYPE.PREDATOR:
+                    FindObjectOfType<AudioManager>()?.Play("Prey Noise");
+                    break;
+                case ANIMALTYPE.MEDIATOR:
+                    FindObjectOfType<AudioManager>()?.Play("Predator Roar");
+                    break;
+            }
+        }
+
+
     }
 }
