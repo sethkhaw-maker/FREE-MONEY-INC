@@ -98,6 +98,7 @@ public class Animal : MonoBehaviour
         allAnimals.Remove(this);
         isInParty = false;
 
+        FindObjectOfType<AnimalGenerator>().spawnedQuantity--;
         Destroy(gameObject);
     }
 

@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
 
     public Vector2 targetMove;
 
-    bool isClearingAnimals = false;
+    public bool isClearingAnimals = false;
 
     public enum MoveDirection
     {
@@ -42,6 +42,10 @@ public class PlayerController : MonoBehaviour
         animalLayer = LayerMask.GetMask("Animal");
         arkLayer = LayerMask.GetMask("Ark");
         targetMove = transform.position;
+        for (int i = 0; i < party.Count; i++)
+        {
+            party.Remove(party[i]);
+        }
     }
 
     // Update is called once per frame
@@ -57,7 +61,7 @@ public class PlayerController : MonoBehaviour
         {
             isClearingAnimals = false;
         }
-        if (GameplayManager.gameState == GameplayManager.GameState.MINIGAME || isClearingAnimals == true)
+        if (GameplayManager.gameState == GameplayManager.GameState.MINIGAME)
         {
             targetMove = transform.position;
             rb.velocity = Vector2.zero;

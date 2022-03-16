@@ -12,6 +12,12 @@ public class SceneLoader : MonoBehaviour
         SceneManager.LoadScene(scene);
     }
 
+    //Reload the current scene
+    public void ReloadScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
     //Change bgm through Audio Manager, transitions inside
     public void ChangeBGM(int bgmIndex)
     {

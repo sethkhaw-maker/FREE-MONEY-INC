@@ -11,7 +11,7 @@ public class AnimalGenerator : MonoBehaviour
 
     //Variables
     public int spawnCap = 20;
-    private int spawnedQuantity = 0;
+    public int spawnedQuantity = 0;
 
     public float spawnRadius = 20;
     public float congestionRadius = 3;
