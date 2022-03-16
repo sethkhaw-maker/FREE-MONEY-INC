@@ -95,6 +95,7 @@ public class Animal : MonoBehaviour
         GameplayManager.instance.animalsCollected++;
 
         PlayerController.party.Remove(this);
+        allAnimals.Remove(this);
         isInParty = false;
 
         Destroy(gameObject);
