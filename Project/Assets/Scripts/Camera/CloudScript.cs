@@ -4,16 +4,23 @@ using UnityEngine;
 
 public class CloudScript : MonoBehaviour
 {
-    private float _speed = 2;
+    private float _speed;
+    private float _endPosX;
 
-    void Start()
+
+    public void StartFloating(float speed, float endPosX)
     {
-        
+        _speed = speed;
+        _endPosX = endPosX;
     }
-
     void Update()
     {
-        transform.Translate(Vector3.left * Time.deltaTime * _speed);
+        transform.Translate(Vector3.right * Time.deltaTime * _speed);
+
+        if (transform.position.x > _endPosX)
+        {
+            Destroy(gameObject);
+        }
     }
 
 }
