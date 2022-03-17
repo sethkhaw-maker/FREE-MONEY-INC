@@ -49,6 +49,10 @@ public class CameraController : MonoBehaviour
         if (Time.time >= scopeTimer)
         {
             GameplayManager.gameState = GameplayManager.GameState.SCOPING;
+            Cursor.lockState = CursorLockMode.Locked;
+            customCursor.SetActive(false);
+
+            //Fade transition to scope
             StartCoroutine(SwapCamera(3f));
         }
     }
@@ -64,8 +68,6 @@ public class CameraController : MonoBehaviour
         {
             isScoped = true;
             scopeCam.depth = 1;
-            Cursor.lockState = CursorLockMode.Locked;
-            customCursor.SetActive(false);
             gameplayHud.SetActive(false);
         }
         else

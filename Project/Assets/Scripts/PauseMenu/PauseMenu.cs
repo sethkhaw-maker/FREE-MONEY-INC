@@ -16,19 +16,19 @@ public class PauseMenu : MonoBehaviour
     private AudioSource audiosourceref;
     public static PauseMenu instance;
 
-    private void Awake()
-    {
-        if (instance != null)
-        {
-            Destroy(this.gameObject);
-            return;
-        }
-        else
-        {
-            instance = this;
-            DontDestroyOnLoad(this.gameObject);
-        }
-    }
+    //private void Awake()
+    //{
+    //    if (instance != null)
+    //    {
+    //        Destroy(this.gameObject);
+    //        return;
+    //    }
+    //    else
+    //    {
+    //        instance = this;
+    //        DontDestroyOnLoad(this.gameObject);
+    //    }
+    //}
 
     private void Start()
     {
@@ -50,13 +50,14 @@ public class PauseMenu : MonoBehaviour
 
     void Update()
     {
-        if (!Application.isFocused)
-        {
-            if (pauseMenuUICanvas != null)
-            {
-                Pause();
-            }
-        }
+        //This gets in the way of debugging!!
+        //if (!Application.isFocused)
+        //{
+        //    if (pauseMenuUICanvas != null)
+        //    {
+        //        Pause();
+        //    }
+        //}
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {

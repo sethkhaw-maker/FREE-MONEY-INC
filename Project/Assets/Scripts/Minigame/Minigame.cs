@@ -92,7 +92,7 @@ public class Minigame : MonoBehaviour
                 sliderSpeed = 0.75f * sliderSpeedModifier;
                 break;
             case GameplayManager.WeatherState.RAINY:
-                sliderSpeed = 1.25f * sliderSpeedModifier;
+                sliderSpeed = 1f * sliderSpeedModifier;
                 break;
             default:
                 break;
@@ -119,17 +119,17 @@ public class Minigame : MonoBehaviour
         {
             case 0:
                 difficultyLevel = DifficultyLevel.EASY;
-                sliderSpeedModifier = 1.1f;
+                sliderSpeedModifier = 1f;
                 maxAttractCount = 1;
                 break;
             case 1:
                 difficultyLevel = DifficultyLevel.NORMAL;
-                sliderSpeedModifier = 1.15f;
+                sliderSpeedModifier = 1.05f;
                 maxAttractCount = 2;
                 break;
             case 2:
                 difficultyLevel = DifficultyLevel.HARD;
-                sliderSpeedModifier = 1.2f;
+                sliderSpeedModifier = 1.1f;
                 maxAttractCount = 3;
                 break;
             default:
@@ -157,7 +157,7 @@ public class Minigame : MonoBehaviour
                 break;
             case DifficultyLevel.HARD:
                 hitboxDisplay.GetComponent<Image>().sprite = soundWaves[2];
-                hitboxPercentage = 8;
+                hitboxPercentage = 10;
                 break;
             default:
                 break;

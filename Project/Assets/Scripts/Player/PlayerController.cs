@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public static PlayerController instance;
-    public static List<Animal> party = new List<Animal>();
+    public List<Animal> party = new List<Animal>();
 
     //Variables
     public float speed = 3.5f;
@@ -61,7 +61,7 @@ public class PlayerController : MonoBehaviour
         {
             isClearingAnimals = false;
         }
-        if (GameplayManager.gameState == GameplayManager.GameState.MINIGAME)
+        if (GameplayManager.gameState == GameplayManager.GameState.MINIGAME || GameplayManager.gameState == GameplayManager.GameState.SCOPING || isClearingAnimals)
         {
             targetMove = transform.position;
             rb.velocity = Vector2.zero;

@@ -17,11 +17,11 @@ public class STATE_FollowNoah : SYS_FSMState
         
         // The Animal should already be registered to Noah's party, so try and get its position in
         // the party List.
-        int index = PlayerController.party.IndexOf(self);
+        int index = PlayerController.instance.party.IndexOf(self);
         
         // If it isn't the first animal on the list (aka following Noah), get the animal
         // in front of it as the target to follow.
-        if (index != 0) followTarget = PlayerController.party[index - 1].gameObject;
+        if (index != 0) followTarget = PlayerController.instance.party[index - 1].gameObject;
 
         // Set target to animal.
         self.target = followTarget;

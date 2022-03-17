@@ -66,7 +66,7 @@ public class Animal : MonoBehaviour
 
     public void RegisterAnimalToParty()
     {
-        PlayerController.party.Add(this);
+        PlayerController.instance.party.Add(this);
         isInParty = true;
 
         StartCoroutine(animalEmote.EmoteShowBubble(EMOTE.HAPPY));
@@ -94,7 +94,7 @@ public class Animal : MonoBehaviour
     {
         GameplayManager.instance.animalsCollected++;
 
-        PlayerController.party.Remove(this);
+        PlayerController.instance.party.Remove(this);
         allAnimals.Remove(this);
         isInParty = false;
 

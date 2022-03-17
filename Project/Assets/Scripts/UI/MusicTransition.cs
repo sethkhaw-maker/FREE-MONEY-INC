@@ -14,19 +14,19 @@ public class MusicTransition : MonoBehaviour
     private Animator thisAnim;
     //int buildIndex = SceneManager.GetActiveScene().buildIndex;
 
-    private void Awake()
-    {
-        thisAnim = GetComponent<Animator>();
-        if (instance == null) 
-        {
-            instance = this;
-            DontDestroyOnLoad(instance);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
+    //private void Awake()
+    //{
+    //    thisAnim = GetComponent<Animator>();
+    //    if (instance == null) 
+    //    {
+    //        instance = this;
+    //        DontDestroyOnLoad(instance);
+    //    }
+    //    else
+    //    {
+    //        Destroy(gameObject);
+    //    }
+    //}
 
     public void SceneChange()
     {
@@ -35,7 +35,7 @@ public class MusicTransition : MonoBehaviour
 
     public void PlayButtonSceneChange()
     {
-        thisAnim.SetTrigger("fadeOut");
+        //thisAnim.SetTrigger("fadeOut");
     }
 
     public void MainMenuMusic()

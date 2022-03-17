@@ -24,8 +24,8 @@ public class GameplayManager : MonoBehaviour
     public GameObject minigamePrefab;
 
     //Game over prefabs
-    private GameObject gameOverInstance;
-    public GameObject gameOverPrefab;
+    //private GameObject gameOverInstance;
+    //public GameObject gameOverPrefab;
 
     //Particle Prefabs
     public GameObject RainParticles;
@@ -59,6 +59,9 @@ public class GameplayManager : MonoBehaviour
     //Fade transition
     public Animator fadeCanvas;
 
+    //Environment prefab
+    public GameObject[] daysEnvironmentVariants;
+
     void Start()
     {
         instance = this;
@@ -68,6 +71,8 @@ public class GameplayManager : MonoBehaviour
         rainOverlay = RainParticles.GetComponentInChildren<SpriteRenderer>();
         DisableNightVFX();
         oneDayRevolution = 10;
+
+        daysEnvironmentVariants[dayCount].SetActive(true);
     }
 
     void Update()
@@ -218,10 +223,10 @@ public class GameplayManager : MonoBehaviour
     public void SendAnimalsIntoArk(GameObject ark)
     {
         //Send all into the ark (can probably do it to the 1st in party and recursive this)
-        for (int i = 0; i < PlayerController.party.Count; i++)
+        for (int i = 0; i < PlayerController.instance.party.Count; i++)
         {
-            PlayerController.party[i].target = ark;
-            PlayerController.party[i].followOffset = 0.1f;
+            PlayerController.instance.party[i].target = ark;
+            PlayerController.instance.party[i].followOffset = 0.1f;
         }
     }
 
@@ -260,7 +265,7 @@ public class GameplayManager : MonoBehaviour
 
     private void DisableNightVFX()
     {
-        globalLight.GetComponent<Light2D>().intensity = 1f;
+        //globalLight.GetComponent<Light2D>().intensity = 1f;
         //nightEffect.SetActive(false);
         nightEffect.GetComponent<Animator>().SetBool("isNight", false);
         firefliesParticles.SetActive(false);
@@ -269,7 +274,7 @@ public class GameplayManager : MonoBehaviour
     private void EnableNightVFX()
     {
         FindObjectOfType<AudioManager>()?.Play("Night SFX");
-        globalLight.GetComponent<Light2D>().intensity = 0.8f;
+        //globalLight.GetComponent<Light2D>().intensity = 0.8f;
         //nightEffect.SetActive(true);
         nightEffect.GetComponent<Animator>().SetBool("isNight", true);
         firefliesParticles.SetActive(true);
@@ -279,12 +284,13 @@ public class GameplayManager : MonoBehaviour
     //Check win con
     private void CheckWin()
     {
-        if (animalsCollected >= 10 && gameOverInstance == null && dayIsEnding == false)
+        if (animalsCollected >= 10 && dayIsEnding == false)
         {
+            dayIsEnding = true;
+
             //Day is progressing to next
             if (dayCount < 2)
             {
-                dayIsEnding = true;
                 dayCount++;
                 
                 fadeCanvas.SetInteger("fadeState", 1);
@@ -294,8 +300,9 @@ public class GameplayManager : MonoBehaviour
             else
             {
                 //Replace with end cutscene
-                gameOverInstance = Instantiate(gameOverPrefab);
                 dayCount = 0;
+                fadeCanvas.SetInteger("fadeState", 1);
+                FindObjectOfType<SceneLoader>().LoadScene(5);
             }
         }
     }
