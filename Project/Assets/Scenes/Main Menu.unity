@@ -7595,6 +7595,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2157903884836401349, guid: 860d4fd5bd94f2d45bc045b10cc0b111, type: 3}
+      propertyPath: sounds.Array.data[2].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2157903884836401349, guid: 860d4fd5bd94f2d45bc045b10cc0b111, type: 3}
+      propertyPath: masterVolume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2157903884836401349, guid: 860d4fd5bd94f2d45bc045b10cc0b111, type: 3}
+      propertyPath: bgmVolume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2157903884836401349, guid: 860d4fd5bd94f2d45bc045b10cc0b111, type: 3}
+      propertyPath: sfxVolume
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2157903884836401351, guid: 860d4fd5bd94f2d45bc045b10cc0b111, type: 3}
       propertyPath: m_Name
       value: Audio Manager
