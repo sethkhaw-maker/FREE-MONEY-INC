@@ -74,6 +74,9 @@ public class AudioManager : MonoBehaviour
         {
             ChangeBGM(1);
         }
+
+        //Debugging
+        //print(bgmSource.isPlaying);
     }
 
     //Call this function anywhere through singleton, plays a sound
@@ -109,38 +112,36 @@ public class AudioManager : MonoBehaviour
 
     public void TransitionBGM()
     {
-        switch (isTransitioning)
+        if (isTransitioning)
         {
-            case true:
-                bgmInternalVolume -= Time.deltaTime * transitionSpeed;
-                if (bgmInternalVolume <= 0)
-                {
-                    //Stop the audio
-                    bgmSource.Stop();
+            bgmInternalVolume -= Time.deltaTime * transitionSpeed;
+            if (bgmInternalVolume <= 0)
+            {
+                //Stop the audio
+                bgmSource.Stop();
 
-                    //Set volume to 0
-                    bgmInternalVolume = 0;
-                    isTransitioning = false;
+                //Set volume to 0
+                bgmInternalVolume = 0;
+                isTransitioning = false;
 
-                    //Swap in the new BGM
-                    bgmSource.clip = bgms[bgmIndex];
-                    bgmSource.Play();
-                }
-                break;
-            case false:
-                if (bgmInternalVolume < 1)
-                {
-                    bgmInternalVolume += Time.deltaTime * transitionSpeed;
-                }
-                else
-                {
-                    bgmInternalVolume = 1;
-                }
-                break;
-            default:
-                break;
+                //Swap in the new BGM
+                bgmSource.clip = bgms[bgmIndex];
+                bgmSource.Play();
+            }
         }
-
+        else
+        {
+            if (bgmInternalVolume < 1)
+            {
+                bgmInternalVolume += Time.deltaTime * transitionSpeed;
+            }
+            else
+            {
+                bgmInternalVolume = 1;
+            }
+        }
+        
         bgmSource.volume = bgmInternalVolume * masterVolume * bgmVolume;
+
     }
 }

@@ -23,40 +23,40 @@ public class AudioLoudnessTester : MonoBehaviour
     public float minSize = 0;
     public float maxSize = 100;
 
-    private void Awake()
-    {
-        clipSampleData = new float[sampledataLength];
+    //private void Awake()
+    //{
+    //    clipSampleData = new float[sampledataLength];
 
-    }
+    //}
 
-    private void Update()
-    {
-        currentupdateTime += Time.deltaTime;
-        if (currentupdateTime >= updateStep)
-        {
-            currentupdateTime = 0f;
-            Bgmaudiosource.clip.GetData(clipSampleData, Bgmaudiosource.timeSamples);
-            clipLoudness = 0f;
+    //private void Update()
+    //{
+    //    currentupdateTime += Time.deltaTime;
+    //    if (currentupdateTime >= updateStep)
+    //    {
+    //        currentupdateTime = 0f;
+    //        Bgmaudiosource.clip.GetData(clipSampleData, Bgmaudiosource.timeSamples);
+    //        clipLoudness = 0f;
 
-            foreach (var sample in clipSampleData)
-            {
-                clipLoudness += Mathf.Abs(sample);
-            }
+    //        foreach (var sample in clipSampleData)
+    //        {
+    //            clipLoudness += Mathf.Abs(sample);
+    //        }
 
-            clipLoudness /= sampledataLength;
+    //        clipLoudness /= sampledataLength;
 
-            clipLoudness *= sizeFactor;
+    //        clipLoudness *= sizeFactor;
 
-            clipLoudness = Mathf.Clamp(clipLoudness, minSize, maxSize);
+    //        clipLoudness = Mathf.Clamp(clipLoudness, minSize, maxSize);
 
-            foreach (var spritesample in sprite)
-            {
-                spritesample.transform.localScale = new Vector3(initsize + clipLoudness / 5, initsize + clipLoudness / 5, initsize + clipLoudness / 5);
-            }
+    //        foreach (var spritesample in sprite)
+    //        {
+    //            spritesample.transform.localScale = new Vector3(initsize + clipLoudness / 5, initsize + clipLoudness / 5, initsize + clipLoudness / 5);
+    //        }
 
 
 
-        }
-    }
+    //    }
+    //}
   
 }

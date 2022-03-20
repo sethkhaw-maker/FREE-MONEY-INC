@@ -70,7 +70,7 @@ public class GameplayManager : MonoBehaviour
         rainParticleSystem = RainParticles.GetComponent<ParticleSystem>();
         rainOverlay = RainParticles.GetComponentInChildren<SpriteRenderer>();
         DisableNightVFX();
-        oneDayRevolution = 10;
+        oneDayRevolution = 20;
 
         daysEnvironmentVariants[dayCount].SetActive(true);
     }
@@ -273,7 +273,8 @@ public class GameplayManager : MonoBehaviour
 
     private void EnableNightVFX()
     {
-        FindObjectOfType<AudioManager>()?.Play("Night SFX");
+        //FindObjectOfType<AudioManager>()?.Play("Night SFX");
+        //print("break test");
         //globalLight.GetComponent<Light2D>().intensity = 0.8f;
         //nightEffect.SetActive(true);
         nightEffect.GetComponent<Animator>().SetBool("isNight", true);
