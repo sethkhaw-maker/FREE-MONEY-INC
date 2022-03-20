@@ -29,18 +29,17 @@ public class SYS_HungerManager : MonoBehaviour
         {
             Animal a = null;
             bool aCanBeHungry = false;
-
-            for (int j = 0; j < Animal.allAnimals.Count; j++)
+            while (!aCanBeHungry)       // keep getting new animals until an animal can be marked as hungry
             {
-                if (!aCanBeHungry) break;
-                int k = Random.Range(0, Animal.allAnimals.Count - 1);
-                a = Animal.allAnimals[k];
+                int j = Random.Range(0, Animal.allAnimals.Count - 1);
+                a = Animal.allAnimals[j];
 
                 // if their states invalid (aka is hungry, is in party, is despawning) don't make them eligible for hunger.
                 if (!(a.isHungry || a.isInParty || a.isDespawning)) aCanBeHungry = true;
             }
 
-            if (aCanBeHungry) a.isHungry = true;
+            a.isHungry = true;
+            //Debug.Log("Animal " + a.gameObject.name + " is hungry!");
         }
         ProvokeLeadersForHerdHunger();  
     }
