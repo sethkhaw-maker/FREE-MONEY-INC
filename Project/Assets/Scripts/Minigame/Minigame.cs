@@ -242,6 +242,7 @@ public class Minigame : MonoBehaviour
             }
 
             //Play minigame failed sfx
+            print("Play fail noise");
             MakeNoise(false);
             FindObjectOfType<AudioManager>()?.Play("Minigame Fail");
 
