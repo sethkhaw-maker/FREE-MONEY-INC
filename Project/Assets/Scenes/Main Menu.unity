@@ -4190,7 +4190,6 @@ GameObject:
   - component: {fileID: 1172809308}
   - component: {fileID: 1172809312}
   - component: {fileID: 1172809311}
-  - component: {fileID: 1172809310}
   - component: {fileID: 1172809309}
   m_Layer: 5
   m_Name: ExitLevelSelect
@@ -4239,19 +4238,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1172809310
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1172809307}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51f4b7954836f274480d015e19d94d9d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MainMenu: {fileID: 0}
 --- !u!114 &1172809311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5217,7 +5203,6 @@ GameObject:
   - component: {fileID: 1279546697}
   - component: {fileID: 1279546700}
   - component: {fileID: 1279546699}
-  - component: {fileID: 1279546701}
   - component: {fileID: 1279546698}
   m_Layer: 5
   m_Name: ExitCredits
@@ -5341,19 +5326,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1279546696}
   m_CullTransparentMesh: 0
---- !u!114 &1279546701
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1279546696}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51f4b7954836f274480d015e19d94d9d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MainMenu: {fileID: 0}
 --- !u!1 &1291278466
 GameObject:
   m_ObjectHideFlags: 0
