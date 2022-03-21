@@ -31,4 +31,9 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene(3);
     }
+
+    public void PlayPageFlip()
+    {
+        FindObjectOfType<AudioManager>()?.Play("Page Flip");
+    }
 }
