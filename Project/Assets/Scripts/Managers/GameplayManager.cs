@@ -72,6 +72,11 @@ public class GameplayManager : MonoBehaviour
     //Environment prefab
     public GameObject[] daysEnvironmentVariants;
 
+    private void Awake()
+    {
+        Animal.ResetStaticObjs();
+    }
+
     void Start()
     {
         instance = this;
