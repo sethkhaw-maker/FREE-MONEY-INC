@@ -16,7 +16,7 @@ public class GameplayManager : MonoBehaviour
     public static GameplayManager instance;
     public static GameState gameState;
 
-    private static int dayCount = 0;
+    public static int dayCount = 0;
     private bool dayIsEnding = false;
 
     //Minigame prefabs
@@ -38,7 +38,16 @@ public class GameplayManager : MonoBehaviour
     public GameObject nightEffect;
 
     //In game variables
-    [HideInInspector] public int animalsCollected = 0;                //Number of animals collected in this session
+    //[HideInInspector] public int animalsCollected = 0;                //Number of animals collected in this session
+    public int preysCollected = 0;
+    public int predatorsCollected = 0;
+    public int mediatorsCollected = 0;
+
+    public int preysRequired = 5;
+    public int predatorsRequired = 3;
+    public int mediatorsRequired = 1;
+
+    public string[] animalsToCollect = new string[3];
 
     //Game timers
     [HideInInspector] public float clockTimer;
@@ -58,6 +67,7 @@ public class GameplayManager : MonoBehaviour
 
     //Fade transition
     public Animator fadeCanvas;
+    public Animator cloudCanvas;
 
     //Environment prefab
     public GameObject[] daysEnvironmentVariants;
@@ -66,6 +76,7 @@ public class GameplayManager : MonoBehaviour
     {
         instance = this;
         rainChance = rainChanceBase;
+        SetAnimalQuota();
         globalLight = GameObject.Find("Global Light 2D");
         rainParticleSystem = RainParticles.GetComponent<ParticleSystem>();
         rainOverlay = RainParticles.GetComponentInChildren<SpriteRenderer>();
@@ -281,11 +292,64 @@ public class GameplayManager : MonoBehaviour
         firefliesParticles.SetActive(true);
     }
 
+    private void SetAnimalQuota()
+    {
+        animalsToCollect = new string[3];
+
+        for (int i = 0; i < animalsToCollect.Length; i++)
+        {
+            if (i == 0)
+            {
+                int rnd = Random.Range(0, 3);
+                if (rnd == 0)
+                {
+                    animalsToCollect[i] = "Zebra";
+                }
+                else if (rnd == 1)
+                {
+                    animalsToCollect[i] = "Giraffe";
+                }
+                else if (rnd == 2)
+                {
+                    animalsToCollect[i] = "Buffalo";
+                }
+            }
+            else if (i == 1)
+            {
+                int rnd = Random.Range(0, 3);
+                if (rnd == 0)
+                {
+                    animalsToCollect[i] = "Lion";
+                }
+                else if (rnd == 1)
+                {
+                    animalsToCollect[i] = "Tiger";
+                }
+                else if (rnd == 2)
+                {
+                    animalsToCollect[i] = "Hyena";
+                }
+            }
+            else if (i == 2)
+            {
+                int rnd = Random.Range(0, 2);
+                if (rnd == 0)
+                {
+                    animalsToCollect[i] = "Elephant";
+                }
+                else if (rnd == 1)
+                {
+                    animalsToCollect[i] = "Rhino";
+                }
+            }
+        }
+    }
+
     //////////////////////////////////////////////
     //Check win con
     private void CheckWin()
     {
-        if (animalsCollected >= 10 && dayIsEnding == false)
+        if (preysCollected >= preysRequired && predatorsCollected >= predatorsRequired && mediatorsCollected >= mediatorsRequired && dayIsEnding == false)
         {
             dayIsEnding = true;
 
@@ -293,10 +357,9 @@ public class GameplayManager : MonoBehaviour
             if (dayCount < 2)
             {
                 dayCount++;
-                
-                fadeCanvas.SetInteger("fadeState", 1);
 
-                Invoke("DelayReload", 1.5f);
+                cloudCanvas.SetBool("endDay", true);
+                Invoke("FadeDay", 2.583f);
             }
             else
             {
@@ -306,6 +369,12 @@ public class GameplayManager : MonoBehaviour
                 FindObjectOfType<SceneLoader>().LoadScene(5);
             }
         }
+    }
+
+    private void FadeDay()
+    {
+        fadeCanvas.SetInteger("fadeState", 1);
+        Invoke("DelayReload", 1.5f);
     }
 
     private void DelayReload()

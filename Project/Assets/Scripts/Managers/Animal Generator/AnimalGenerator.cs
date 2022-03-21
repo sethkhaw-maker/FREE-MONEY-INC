@@ -19,8 +19,8 @@ public class AnimalGenerator : MonoBehaviour
     public float spawnInterval = 2f;
 
     //Increase in spawn chance, lower is rarer
-    private float preyIncrement = 80;
-    private float predatorIncrement = 40;
+    private float preyIncrement = 40;
+    private float predatorIncrement = 20;
     private float mediatorIncrement = 10;
 
     //List of animal prefabs that can be generated

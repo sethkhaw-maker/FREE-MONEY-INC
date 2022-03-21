@@ -111,6 +111,7 @@ public class STATE_InteractionPredator : SYS_FSMState
         miniState = 11;
         self.isHungry = false;
         self.flipAnimal.dontFlip = false;
+        ObjectPool.instance.SpawnBones(self.transform);
     }
     void MoveBackwards() => self.rb.velocity = SYS_AnimalTools.MoveTowards(-self.target.transform.position, self, self.wanderSpeed * 0.25f);
     bool CaughtPrey() => CalcDist() < leniency ? true : false;

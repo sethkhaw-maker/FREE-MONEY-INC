@@ -26,6 +26,30 @@ TextureImporter:
   - first:
       213: -6868817183428017706
     second: Rhine Spritesheet_7
+  - first:
+      213: -3342801211846005230
+    second: Rhine Spritesheet_0
+  - first:
+      213: 8233228282764377781
+    second: Rhine Spritesheet_1
+  - first:
+      213: 9076101080558095986
+    second: Rhine Spritesheet_2
+  - first:
+      213: 4501974063261652859
+    second: Rhine Spritesheet_3
+  - first:
+      213: 6735341459520206374
+    second: Rhine Spritesheet_4
+  - first:
+      213: 849993375139067706
+    second: Rhine Spritesheet_5
+  - first:
+      213: 2122945692501028028
+    second: Rhine Spritesheet_6
+  - first:
+      213: 4128796225808556527
+    second: Rhine Spritesheet_7
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -56,7 +80,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
+    filterMode: 0
     aniso: -1
     mipBias: -100
     wrapU: 1
@@ -70,7 +94,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 256
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -90,7 +114,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -102,7 +126,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -152,10 +176,10 @@ TextureImporter:
       name: Rhine Spritesheet_0
       rect:
         serializedVersion: 2
-        x: 27
-        y: 1654
-        width: 458
-        height: 263
+        x: 0
+        y: 1536
+        width: 512
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -163,8 +187,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b8ebd3d8b3639f690800000000000000
-      internalID: -7567958069418803573
+      spriteID: 21e6c2d320cfb91d0800000000000000
+      internalID: -3342801211846005230
       vertices: []
       indices: 
       edges: []
@@ -173,10 +197,10 @@ TextureImporter:
       name: Rhine Spritesheet_1
       rect:
         serializedVersion: 2
-        x: 530
-        y: 1654
-        width: 467
-        height: 268
+        x: 512
+        y: 1536
+        width: 512
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -184,8 +208,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c5a8e9b7a0f5bc3d0800000000000000
-      internalID: -3185347812806194596
+      spriteID: 5bebedc608d424270800000000000000
+      internalID: 8233228282764377781
       vertices: []
       indices: 
       edges: []
@@ -194,10 +218,10 @@ TextureImporter:
       name: Rhine Spritesheet_2
       rect:
         serializedVersion: 2
-        x: 1046
-        y: 1654
-        width: 463
-        height: 268
+        x: 1024
+        y: 1536
+        width: 512
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -205,8 +229,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 945bf0d5ac1e11fe0800000000000000
-      internalID: -1219945764779739831
+      spriteID: 27e443478d9c4fd70800000000000000
+      internalID: 9076101080558095986
       vertices: []
       indices: 
       edges: []
@@ -215,10 +239,10 @@ TextureImporter:
       name: Rhine Spritesheet_3
       rect:
         serializedVersion: 2
-        x: 1563
-        y: 1654
-        width: 458
-        height: 268
+        x: 1536
+        y: 1536
+        width: 512
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -226,8 +250,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 23f14f3b0210f28f0800000000000000
-      internalID: -563230188428320974
+      spriteID: b779bbcde893a7e30800000000000000
+      internalID: 4501974063261652859
       vertices: []
       indices: 
       edges: []
@@ -236,10 +260,10 @@ TextureImporter:
       name: Rhine Spritesheet_4
       rect:
         serializedVersion: 2
-        x: 34
-        y: 1142
-        width: 462
-        height: 271
+        x: 0
+        y: 1024
+        width: 512
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -247,8 +271,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aa88e552a1519e790800000000000000
-      internalID: -7500440502368565078
+      spriteID: 626b9af3f5db87d50800000000000000
+      internalID: 6735341459520206374
       vertices: []
       indices: 
       edges: []
@@ -257,10 +281,10 @@ TextureImporter:
       name: Rhine Spritesheet_5
       rect:
         serializedVersion: 2
-        x: 552
-        y: 1142
-        width: 454
-        height: 268
+        x: 512
+        y: 1024
+        width: 512
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -268,8 +292,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 388493ed4d11fa840800000000000000
-      internalID: 5237424497614211203
+      spriteID: a377992a878cbcb00800000000000000
+      internalID: 849993375139067706
       vertices: []
       indices: 
       edges: []
@@ -278,10 +302,10 @@ TextureImporter:
       name: Rhine Spritesheet_6
       rect:
         serializedVersion: 2
-        x: 1064
-        y: 1142
-        width: 445
-        height: 274
+        x: 1024
+        y: 1024
+        width: 512
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -289,8 +313,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1f5354477b44df9b0800000000000000
-      internalID: -5044800452864690703
+      spriteID: cbc28f60cd7367d10800000000000000
+      internalID: 2122945692501028028
       vertices: []
       indices: 
       edges: []
@@ -299,10 +323,10 @@ TextureImporter:
       name: Rhine Spritesheet_7
       rect:
         serializedVersion: 2
-        x: 1570
-        y: 1142
-        width: 451
-        height: 268
+        x: 1536
+        y: 1024
+        width: 512
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -310,8 +334,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6d18caa0a2f0da0a0800000000000000
-      internalID: -6868817183428017706
+      spriteID: fe1ea45ca4e6c4930800000000000000
+      internalID: 4128796225808556527
       vertices: []
       indices: 
       edges: []

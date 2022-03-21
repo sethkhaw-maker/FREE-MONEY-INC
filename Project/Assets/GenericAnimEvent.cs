@@ -7,7 +7,7 @@ public class GenericAnimEvent : MonoBehaviour
 {
     public UnityEvent loadEvent;
 
-    //Animation Event
+    //Animation Event for generic
     public void LoadGame()
     {
         loadEvent.Invoke();

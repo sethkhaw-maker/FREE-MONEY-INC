@@ -20,6 +20,24 @@ TextureImporter:
   - first:
       213: 9160630742523833286
     second: Giraffe Spritesheet_5
+  - first:
+      213: -2764558020805853887
+    second: Giraffe Spritesheet_0
+  - first:
+      213: -7926625014398335663
+    second: Giraffe Spritesheet_1
+  - first:
+      213: -954927045036288917
+    second: Giraffe Spritesheet_2
+  - first:
+      213: -6768664416883444111
+    second: Giraffe Spritesheet_3
+  - first:
+      213: -4715897633558234475
+    second: Giraffe Spritesheet_4
+  - first:
+      213: -8149613725833821299
+    second: Giraffe Spritesheet_5
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -50,7 +68,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
+    filterMode: 0
     aniso: -1
     mipBias: -100
     wrapU: 1
@@ -64,7 +82,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 256
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -84,7 +102,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -96,7 +114,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -146,10 +164,10 @@ TextureImporter:
       name: Giraffe Spritesheet_0
       rect:
         serializedVersion: 2
-        x: 96
-        y: 1572
-        width: 284
-        height: 448
+        x: 0
+        y: 1536
+        width: 512
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -157,8 +175,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 56d196c31efeaf180800000000000000
-      internalID: -9080681947978982043
+      spriteID: 14df8e8902152a9d0800000000000000
+      internalID: -2764558020805853887
       vertices: []
       indices: 
       edges: []
@@ -167,10 +185,10 @@ TextureImporter:
       name: Giraffe Spritesheet_1
       rect:
         serializedVersion: 2
-        x: 612
-        y: 1572
-        width: 280
-        height: 440
+        x: 512
+        y: 1536
+        width: 512
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -178,8 +196,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1b8278035b7e2c460800000000000000
-      internalID: 7260620314663921841
+      spriteID: 155cf05eb88fef190800000000000000
+      internalID: -7926625014398335663
       vertices: []
       indices: 
       edges: []
@@ -188,10 +206,10 @@ TextureImporter:
       name: Giraffe Spritesheet_2
       rect:
         serializedVersion: 2
-        x: 1136
-        y: 1572
-        width: 268
-        height: 424
+        x: 1024
+        y: 1536
+        width: 512
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -199,8 +217,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6295918759d33f0e0800000000000000
-      internalID: -2237376877698655962
+      spriteID: b64d23679ea6fb2f0800000000000000
+      internalID: -954927045036288917
       vertices: []
       indices: 
       edges: []
@@ -209,10 +227,10 @@ TextureImporter:
       name: Giraffe Spritesheet_3
       rect:
         serializedVersion: 2
-        x: 1652
-        y: 1572
-        width: 264
-        height: 428
+        x: 1536
+        y: 1536
+        width: 512
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -220,8 +238,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8bae42606929f8c70800000000000000
-      internalID: 8975553755418520248
+      spriteID: 176f5d3239fd012a0800000000000000
+      internalID: -6768664416883444111
       vertices: []
       indices: 
       edges: []
@@ -230,10 +248,10 @@ TextureImporter:
       name: Giraffe Spritesheet_4
       rect:
         serializedVersion: 2
-        x: 115
-        y: 1060
-        width: 266
-        height: 444
+        x: 0
+        y: 1024
+        width: 512
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -241,8 +259,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c4bb5bb4c08b83760800000000000000
-      internalID: 7437897147551693644
+      spriteID: 59af7a29614cd8eb0800000000000000
+      internalID: -4715897633558234475
       vertices: []
       indices: 
       edges: []
@@ -251,10 +269,10 @@ TextureImporter:
       name: Giraffe Spritesheet_5
       rect:
         serializedVersion: 2
-        x: 612
-        y: 1060
-        width: 280
-        height: 448
+        x: 512
+        y: 1024
+        width: 512
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -262,8 +280,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6cbe7ae0029112f70800000000000000
-      internalID: 9160630742523833286
+      spriteID: d83070fae71c6ee80800000000000000
+      internalID: -8149613725833821299
       vertices: []
       indices: 
       edges: []

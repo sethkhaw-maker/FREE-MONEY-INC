@@ -92,7 +92,9 @@ public class Animal : MonoBehaviour
 
     public void RegisterAnimalToArk()
     {
-        GameplayManager.instance.animalsCollected++;
+        if (animalType == ANIMALTYPE.PREY) GameplayManager.instance.preysCollected++;
+        else if (animalType == ANIMALTYPE.PREDATOR) GameplayManager.instance.predatorsCollected++;
+        else if (animalType == ANIMALTYPE.MEDIATOR) GameplayManager.instance.mediatorsCollected++;
 
         PlayerController.instance.party.Remove(this);
         allAnimals.Remove(this);

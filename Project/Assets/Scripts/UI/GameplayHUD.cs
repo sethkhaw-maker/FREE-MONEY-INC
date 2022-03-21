@@ -9,10 +9,22 @@ public class GameplayHUD : MonoBehaviour
     //Variables
     //UI stuff
     public GameObject clockhandImage;       //Rotate this clockhand Image
-    public Text animalsCollectedText;       //Update this animals collected Text
     public Image weatherImage;              //Change this weather Image
     public Sprite clearWeatherImage;
     public Sprite rainyWeatherImage;
+
+    public Text dayIntroText;               //The disclaimer for the day during fade
+
+    public Text objectiveOneText;             //Update objective 1 text
+    public Text objectiveTwoText;             //Update objective 2 text
+    public Text objectiveThreeText;           //Update objective 3 text
+
+    public Image objectiveOnePortrait;
+    public Image objectiveTwoPortrait;
+    public Image objectiveThreePortrait;
+
+    [Header("Animal Portraits")]
+    public Sprite[] animalPortraits;
 
     //Ref
     private GameplayManager gameplayManager;
@@ -20,6 +32,8 @@ public class GameplayHUD : MonoBehaviour
     void Start()
     {
         gameplayManager = FindObjectOfType<GameplayManager>();
+        SetAnimalPortraits();
+        dayIntroText.text = "DAY " + (GameplayManager.dayCount + 1);
     }
 
     void Update()
@@ -32,6 +46,51 @@ public class GameplayHUD : MonoBehaviour
         }
     }
 
+    void SetAnimalPortraits()
+    {
+        switch (gameplayManager.animalsToCollect[0])
+        {
+            case "Zebra":
+                objectiveOnePortrait.sprite = animalPortraits[0];
+                break;
+            case "Giraffe":
+                objectiveOnePortrait.sprite = animalPortraits[1];
+                break;
+            case "Buffalo":
+                objectiveOnePortrait.sprite = animalPortraits[2];
+                break;
+            default:
+                break;
+        }
+
+        switch (gameplayManager.animalsToCollect[1])
+        {
+            case "Lion":
+                objectiveTwoPortrait.sprite = animalPortraits[3];
+                break;
+            case "Tiger":
+                objectiveTwoPortrait.sprite = animalPortraits[4];
+                break;
+            case "Hyena":
+                objectiveTwoPortrait.sprite = animalPortraits[5];
+                break;
+            default:
+                break;
+        }
+
+        switch (gameplayManager.animalsToCollect[2])
+        {
+            case "Elephant":
+                objectiveThreePortrait.sprite = animalPortraits[6];
+                break;
+            case "Rhino":
+                objectiveThreePortrait.sprite = animalPortraits[7];
+                break;
+            default:
+                break;
+        }
+    }
+
     void UpdateClockhand()
     {
         //Rotate the clockhand UI
@@ -41,7 +100,9 @@ public class GameplayHUD : MonoBehaviour
     //Update UI for animals collected
     public void UpdateAnimalsCollected()
     {
-        animalsCollectedText.text = "Animals collected: " + gameplayManager.animalsCollected;
+        objectiveOneText.text = ": " + gameplayManager.preysCollected + "/" + gameplayManager.preysRequired;
+        objectiveTwoText.text = ": " + gameplayManager.predatorsCollected + "/" + gameplayManager.predatorsRequired;
+        objectiveThreeText.text = ": " + gameplayManager.mediatorsCollected + "/" + gameplayManager.mediatorsRequired;
     }
 
     public void UpdateWeatherImage()

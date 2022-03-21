@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
     private LayerMask animalLayer;
     private LayerMask arkLayer;
 
+    public Animator arkDoor;
+
     public Animal targetAnimal;
 
     public Vector2 targetMove;
@@ -60,6 +62,7 @@ public class PlayerController : MonoBehaviour
         if (party.Count == 0)
         {
             isClearingAnimals = false;
+            arkDoor.SetBool("isClosed", true);
         }
         if (GameplayManager.gameState == GameplayManager.GameState.MINIGAME || GameplayManager.gameState == GameplayManager.GameState.SCOPING || isClearingAnimals)
         {
@@ -151,10 +154,15 @@ public class PlayerController : MonoBehaviour
         RaycastHit2D hitArk = Physics2D.Raycast(mousePos, transform.forward, 1f, arkLayer);
         if (hitArk.collider != null)
         {
-            FindObjectOfType<AudioManager>()?.Play("Ark Bell");
             GameplayManager.instance.SendAnimalsIntoArk(hitArk.collider.gameObject);
             targetMove = transform.position;
             isClearingAnimals = true;
+            FindObjectOfType<AudioManager>()?.Play("Ark Bell");
+            if (party.Count != 0)
+            {
+                arkDoor.SetBool("isClosed", false);
+            }
+            
             return;
         }
 
