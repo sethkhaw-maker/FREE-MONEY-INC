@@ -135,3 +135,9 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: Page Flip
+    clip: {fileID: 8300000, guid: 2f994b64627faf942986a05625a23871, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
