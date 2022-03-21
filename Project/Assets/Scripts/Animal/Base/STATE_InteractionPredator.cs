@@ -13,6 +13,7 @@ public class STATE_InteractionPredator : SYS_FSMState
     float leniency = 0.5f;
 
     float speed, timer;
+    Vector3 boneSpawn;
 
     bool hasShaken = false;
 
@@ -33,6 +34,7 @@ public class STATE_InteractionPredator : SYS_FSMState
         timer = 0;
         miniState = 0;
         hasShaken = false;
+        boneSpawn = Vector3.zero;
     }
 
     public override void Running()
@@ -86,8 +88,10 @@ public class STATE_InteractionPredator : SYS_FSMState
         self.rb.velocity = SYS_AnimalTools.MoveTowards(targetPos, self, speed);
         if (CaughtPrey())
         {
+            boneSpawn = self.target.transform.position;
             self.targetAsAnimal.isDespawning = true;
             self.targetAsAnimal.preyPredatorInteraction = 0;
+            self.targetAsAnimal.Eaten(self.targetAsAnimal);
             self.ClearTarget();
             ProgressMiniState();
         }
@@ -111,7 +115,11 @@ public class STATE_InteractionPredator : SYS_FSMState
         miniState = 11;
         self.isHungry = false;
         self.flipAnimal.dontFlip = false;
+
+        GameObject bones = GameObject.Instantiate(SYS_AnimalDB.bonesList[Random.Range(0, SYS_AnimalDB.bonesList.Count)]);
+        bones.transform.position = boneSpawn;
     }
+
     void MoveBackwards() => self.rb.velocity = SYS_AnimalTools.MoveTowards(-self.target.transform.position, self, self.wanderSpeed * 0.25f);
     bool CaughtPrey() => CalcDist() < leniency ? true : false;
     float CalcDist() => Vector3.Distance(self.target.transform.position, self.transform.position);
