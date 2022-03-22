@@ -5,7 +5,7 @@ using UnityEngine;
 public class SYS_HungerManager : MonoBehaviour
 {
     public bool active = true;
-    float timer = 20f;
+    public float timer = 10f;
 
     private void Start()
     {

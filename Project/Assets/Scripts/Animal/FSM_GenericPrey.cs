@@ -49,6 +49,8 @@ public class FSM_GenericPrey : SYS_FSM
                 if (currState is STATE_Flee && currState.progress) SwitchToState(states.Find(x => x is STATE_FindLeader));
             }
         }
+        if (NeedToCheckForThreats() && currState.progress) SwitchToState(states.Find(x => x is STATE_CheckForThreats));
+        if (currState is STATE_CheckForThreats && currState.progress) { if (ThreatFound()) SwitchToState(states.Find(x => x is STATE_Flee)); else RandomizeState(defaultBehaviour); }
         if (!(currState is STATE_JoiningParty || currState is STATE_FollowNoah) && self.isInParty) SwitchToState(states.Find(x => x is STATE_JoiningParty));
         if (currState is STATE_JoiningParty && currState.progress) SwitchToState(states.Find(x => x is STATE_FollowNoah));
         if (!(currState is STATE_Flee) && self.shouldFlee) SwitchToState(states.Find(x => x is STATE_Flee));

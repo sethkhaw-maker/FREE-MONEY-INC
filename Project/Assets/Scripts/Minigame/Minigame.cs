@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
 
 //The real time scrolling minigame controller
@@ -30,6 +32,9 @@ public class Minigame : MonoBehaviour
 
     public int maxAttractCount = 2;
     private int attractCounter = 0;
+
+    public float cameraShakeStrength = 3f;
+    Vector3 camPos = Vector3.zero;
 
     public enum DifficultyLevel
     {
@@ -243,10 +248,32 @@ public class Minigame : MonoBehaviour
 
             //Play minigame failed sfx
             print("Play fail noise");
+            StartCoroutine(ShakeCamera());
             MakeNoise(false);
             FindObjectOfType<AudioManager>()?.Play("Minigame Fail");
 
         }
+    }
+
+    public IEnumerator ShakeCamera()
+    {
+        GameObject mainCam = Camera.main.gameObject;
+        Vector3 originalCamPos = mainCam.transform.position;
+        float t = 0;
+
+        while (t < 1f)
+        {
+            //if (!SYS_GeneralDashboard.instance.pauseActive)
+            //{
+                t += Time.deltaTime;
+                float x = Random.Range(-1, 1) * cameraShakeStrength;
+                float y = Random.Range(-1, 1) * cameraShakeStrength;
+                mainCam.transform.position = new Vector3(originalCamPos.x + x, originalCamPos.y + y, originalCamPos.z);
+            //}
+            yield return null;
+        }
+
+        yield return null;
     }
 
     private void UpdateAttractCounter()
