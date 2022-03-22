@@ -35,10 +35,11 @@ public class STATE_CheckEatPrey : SYS_FSMState
     {
         if (prey.shouldFlee) return true;
 
-        float rnd = Random.Range(0,3);
-        //Debug.Log("is prey catchable?: " + (rnd > 0 ? "yes" : "no"));
-        if (rnd > 0) return true;
-        else return false;
+        //float rnd = Random.Range(0,3);
+        ////Debug.Log("is prey catchable?: " + (rnd > 0 ? "yes" : "no"));
+        //if (rnd > 0) return true;
+        return true;
+        //else return false;
     }
 
     void MarkBothTargetsForInteraction()
