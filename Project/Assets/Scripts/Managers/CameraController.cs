@@ -17,6 +17,8 @@ public class CameraController : MonoBehaviour
 
     private PlayerController player;
 
+    public GameObject arkIndicator;
+
     void Start()
     {
         player = FindObjectOfType<PlayerController>();
@@ -31,6 +33,26 @@ public class CameraController : MonoBehaviour
             float y = Input.GetAxisRaw("Mouse Y") * mouseSensitivity * Time.deltaTime;
 
             scopeCam.transform.position += new Vector3(x, y, 0);
+
+            if (scopeCam.transform.position.x < -38)
+            {
+                scopeCam.transform.position = new Vector3(-38f, scopeCam.transform.position.y, scopeCam.transform.position.z);
+            }
+            else if (scopeCam.transform.position.x > 38)
+            {
+                scopeCam.transform.position = new Vector3(38f, scopeCam.transform.position.y, scopeCam.transform.position.z);
+            }
+
+            if (scopeCam.transform.position.y < -36)
+            {
+                scopeCam.transform.position = new Vector3(scopeCam.transform.position.x, -36, scopeCam.transform.position.z);
+            }
+            else if (scopeCam.transform.position.y > 37)
+            {
+                scopeCam.transform.position = new Vector3(scopeCam.transform.position.x, 37, scopeCam.transform.position.z);
+            }
+
+            //print(scopeCam.transform.position.x);
 
             if (Input.GetMouseButtonDown(0) && Time.time >= scopeTimer)
             {
@@ -69,6 +91,7 @@ public class CameraController : MonoBehaviour
             isScoped = true;
             scopeCam.depth = 1;
             gameplayHud.SetActive(false);
+            arkIndicator.SetActive(false);
         }
         else
         {
@@ -77,6 +100,7 @@ public class CameraController : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             customCursor.SetActive(true);
             gameplayHud.SetActive(true);
+            arkIndicator.SetActive(true);
             GameplayManager.gameState = GameplayManager.GameState.PLAYING;
         }
         scopeTimer = Time.time + scopeCooldown;
