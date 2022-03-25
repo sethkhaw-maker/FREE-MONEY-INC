@@ -13,6 +13,7 @@ public class CameraController : MonoBehaviour
     public float mouseSensitivity = 70f;
     public GameObject customCursor;
     public GameObject gameplayHud;
+    public GameObject scopeLens;
     public Animator fadeAnim;
 
     private PlayerController player;
@@ -73,7 +74,7 @@ public class CameraController : MonoBehaviour
             GameplayManager.gameState = GameplayManager.GameState.SCOPING;
             Cursor.lockState = CursorLockMode.Locked;
             customCursor.SetActive(false);
-
+            
             //Fade transition to scope
             StartCoroutine(SwapCamera(3f));
         }
@@ -92,6 +93,8 @@ public class CameraController : MonoBehaviour
             scopeCam.depth = 1;
             gameplayHud.SetActive(false);
             arkIndicator.SetActive(false);
+            scopeLens.SetActive(true);
+
         }
         else
         {
@@ -113,5 +116,6 @@ public class CameraController : MonoBehaviour
     public void SetCameraToGame()
     {
         StartCoroutine(SwapCamera(3f));
+        scopeLens.SetActive(false);
     }
 }
