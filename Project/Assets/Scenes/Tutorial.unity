@@ -2546,7 +2546,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4874716347760840689, guid: c215f3c6438e701429bdce108dc30b2f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4874716347760840692, guid: c215f3c6438e701429bdce108dc30b2f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4333,6 +4333,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minigamePrefab: {fileID: 8647733002037104805, guid: 358213872dc64ad4980f9c0b6eec5f20, type: 3}
+  arkIndicator: {fileID: 2032614505}
   fadeCanvas: {fileID: 1439814029}
   cloudCanvas: {fileID: 73855020}
   animalsToCollect:
@@ -11350,7 +11351,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4827744769193369164, guid: 829c395db14d07e41b7bda44fcee1824, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4827744769193369165, guid: 829c395db14d07e41b7bda44fcee1824, type: 3}
       propertyPath: noah

@@ -8,6 +8,7 @@ public delegate void MESSAGING_void();
 public class TUT_GameManager : MonoBehaviour
 {
     public GameObject minigamePrefab;
+    public GameObject arkIndicator;
     public Animator fadeCanvas;
     public Animator cloudCanvas;
 

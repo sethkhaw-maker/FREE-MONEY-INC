@@ -51,6 +51,7 @@ public class TUT_TutorialStateManager : MonoBehaviour
                 case 8: SwitchArrow(); yield return new WaitForSeconds(1f); ShowTutorialText(); break;
                 case 9: SwitchArrow(); break;
                 case 10: SwitchArrow(); yield return new WaitForSeconds(1f); ShowTutorialText(); break;
+                case 11: TUT_GameManager.instance.arkIndicator.SetActive(true); break;
                 case 12: yield return new WaitForSeconds(1f); ShowTutorialText(); break;
                 case 13: TUT_GameManager.instance.EndDay(); break;
             }
