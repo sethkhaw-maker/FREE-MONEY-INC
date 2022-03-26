@@ -1522,7 +1522,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &141119203
 Transform:
   m_ObjectHideFlags: 0
@@ -1534,7 +1534,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 1.35, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1667929323}
+  m_Father: {fileID: 1603374953}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &141119204
@@ -1547,7 +1547,7 @@ Animator:
   m_GameObject: {fileID: 141119202}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 14f15b2444f09e04f96e69e61c52749a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -8838,6 +8838,7 @@ Transform:
   - {fileID: 1196851180250121273}
   - {fileID: 2044159224}
   - {fileID: 864545033}
+  - {fileID: 141119203}
   m_Father: {fileID: 1667929323}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9403,7 +9404,6 @@ Transform:
   - {fileID: 1603374953}
   - {fileID: 938822406}
   - {fileID: 399872109}
-  - {fileID: 141119203}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -13222,6 +13222,7 @@ MonoBehaviour:
   maxHerdSize: 5
   wanderPoint: {fileID: 0}
   jail: {fileID: 0}
+  tutorialArrow: {fileID: 0}
   difficultyLevel: 1
 --- !u!224 &1030231183642531096
 RectTransform:
@@ -36642,6 +36643,7 @@ MonoBehaviour:
   maxHerdSize: 5
   wanderPoint: {fileID: 0}
   jail: {fileID: 0}
+  tutorialArrow: {fileID: 0}
   difficultyLevel: 2
 --- !u!114 &7198503992603399760
 MonoBehaviour:
@@ -40574,6 +40576,7 @@ MonoBehaviour:
   maxHerdSize: 5
   wanderPoint: {fileID: 0}
   jail: {fileID: 0}
+  tutorialArrow: {fileID: 0}
   difficultyLevel: 0
 --- !u!1 &9115003471574754628
 GameObject:
