@@ -1068,7 +1068,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &110935280
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1756,7 +1756,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &244928784
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4185,6 +4185,7 @@ MonoBehaviour:
   - {fileID: 2015079549}
   - {fileID: 1582443960}
   - {fileID: 1432021198}
+  cloudCanvas: {fileID: 73855020}
   tutorialState: 0
 --- !u!1 &634604083
 GameObject:

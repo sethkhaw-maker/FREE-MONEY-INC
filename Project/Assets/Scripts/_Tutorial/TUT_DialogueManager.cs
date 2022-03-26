@@ -7,25 +7,31 @@ public class TUT_DialogueManager : MonoBehaviour
     public GameObject tutorialSection;
     public GameObject dialogue;
     int dialogueNumber = 1;
+    int maxDialogue = 0;
+
+    private void Start()
+    {
+        maxDialogue = transform.parent.childCount - 3;
+    }
 
     public void DialogueProgress()
     {
         //turn off the current text
         dialogue.SetActive(false);
         //Get the name for the next dialogue
-        ++dialogueNumber;
-
+        dialogueNumber += 1;
         Transform t = tutorialSection.transform.Find("Dialogue_" + dialogueNumber);
 
-        if (t == null)
+        if (dialogueNumber <= maxDialogue)
         {
-            tutorialSection.SetActive(false);
+            Debug.Log("dialogueNum: " + dialogueNumber + " | maxDialogue: " + maxDialogue);
+            dialogue = t.gameObject;
+            dialogue.SetActive(true);
         }
         else
         {
-            dialogue = tutorialSection.transform.Find("Dialogue_" + dialogueNumber).gameObject;
-            dialogue.SetActive(true);
-            Debug.Log(dialogue);
+            TUT_TutorialStateManager.EndTutorial();
+            TUT_TutorialStateManager.instance.CloseTutorialText();
         }
     }
 }
