@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
 
     //Variables
     public float speed = 3.5f;
-    private Rigidbody2D rb;
+    public Rigidbody2D rb;
 
     float checkDist = 0.5f;
 
@@ -53,6 +53,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (TutorialIsRunning()) return;
+
         //Update Noah's direction based on velocity
         UpdateDirection();
 
@@ -65,6 +67,12 @@ public class PlayerController : MonoBehaviour
             arkDoor.SetBool("isClosed", true);
         }
         if (GameplayManager.gameState == GameplayManager.GameState.MINIGAME || GameplayManager.gameState == GameplayManager.GameState.SCOPING || isClearingAnimals)
+        {
+            targetMove = transform.position;
+            rb.velocity = Vector2.zero;
+            return;
+        }
+        if (TUT_GameManager.gameState == TUT_GameManager.GameState.MINIGAME || TUT_GameManager.gameState == TUT_GameManager.GameState.SCOPING || isClearingAnimals)
         {
             targetMove = transform.position;
             rb.velocity = Vector2.zero;
@@ -86,7 +94,12 @@ public class PlayerController : MonoBehaviour
                 //Noah has reached destination
                 rb.velocity = Vector2.zero;
 
-                if (PartyHasInteraction()) StartAnimalInteraction();
+                if (PartyHasInteraction())
+                {
+                    StartAnimalInteraction();
+                    if (TUT_TutorialStateManager.instance != null && TUT_TutorialStateManager.instance.tutorialState == 5) 
+                        TUT_TutorialStateManager.instance.ProgressTutorialState();
+                }
                 else StartMinigame();
                 return;
             }
@@ -154,7 +167,8 @@ public class PlayerController : MonoBehaviour
         RaycastHit2D hitArk = Physics2D.Raycast(mousePos, transform.forward, 1f, arkLayer);
         if (hitArk.collider != null)
         {
-            GameplayManager.instance.SendAnimalsIntoArk(hitArk.collider.gameObject);
+            if (GameplayManager.instance != null && party.Count != 0) GameplayManager.instance.SendAnimalsIntoArk(hitArk.collider.gameObject);
+            if (TUT_GameManager.instance != null && party.Count != 0) TUT_GameManager.instance.SendAnimalsIntoArk(hitArk.collider.gameObject);
             targetMove = transform.position;
             isClearingAnimals = true;
             FindObjectOfType<AudioManager>()?.Play("Ark Bell");
@@ -186,7 +200,6 @@ public class PlayerController : MonoBehaviour
         {
             //Clicked outside of animal, stopped chasing
             targetAnimal = null;
-
             targetMove = mousePos;
         }
     }
@@ -292,6 +305,9 @@ public class PlayerController : MonoBehaviour
         if (GameplayManager.instance != null)
             GameplayManager.instance.InitMinigame();
 
+        if (TUT_GameManager.instance != null)
+            TUT_GameManager.instance.InitMinigame();
+
         //Reset the target animal to null
         targetMove = transform.position;
     }
@@ -312,6 +328,18 @@ public class PlayerController : MonoBehaviour
         if (targetAnimal.animalType == ANIMALTYPE.PREY && PartyContains(ANIMALTYPE.PREDATOR)) return true;
         return false;
     }
+    public bool PartyHasInteractionAfterRecruitment()
+    {
+        if (!PartyContains(ANIMALTYPE.MEDIATOR) || targetAnimal.animalType == ANIMALTYPE.MEDIATOR) return false;
+        if (targetAnimal.animalType == ANIMALTYPE.PREDATOR && PartyContains(ANIMALTYPE.PREY)) return true;
+        if (targetAnimal.animalType == ANIMALTYPE.PREY && PartyContains(ANIMALTYPE.PREDATOR)) return true;
+        return false;
+    }
+    public void PlayRecruitmentInteraction(ANIMALTYPE type)
+    {
+        foreach (Animal a in party)
+            if (a.animalType == type) a.PlayPartyInteractionAfterRecruit(false);
+    }
     bool PartyContains(ANIMALTYPE type)
     {
         foreach(Animal a in party)
@@ -325,5 +353,10 @@ public class PlayerController : MonoBehaviour
 
         foreach (Animal a in party)
             if (a.animalType == type) a.PlayPartyInteraction();
+    }
+    bool TutorialIsRunning()
+    {
+        if (TUT_TutorialStateManager.instance != null && TUT_TutorialStateManager.tutorialRunning) return true;
+        return false;
     }
 }

@@ -179,7 +179,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5546069094172539412}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -233,6 +233,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5593165784573386703}
     m_Modifications:
+    - target: {fileID: 7479614994904126940, guid: fa1c4845070b03f4b81c7c31fcf6bc5e, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 7479614995957321032, guid: fa1c4845070b03f4b81c7c31fcf6bc5e, type: 3}
       propertyPath: m_Name
       value: Thought Bubble
@@ -240,6 +244,10 @@ PrefabInstance:
     - target: {fileID: 7479614995957321032, guid: fa1c4845070b03f4b81c7c31fcf6bc5e, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7479614995957321032, guid: fa1c4845070b03f4b81c7c31fcf6bc5e, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7479614995957321035, guid: fa1c4845070b03f4b81c7c31fcf6bc5e, type: 3}
       propertyPath: m_LocalPosition.x

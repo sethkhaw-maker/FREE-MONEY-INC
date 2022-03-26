@@ -214,6 +214,10 @@ public class Minigame : MonoBehaviour
                 {
                     GameplayManager.instance.EndMinigame(true);
                 }
+                if (TUT_GameManager.instance != null)
+                {
+                    TUT_GameManager.instance.EndMinigame(true);
+                }
                 else
                 {
                     Debug.LogWarning("No GameplayManager detected.");
@@ -240,6 +244,11 @@ public class Minigame : MonoBehaviour
             {
                 isGaming = false;
                 GameplayManager.instance.EndMinigame(false);
+            }
+            if (TUT_GameManager.instance != null)
+            {
+                isGaming = false;
+                TUT_GameManager.instance.EndMinigame(false);
             }
             else
             {

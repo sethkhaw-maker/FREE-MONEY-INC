@@ -14,6 +14,7 @@ public class Animal : MonoBehaviour
     public float wanderRange, wanderSpeed;
     public float runRange, runSpeed;
     public float idleTime = 2.5f;
+    public bool isTutorialAnimal = false;
 
     [Header("Spawn Conditions")]
     public SPAWNTIME spawnTime;
@@ -40,8 +41,10 @@ public class Animal : MonoBehaviour
     [HideInInspector] public bool isDespawning, isInParty, shouldFlee;
     [HideInInspector] public int preyPredatorInteraction = 0;
     [HideInInspector] public int maxHerdSize = 5;
+    [HideInInspector] public GameObject wanderPoint, jail, tutorialArrow;
 
     public int difficultyLevel = 0;
+    public static event MESSAGING_string UpdateAnimalCount;
 
     public static void ResetStaticObjs()
     {
@@ -52,7 +55,7 @@ public class Animal : MonoBehaviour
 
     private void Start()
     {
-        if (animalType == ANIMALTYPE.PREY) firstState = eSTATE.FOLLOWLEADER;
+        if (animalType == ANIMALTYPE.PREY && !isTutorialAnimal) firstState = eSTATE.FOLLOWLEADER;
         flipAnimal.Init(this);
         animalEmote.Init(this);
         animalFSM.Init(this);
@@ -70,6 +73,7 @@ public class Animal : MonoBehaviour
         animalFSM = GetComponent(typeof(SYS_FSM)) as SYS_FSM;
         animalEmote.thoughtBubble = transform.GetChild(0).gameObject;
         animalSprite = GetComponent<SpriteRenderer>();
+        if (isTutorialAnimal) { wanderPoint = GameObject.Find("WanderPoint_" + animalName); jail = GameObject.Find("ANIMALJAIL_" + animalName); tutorialArrow = transform.Find("Tutorial Arrow").gameObject; }
     }
 
     public void RegisterAnimalToParty()
@@ -100,15 +104,19 @@ public class Animal : MonoBehaviour
 
     public void RegisterAnimalToArk()
     {
-        if (animalType == ANIMALTYPE.PREY) GameplayManager.instance.preysCollected++;
-        else if (animalType == ANIMALTYPE.PREDATOR) GameplayManager.instance.predatorsCollected++;
-        else if (animalType == ANIMALTYPE.MEDIATOR) GameplayManager.instance.mediatorsCollected++;
+        UpdateAnimalCount?.Invoke(animalName);
+        //if (animalType == ANIMALTYPE.PREY) GameplayManager.instance.preysCollected++;
+        //else if (animalType == ANIMALTYPE.PREDATOR) GameplayManager.instance.predatorsCollected++;
+        //else if (animalType == ANIMALTYPE.MEDIATOR) GameplayManager.instance.mediatorsCollected++;
 
         PlayerController.instance.party.Remove(this);
         allAnimals.Remove(this);
         isInParty = false;
 
-        FindObjectOfType<AnimalGenerator>().spawnedQuantity--;
+        AnimalGenerator aniGen = FindObjectOfType<AnimalGenerator>();
+
+        if (aniGen != null) aniGen.spawnedQuantity--;
+
         Destroy(gameObject);
     }
 
@@ -167,6 +175,23 @@ public class Animal : MonoBehaviour
                 break;
             case ANIMALTYPE.MEDIATOR:
                 StartCoroutine(animalEmote.EmoteShowBubble(EMOTE.CONFUSED, isPartyInteraction: true));
+                break;
+        }
+    }
+
+    public void PlayPartyInteractionAfterRecruit(bool isBeingRecruited)
+    {
+        switch (animalType)
+        {
+            case ANIMALTYPE.PREY:
+            case ANIMALTYPE.PREDATOR:
+                if (isBeingRecruited)
+                StartCoroutine(animalEmote.EmoteShowBubble(EMOTE.SCARED, isPartyInteraction: true));
+                else
+                StartCoroutine(animalEmote.EmoteShowBubble(EMOTE.HAPPY, isPartyInteraction: true));
+                break;
+            case ANIMALTYPE.MEDIATOR:
+                StartCoroutine(animalEmote.EmoteShowBubble(EMOTE.HAPPY, isPartyInteraction: true));
                 break;
         }
     }
