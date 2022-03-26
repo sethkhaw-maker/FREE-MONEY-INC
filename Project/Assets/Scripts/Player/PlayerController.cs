@@ -154,7 +154,8 @@ public class PlayerController : MonoBehaviour
         RaycastHit2D hitArk = Physics2D.Raycast(mousePos, transform.forward, 1f, arkLayer);
         if (hitArk.collider != null)
         {
-            GameplayManager.instance.SendAnimalsIntoArk(hitArk.collider.gameObject);
+            if (GameplayManager.instance != null && party.Count != 0) GameplayManager.instance.SendAnimalsIntoArk(hitArk.collider.gameObject);
+            if (TUT_GameManager.instance != null && party.Count != 0) TUT_GameManager.instance.SendAnimalsIntoArk(hitArk.collider.gameObject);
             targetMove = transform.position;
             isClearingAnimals = true;
             FindObjectOfType<AudioManager>()?.Play("Ark Bell");
@@ -291,6 +292,9 @@ public class PlayerController : MonoBehaviour
         //Activate the minigame
         if (GameplayManager.instance != null)
             GameplayManager.instance.InitMinigame();
+
+        if (TUT_GameManager.instance != null)
+            TUT_GameManager.instance.InitMinigame();
 
         //Reset the target animal to null
         targetMove = transform.position;

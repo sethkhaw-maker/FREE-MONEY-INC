@@ -91,6 +91,34 @@ public class GameplayManager : MonoBehaviour
         daysEnvironmentVariants[dayCount].SetActive(true);
     }
 
+    private void OnEnable()
+    {
+        Animal.UpdateAnimalCount += UpdateAnimalCount;
+    }
+
+    private void OnDisable()
+    {
+        Animal.UpdateAnimalCount -= UpdateAnimalCount;
+    }
+
+    void UpdateAnimalCount(string name)
+    {
+        switch (name)
+        {
+            case "Zebra":
+            case "Giraffe":
+            case "Buffalo": 
+                preysCollected++; break;
+            case "Tiger":
+            case "Lion":
+            case "Hyena":
+                predatorsCollected++; break;
+            case "Rhino":
+            case "Elephant":
+                mediatorsCollected++; break;
+        }
+    }
+
     void Update()
     {
         if (gameState == GameState.PLAYING)

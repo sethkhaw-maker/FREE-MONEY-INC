@@ -42,6 +42,7 @@ public class Animal : MonoBehaviour
     [HideInInspector] public int maxHerdSize = 5;
 
     public int difficultyLevel = 0;
+    public static event MESSAGING_string UpdateAnimalCount;
 
     public static void ResetStaticObjs()
     {
@@ -100,9 +101,10 @@ public class Animal : MonoBehaviour
 
     public void RegisterAnimalToArk()
     {
-        if (animalType == ANIMALTYPE.PREY) GameplayManager.instance.preysCollected++;
-        else if (animalType == ANIMALTYPE.PREDATOR) GameplayManager.instance.predatorsCollected++;
-        else if (animalType == ANIMALTYPE.MEDIATOR) GameplayManager.instance.mediatorsCollected++;
+        UpdateAnimalCount?.Invoke(animalName);
+        //if (animalType == ANIMALTYPE.PREY) GameplayManager.instance.preysCollected++;
+        //else if (animalType == ANIMALTYPE.PREDATOR) GameplayManager.instance.predatorsCollected++;
+        //else if (animalType == ANIMALTYPE.MEDIATOR) GameplayManager.instance.mediatorsCollected++;
 
         PlayerController.instance.party.Remove(this);
         allAnimals.Remove(this);
