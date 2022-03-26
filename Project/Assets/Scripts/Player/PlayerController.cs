@@ -53,13 +53,13 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (TutorialIsRunning()) return;
-
         //Update Noah's direction based on velocity
         UpdateDirection();
 
         //Update Noah's animation
         UpdateAnimation();
+
+        if (TutorialIsRunning()) return;
 
         if (party.Count == 0)
         {
@@ -72,7 +72,7 @@ public class PlayerController : MonoBehaviour
             rb.velocity = Vector2.zero;
             return;
         }
-        if (TUT_GameManager.gameState == TUT_GameManager.GameState.MINIGAME || TUT_GameManager.gameState == TUT_GameManager.GameState.SCOPING || isClearingAnimals)
+        if (TUT_GameManager.gameState == TUT_GameManager.GameState.MINIGAME || TUT_GameManager.gameState == TUT_GameManager.GameState.SCOPING || TUT_GameManager.gameState == TUT_GameManager.GameState.TUTORIAL || isClearingAnimals)
         {
             targetMove = transform.position;
             rb.velocity = Vector2.zero;

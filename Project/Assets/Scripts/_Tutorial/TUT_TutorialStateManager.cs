@@ -37,6 +37,7 @@ public class TUT_TutorialStateManager : MonoBehaviour
         IEnumerator TutorialComponents()
         {
             StartTutorial();
+            StopPlayerFromMoving();
             yield return null;
 
             switch (tutorialState)
@@ -87,13 +88,13 @@ public class TUT_TutorialStateManager : MonoBehaviour
         }
     }
 
-    public void ProgressTutorialState() 
+    public void ProgressTutorialState()
     {
         StopPlayerFromMoving();
-        SetTutorialFlag(); 
-        tutorialState++; 
+        SetTutorialFlag();
+        tutorialState++;
         ProgressTutorial();
-        Debug.Log("tutorialState: " + tutorialState);
+        //Debug.Log("tutorialState: " + tutorialState);
     }
 
     void ResetStaticObjs()
@@ -102,7 +103,7 @@ public class TUT_TutorialStateManager : MonoBehaviour
         tutorialDisplayed = new bool[20];
     }
     public void SetTutorialFlag() => tutorialDisplayed[tutorialState] = true;
-    public static void StartTutorial() => tutorialRunning = true;
+    public static void StartTutorial() { tutorialRunning = true; }
     public static void EndTutorial() { tutorialRunning = false; }
     public void StopPlayerFromMoving() { PlayerController.instance.targetMove = PlayerController.instance.gameObject.transform.position; PlayerController.instance.rb.velocity = Vector2.zero; }
     void ReadAnimator() { if (cloudCanvas.GetCurrentAnimatorStateInfo(0).normalizedTime > cloudCanvas.GetCurrentAnimatorClipInfo(0).Length) ProgressTutorial(); }

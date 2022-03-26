@@ -27,7 +27,7 @@ public class TUT_DialogueManager : MonoBehaviour
         {
             dialogue = tutorialSection.transform.Find("Dialogue_" + dialogueNumber).gameObject;
             dialogue.SetActive(true);
-            Debug.Log(dialogue);
+            //Debug.Log(dialogue);
         }
     }
 }
