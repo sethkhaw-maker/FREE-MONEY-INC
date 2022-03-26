@@ -41,7 +41,7 @@ public class Animal : MonoBehaviour
     [HideInInspector] public bool isDespawning, isInParty, shouldFlee;
     [HideInInspector] public int preyPredatorInteraction = 0;
     [HideInInspector] public int maxHerdSize = 5;
-    [HideInInspector] public GameObject wanderPoint, jail;
+    [HideInInspector] public GameObject wanderPoint, jail, tutorialArrow;
 
     public int difficultyLevel = 0;
     public static event MESSAGING_string UpdateAnimalCount;
@@ -73,7 +73,7 @@ public class Animal : MonoBehaviour
         animalFSM = GetComponent(typeof(SYS_FSM)) as SYS_FSM;
         animalEmote.thoughtBubble = transform.GetChild(0).gameObject;
         animalSprite = GetComponent<SpriteRenderer>();
-        if (isTutorialAnimal) { wanderPoint = GameObject.Find("WanderPoint_" + animalName); jail = GameObject.Find("ANIMALJAIL_" + animalName); }
+        if (isTutorialAnimal) { wanderPoint = GameObject.Find("WanderPoint_" + animalName); jail = GameObject.Find("ANIMALJAIL_" + animalName); tutorialArrow = transform.Find("Tutorial Arrow").gameObject; }
     }
 
     public void RegisterAnimalToParty()

@@ -34,12 +34,14 @@ public class TUT_GameManager : MonoBehaviour
         if (win)    //Add animal to party if minigame won
         {
             PlayerController.instance.targetAnimal.RegisterAnimalToParty();
+            TUT_TutorialStateManager.instance.ProgressTutorialState();
         }
         else        //Otherwise just let it go
         {
             PlayerController.instance.targetAnimal.MinigameFailed();
         }
 
+        
         PlayerController.instance.targetAnimal = null;          //Reset target animal from player
     }
     private void CheckWin()

@@ -34,6 +34,8 @@ public class TUT_TutorialStateManager : MonoBehaviour
         switch (tutorialState)
         {
             case 0: ShowTutorialText(); break;
+            case 1: SwitchArrow(); break;
+            case 2: SwitchArrow(); ShowTutorialText(); break;
         }
     }
 
@@ -43,17 +45,21 @@ public class TUT_TutorialStateManager : MonoBehaviour
         switch (tutorialState)
         {
             case 0: dialogueText[0].SetActive(true); break;
-            case 5: dialogueText[1].SetActive(true); break;
+            case 2: dialogueText[1].SetActive(true); break;
             case 10: dialogueText[2].SetActive(true); break;
         }
     }
 
     public void SwitchArrow()
     {
-
+        switch (tutorialState)
+        {
+            case 1: GameObject.Find("Zebra").GetComponent<Animal>().tutorialArrow.SetActive(true); break;
+            case 2: GameObject.Find("Zebra").GetComponent<Animal>().tutorialArrow.SetActive(false); break;
+        }
     }
 
-    public void ProgressTutorialState() { tutorialState++; ProgressTutorial(); }
+    public void ProgressTutorialState() { SetTutorialFlag(); tutorialState++; ProgressTutorial(); }
     public void SetTutorialFlag() => tutorialDisplayed[tutorialState] = true;
     public static void StartTutorial() => tutorialRunning = true;
     public static void EndTutorial() { tutorialRunning = false; }
