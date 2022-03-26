@@ -72,6 +72,12 @@ public class PlayerController : MonoBehaviour
             rb.velocity = Vector2.zero;
             return;
         }
+        if (TUT_GameManager.gameState == TUT_GameManager.GameState.MINIGAME || TUT_GameManager.gameState == TUT_GameManager.GameState.SCOPING || isClearingAnimals)
+        {
+            targetMove = transform.position;
+            rb.velocity = Vector2.zero;
+            return;
+        }
 
         //Input mouse clicked, check for animal or move there
         if (Input.GetMouseButtonDown(0))
@@ -189,7 +195,6 @@ public class PlayerController : MonoBehaviour
         {
             //Clicked outside of animal, stopped chasing
             targetAnimal = null;
-
             targetMove = mousePos;
         }
     }

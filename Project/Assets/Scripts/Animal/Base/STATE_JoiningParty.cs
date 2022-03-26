@@ -24,6 +24,10 @@ public class STATE_JoiningParty : SYS_FSMState
         self.preyPredatorInteraction = 0;
         self.herdNum = 0;
         self.ClearTarget();
+        self.gameObject.layer = 14;
+
+        if (self.isTutorialAnimal) self.jail.SetActive(false);
+
         EnterNextState();
     }
 }
