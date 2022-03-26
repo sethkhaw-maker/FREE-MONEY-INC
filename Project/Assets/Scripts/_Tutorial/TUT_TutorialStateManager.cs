@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class TUT_TutorialStateManager : MonoBehaviour
 {
+    public List<GameObject> dialogueText = new List<GameObject>();
+
     public int tutorialState = 0;
-    public TUT_TutorialStateManager instance;
-    public static bool tutorialRunning = false;
+    [HideInInspector] public static TUT_TutorialStateManager instance;
+    [HideInInspector] public static bool tutorialRunning = false;
 
     private void Start() => instance = this;
 
@@ -14,13 +16,19 @@ public class TUT_TutorialStateManager : MonoBehaviour
     {
         switch (tutorialState)
         {
-            case 0: PlayTutorial(); break;
+            case 0: ShowTutorialText(); break;
         }
     }
 
-    public void PlayTutorial()
+    public void ShowTutorialText()
     {
-
+        StartTutorial();
+        switch (tutorialState)
+        {
+            case 0: dialogueText[0].SetActive(true); break;
+            case 5: dialogueText[1].SetActive(true); break;
+            case 10: dialogueText[2].SetActive(true); break;
+        }
     }
 
     public void SwitchArrow()

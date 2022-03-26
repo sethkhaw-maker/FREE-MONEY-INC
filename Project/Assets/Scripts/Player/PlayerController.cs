@@ -53,6 +53,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (TutorialIsRunning()) return;
+
         //Update Noah's direction based on velocity
         UpdateDirection();
 
@@ -329,5 +331,10 @@ public class PlayerController : MonoBehaviour
 
         foreach (Animal a in party)
             if (a.animalType == type) a.PlayPartyInteraction();
+    }
+    bool TutorialIsRunning()
+    {
+        if (TUT_TutorialStateManager.instance != null && TUT_TutorialStateManager.tutorialRunning) return true;
+        return false;
     }
 }

@@ -11,7 +11,7 @@ public class TUT_GameManager : MonoBehaviour
     public Animator fadeCanvas;
     public Animator cloudCanvas;
 
-    [HideInInspector] public enum GameState { PLAYING, MINIGAME, SCOPING, PAUSED }
+    [HideInInspector] public enum GameState { PLAYING, MINIGAME, SCOPING, PAUSED, TUTORIAL }
     [HideInInspector] public static GameState gameState;
     [HideInInspector] public string[] animalsToCollect = new string[3] { "Zebra", "Tiger", "Elephant" };
     [HideInInspector] public int[] animalsToCollect_Required = new int[3] { 1, 1, 1 };
