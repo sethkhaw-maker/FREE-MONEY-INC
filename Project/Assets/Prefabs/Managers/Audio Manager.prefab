@@ -141,3 +141,9 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: Ocean Waves
+    clip: {fileID: 8300000, guid: 194c2ecba446a1a48b5965155f3a119d, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
