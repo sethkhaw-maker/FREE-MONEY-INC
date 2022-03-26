@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8851038028195556331
 RectTransform:
   m_ObjectHideFlags: 0
@@ -488,19 +488,39 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 483620249274199106, guid: 05d98d1412a50b5468b9b1bfcbe6b5d2, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 49
+      value: 401
       objectReference: {fileID: 0}
     - target: {fileID: 483620249274199106, guid: 05d98d1412a50b5468b9b1bfcbe6b5d2, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -42
+      value: -24
       objectReference: {fileID: 0}
     - target: {fileID: 483620249274199106, guid: 05d98d1412a50b5468b9b1bfcbe6b5d2, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.5
+      value: 0.38971895
       objectReference: {fileID: 0}
     - target: {fileID: 483620249274199106, guid: 05d98d1412a50b5468b9b1bfcbe6b5d2, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.5
+      value: 0.38971895
+      objectReference: {fileID: 0}
+    - target: {fileID: 483620249274199106, guid: 05d98d1412a50b5468b9b1bfcbe6b5d2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 483620249274199106, guid: 05d98d1412a50b5468b9b1bfcbe6b5d2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 483620249274199106, guid: 05d98d1412a50b5468b9b1bfcbe6b5d2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 483620249274199106, guid: 05d98d1412a50b5468b9b1bfcbe6b5d2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 483620249274199106, guid: 05d98d1412a50b5468b9b1bfcbe6b5d2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 05d98d1412a50b5468b9b1bfcbe6b5d2, type: 3}
