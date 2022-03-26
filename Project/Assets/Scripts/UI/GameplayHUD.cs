@@ -35,7 +35,7 @@ public class GameplayHUD : MonoBehaviour
         gameplayManager = FindObjectOfType<GameplayManager>();
         tutorialGameManager = FindObjectOfType<TUT_GameManager>();
         SetAnimalPortraits();
-        dayIntroText.text = "DAY " + (GameplayManager.dayCount + 1);
+        dayIntroText.text = "DAY " + (tutorialGameManager != null ? 0 : (GameplayManager.dayCount + 1));
     }
 
     void Update()
