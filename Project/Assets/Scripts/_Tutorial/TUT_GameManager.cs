@@ -34,6 +34,12 @@ public class TUT_GameManager : MonoBehaviour
         if (win)    //Add animal to party if minigame won
         {
             PlayerController.instance.targetAnimal.RegisterAnimalToParty();
+            if (PlayerController.instance.PartyHasInteractionAfterRecruitment())
+            {
+                ANIMALTYPE targetAnimalType = PlayerController.instance.targetAnimal.animalType;
+                PlayerController.instance.targetAnimal.PlayPartyInteractionAfterRecruit(true);
+                PlayerController.instance.PlayRecruitmentInteraction(targetAnimalType == ANIMALTYPE.PREY ? ANIMALTYPE.PREDATOR : ANIMALTYPE.PREY);
+            }
             TUT_TutorialStateManager.instance.ProgressTutorialState();
         }
         else        //Otherwise just let it go
@@ -46,17 +52,22 @@ public class TUT_GameManager : MonoBehaviour
     }
     private void CheckWin()
     {
-        if (CollectedRequiredAnimals())
-        {
-            // SHOW TUTORIAL HERE
-        }
+        if (CollectedRequiredAnimals() && TUT_TutorialStateManager.instance.tutorialState == 11)
+            TUT_TutorialStateManager.instance.ProgressTutorialState();
     }
     public void EndDay()
     {
         cloudCanvas.SetBool("endDay", true);
         Invoke("FadeDay", 2.583f);
-
-        FindObjectOfType<SceneLoader>().LoadScene(5);   // TODO: Change this to actual game scene
+    }
+    private void FadeDay()
+    {
+        fadeCanvas.SetInteger("fadeState", 1);
+        Invoke("DelayReload", 1.5f);
+    }
+    private void DelayReload()
+    {
+        FindObjectOfType<SceneLoader>().LoadScene(3);
     }
     void Subscription(bool state)
     {

@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
 
     //Variables
     public float speed = 3.5f;
-    private Rigidbody2D rb;
+    public Rigidbody2D rb;
 
     float checkDist = 0.5f;
 
@@ -94,7 +94,12 @@ public class PlayerController : MonoBehaviour
                 //Noah has reached destination
                 rb.velocity = Vector2.zero;
 
-                if (PartyHasInteraction()) StartAnimalInteraction();
+                if (PartyHasInteraction())
+                {
+                    StartAnimalInteraction();
+                    if (TUT_TutorialStateManager.instance != null && TUT_TutorialStateManager.instance.tutorialState == 5) 
+                        TUT_TutorialStateManager.instance.ProgressTutorialState();
+                }
                 else StartMinigame();
                 return;
             }
@@ -322,6 +327,18 @@ public class PlayerController : MonoBehaviour
         if (targetAnimal.animalType == ANIMALTYPE.PREDATOR && PartyContains(ANIMALTYPE.PREY)) return true;
         if (targetAnimal.animalType == ANIMALTYPE.PREY && PartyContains(ANIMALTYPE.PREDATOR)) return true;
         return false;
+    }
+    public bool PartyHasInteractionAfterRecruitment()
+    {
+        if (!PartyContains(ANIMALTYPE.MEDIATOR) || targetAnimal.animalType == ANIMALTYPE.MEDIATOR) return false;
+        if (targetAnimal.animalType == ANIMALTYPE.PREDATOR && PartyContains(ANIMALTYPE.PREY)) return true;
+        if (targetAnimal.animalType == ANIMALTYPE.PREY && PartyContains(ANIMALTYPE.PREDATOR)) return true;
+        return false;
+    }
+    public void PlayRecruitmentInteraction(ANIMALTYPE type)
+    {
+        foreach (Animal a in party)
+            if (a.animalType == type) a.PlayPartyInteractionAfterRecruit(false);
     }
     bool PartyContains(ANIMALTYPE type)
     {

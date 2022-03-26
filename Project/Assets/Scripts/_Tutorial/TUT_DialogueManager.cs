@@ -19,7 +19,7 @@ public class TUT_DialogueManager : MonoBehaviour
 
         if (t == null)
         {
-            TUT_TutorialStateManager.instance.SetTutorialFlag();
+            TUT_TutorialStateManager.instance.ProgressTutorialState();
             TUT_TutorialStateManager.EndTutorial();
             tutorialSection.SetActive(false);
         }

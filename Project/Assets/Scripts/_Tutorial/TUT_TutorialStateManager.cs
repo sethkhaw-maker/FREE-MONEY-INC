@@ -17,6 +17,7 @@ public class TUT_TutorialStateManager : MonoBehaviour
     [HideInInspector] public static bool tutorialRunning = false;
     [HideInInspector] public static bool[] tutorialDisplayed = new bool[20];
 
+    private void Awake() => ResetStaticObjs();
     private void Start() => instance = this;
 
     private void Update()
@@ -26,27 +27,47 @@ public class TUT_TutorialStateManager : MonoBehaviour
 
     void CheckForFlagsInUpdate()
     {
-        if (!tutorialRunning && tutorialState == 0 && !tutorialDisplayed[0]) { ReadAnimator(); }
+        if (tutorialRunning && tutorialState == 0 && !tutorialDisplayed[0]) { ReadAnimator(); }
     }
 
-    public void ProgressTutorial()
+    void ProgressTutorial()
     {
-        switch (tutorialState)
+        StartCoroutine(TutorialComponents());
+
+        IEnumerator TutorialComponents()
         {
-            case 0: ShowTutorialText(); break;
-            case 1: SwitchArrow(); break;
-            case 2: SwitchArrow(); ShowTutorialText(); break;
+            StartTutorial();
+            yield return null;
+
+            switch (tutorialState)
+            {
+                case 0: ShowTutorialText(); break;
+                case 2: ShowTutorialText(); break;
+                case 3: SwitchArrow(); break;
+                case 4: SwitchArrow(); yield return new WaitForSeconds(1f); ShowTutorialText(); break;
+                case 5: SwitchArrow(); break;
+                case 6: SwitchArrow(); yield return new WaitForSeconds(1f); ShowTutorialText(); break;
+                case 7: SwitchArrow(); break;
+                case 8: SwitchArrow(); yield return new WaitForSeconds(1f); ShowTutorialText(); break;
+                case 9: SwitchArrow(); break;
+                case 10: SwitchArrow(); yield return new WaitForSeconds(1f); ShowTutorialText(); break;
+                case 12: yield return new WaitForSeconds(1f); ShowTutorialText(); break;
+                case 13: TUT_GameManager.instance.EndDay(); break;
+            }
         }
     }
 
     public void ShowTutorialText()
     {
-        StartTutorial();
         switch (tutorialState)
         {
             case 0: dialogueText[0].SetActive(true); break;
             case 2: dialogueText[1].SetActive(true); break;
-            case 10: dialogueText[2].SetActive(true); break;
+            case 4: dialogueText[2].SetActive(true); break;
+            case 6: dialogueText[3].SetActive(true); break;
+            case 8: dialogueText[4].SetActive(true); break;
+            case 10: dialogueText[5].SetActive(true); break;
+            case 12: dialogueText[6].SetActive(true); break;
         }
     }
 
@@ -54,15 +75,34 @@ public class TUT_TutorialStateManager : MonoBehaviour
     {
         switch (tutorialState)
         {
-            case 1: GameObject.Find("Zebra").GetComponent<Animal>().tutorialArrow.SetActive(true); break;
-            case 2: GameObject.Find("Zebra").GetComponent<Animal>().tutorialArrow.SetActive(false); break;
+            case 3: GameObject.Find("Zebra").GetComponent<Animal>().tutorialArrow.SetActive(true); break;
+            case 4: GameObject.Find("Zebra").GetComponent<Animal>().tutorialArrow.SetActive(false); break;
+            case 5: GameObject.Find("Tiger").GetComponent<Animal>().tutorialArrow.SetActive(true); break;
+            case 6: GameObject.Find("Tiger").GetComponent<Animal>().tutorialArrow.SetActive(false); break;
+            case 7: GameObject.Find("Elephant").GetComponent<Animal>().tutorialArrow.SetActive(true); break;
+            case 8: GameObject.Find("Elephant").GetComponent<Animal>().tutorialArrow.SetActive(false); break;
+            case 9: GameObject.Find("Tiger").GetComponent<Animal>().tutorialArrow.SetActive(true); break;
+            case 10: GameObject.Find("Tiger").GetComponent<Animal>().tutorialArrow.SetActive(false); break;
         }
     }
 
-    public void ProgressTutorialState() { SetTutorialFlag(); tutorialState++; ProgressTutorial(); }
+    public void ProgressTutorialState() 
+    {
+        StopPlayerFromMoving();
+        SetTutorialFlag(); 
+        tutorialState++; 
+        ProgressTutorial();
+        Debug.Log("tutorialState: " + tutorialState);
+    }
+
+    void ResetStaticObjs()
+    {
+        tutorialRunning = true;
+        tutorialDisplayed = new bool[20];
+    }
     public void SetTutorialFlag() => tutorialDisplayed[tutorialState] = true;
     public static void StartTutorial() => tutorialRunning = true;
     public static void EndTutorial() { tutorialRunning = false; }
-
+    public void StopPlayerFromMoving() { PlayerController.instance.targetMove = PlayerController.instance.gameObject.transform.position; PlayerController.instance.rb.velocity = Vector2.zero; }
     void ReadAnimator() { if (cloudCanvas.GetCurrentAnimatorStateInfo(0).normalizedTime > cloudCanvas.GetCurrentAnimatorClipInfo(0).Length) ProgressTutorial(); }
 }

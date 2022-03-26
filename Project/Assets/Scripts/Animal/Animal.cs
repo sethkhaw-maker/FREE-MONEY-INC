@@ -179,6 +179,23 @@ public class Animal : MonoBehaviour
         }
     }
 
+    public void PlayPartyInteractionAfterRecruit(bool isBeingRecruited)
+    {
+        switch (animalType)
+        {
+            case ANIMALTYPE.PREY:
+            case ANIMALTYPE.PREDATOR:
+                if (isBeingRecruited)
+                StartCoroutine(animalEmote.EmoteShowBubble(EMOTE.SCARED, isPartyInteraction: true));
+                else
+                StartCoroutine(animalEmote.EmoteShowBubble(EMOTE.HAPPY, isPartyInteraction: true));
+                break;
+            case ANIMALTYPE.MEDIATOR:
+                StartCoroutine(animalEmote.EmoteShowBubble(EMOTE.HAPPY, isPartyInteraction: true));
+                break;
+        }
+    }
+
     public void Despawn()
     {
         StartCoroutine(DespawnAnimal());
