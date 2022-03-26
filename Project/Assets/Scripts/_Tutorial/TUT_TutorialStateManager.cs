@@ -15,12 +15,18 @@ public class TUT_TutorialStateManager : MonoBehaviour
 
     [HideInInspector] public static TUT_TutorialStateManager instance;
     [HideInInspector] public static bool tutorialRunning = false;
+    [HideInInspector] public static bool[] tutorialDisplayed = new bool[20];
 
     private void Start() => instance = this;
 
     private void Update()
     {
-        if (!tutorialRunning && tutorialState == 0) { ReadAnimator(); }
+        CheckForFlagsInUpdate();
+    }
+
+    void CheckForFlagsInUpdate()
+    {
+        if (!tutorialRunning && tutorialState == 0 && !tutorialDisplayed[0]) { ReadAnimator(); }
     }
 
     public void ProgressTutorial()
@@ -48,17 +54,9 @@ public class TUT_TutorialStateManager : MonoBehaviour
     }
 
     public void ProgressTutorialState() { tutorialState++; ProgressTutorial(); }
-    public void CloseTutorialText()
-    {
-        switch (tutorialState)
-        {
-            case 0: dialogueText[0].SetActive(false); break;
-            case 5: dialogueText[1].SetActive(false); break;
-            case 10: dialogueText[2].SetActive(false); break;
-        }
-    }
+    public void SetTutorialFlag() => tutorialDisplayed[tutorialState] = true;
     public static void StartTutorial() => tutorialRunning = true;
-    public static void EndTutorial() => tutorialRunning = false;
+    public static void EndTutorial() { tutorialRunning = false; }
 
     void ReadAnimator() { if (cloudCanvas.GetCurrentAnimatorStateInfo(0).normalizedTime > cloudCanvas.GetCurrentAnimatorClipInfo(0).Length) ProgressTutorial(); }
 }
