@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Menu.unity
     guid: 8f4e96bff32e10f4da86b98d0500ead3
   - enabled: 1
+    path: Assets/Scenes/Tutorial.unity
+    guid: 16d1b91fe9c636248b82b7593edbf50b
+  - enabled: 1
     path: Assets/Scenes/Intro.unity
     guid: a63ae55c58dc0aa4caec4ad02d38f256
   - enabled: 1
@@ -20,12 +23,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TestScene_Generator.unity
     guid: db57b7da0e30412479d3b47790dc4744
-  - enabled: 1
-    path: Assets/Scenes/Tutorial Prompt.unity
-    guid: 0ef1a97eba486e24b85b3e38d89238bd
-  - enabled: 1
-    path: Assets/Scenes/Tutorial.unity
-    guid: 16d1b91fe9c636248b82b7593edbf50b
   - enabled: 1
     path: Assets/Scenes/Outro.unity
     guid: 58df89c8a6c6dff48a2c45bb71f33dd2
