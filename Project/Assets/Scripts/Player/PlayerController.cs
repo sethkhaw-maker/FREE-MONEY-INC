@@ -195,6 +195,8 @@ public class PlayerController : MonoBehaviour
             //Assign animal to target for chase and minigame
             targetAnimal = hitAnimal;
             targetMove = mousePos;
+            FindObjectOfType<AudioManager>()?.Play("Mouse Click");
+
         }
         else
         {
