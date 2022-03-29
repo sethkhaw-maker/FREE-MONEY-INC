@@ -141,3 +141,33 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: Ocean Waves
+    clip: {fileID: 8300000, guid: 194c2ecba446a1a48b5965155f3a119d, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: DialogueSFX
+    clip: {fileID: 8300000, guid: 544e40cb420dddc499e664ccdd5a9ac1, type: 3}
+    volume: 0.7
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: God Giggle
+    clip: {fileID: 8300000, guid: 2382636a6b8fe264cb8d9859c331c497, type: 3}
+    volume: 0.6
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: End Day SFX
+    clip: {fileID: 8300000, guid: 2382636a6b8fe264cb8d9859c331c497, type: 3}
+    volume: 0.6
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Mouse Click
+    clip: {fileID: 8300000, guid: 8a10ef1e561b7864da8ea491638945c5, type: 3}
+    volume: 0.7
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}

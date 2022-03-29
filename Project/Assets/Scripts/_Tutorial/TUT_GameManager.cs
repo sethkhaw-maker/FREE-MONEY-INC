@@ -56,20 +56,24 @@ public class TUT_GameManager : MonoBehaviour
         if (CollectedRequiredAnimals() && TUT_TutorialStateManager.instance.tutorialState == 11)
             TUT_TutorialStateManager.instance.ProgressTutorialState();
     }
+
     public void EndDay()
     {
         cloudCanvas.SetBool("endDay", true);
         Invoke("FadeDay", 2.583f);
+
+        void FadeDay()
+        {
+            fadeCanvas.SetInteger("fadeState", 1);
+            Invoke("DelayReload", 1.5f);
+        }
+
+        void DelayReload()
+        {
+            FindObjectOfType<SceneLoader>().LoadScene(3);
+        }
     }
-    private void FadeDay()
-    {
-        fadeCanvas.SetInteger("fadeState", 1);
-        Invoke("DelayReload", 1.5f);
-    }
-    private void DelayReload()
-    {
-        FindObjectOfType<SceneLoader>().LoadScene(3);
-    }
+
     void Subscription(bool state)
     {
         if (state)

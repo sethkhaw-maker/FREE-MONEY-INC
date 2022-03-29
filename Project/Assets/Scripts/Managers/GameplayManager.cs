@@ -86,7 +86,7 @@ public class GameplayManager : MonoBehaviour
         rainParticleSystem = RainParticles.GetComponent<ParticleSystem>();
         rainOverlay = RainParticles.GetComponentInChildren<SpriteRenderer>();
         DisableNightVFX();
-        oneDayRevolution = 20;
+        oneDayRevolution = 90f;
 
         daysEnvironmentVariants[dayCount].SetActive(true);
     }

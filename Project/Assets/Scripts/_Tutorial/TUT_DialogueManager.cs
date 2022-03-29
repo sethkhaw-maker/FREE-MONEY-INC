@@ -8,6 +8,9 @@ public class TUT_DialogueManager : MonoBehaviour
     public GameObject dialogue;
     int dialogueNumber = 1;
 
+    bool isCompleted;
+    bool hasLaughed;
+
     public void DialogueProgress()
     {
         //turn off the current text
@@ -30,4 +33,21 @@ public class TUT_DialogueManager : MonoBehaviour
             //Debug.Log(dialogue);
         }
     }
+
+    public void ButtonPressSFX()
+    {
+        FindObjectOfType<AudioManager>()?.Play("DialogueSFX");
+    }
+
+    public void GodLaugh()
+    {
+        isCompleted = true;
+
+        if (isCompleted && !hasLaughed)
+        {
+            FindObjectOfType<AudioManager>()?.Play("God Giggle");
+            hasLaughed = true;
+        }
+    }
+
 }

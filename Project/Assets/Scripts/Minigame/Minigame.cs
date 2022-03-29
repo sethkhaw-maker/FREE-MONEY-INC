@@ -27,7 +27,7 @@ public class Minigame : MonoBehaviour
     private bool isGaming = true;       //true = minigame slider is moving
 
     [Range(0.25f, 1.75f)]
-    public float sliderSpeed = 1;     //Speed of the slider based on weather
+    public float sliderSpeed = 0.6f;     //Speed of the slider based on weather
     public float sliderSpeedModifier = 1f;
 
     public int maxAttractCount = 2;
@@ -97,7 +97,7 @@ public class Minigame : MonoBehaviour
                 sliderSpeed = 0.75f * sliderSpeedModifier;
                 break;
             case GameplayManager.WeatherState.RAINY:
-                sliderSpeed = 1f * sliderSpeedModifier;
+                sliderSpeed = 0.8f * sliderSpeedModifier;
                 break;
             default:
                 break;
