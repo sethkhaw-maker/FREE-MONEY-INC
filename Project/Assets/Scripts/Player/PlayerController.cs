@@ -203,7 +203,10 @@ public class PlayerController : MonoBehaviour
             //Clicked outside of animal, stopped chasing
             targetAnimal = null;
             targetMove = mousePos;
+            FindObjectOfType<AudioManager>()?.Play("Noah Footsteps");
         }
+
+        FindObjectOfType<AudioManager>()?.Play("Noah Footsteps");
     }
 
     //Update direction of moveDirection for animation

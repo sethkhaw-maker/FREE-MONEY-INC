@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class OceanSFX : MonoBehaviour
 {
-    public AudioManager audioManager;
+    AudioManager audioManager;
     bool isInMainMenu;
+
     void Start()
     {
         isInMainMenu = true;

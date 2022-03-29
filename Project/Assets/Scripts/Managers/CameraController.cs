@@ -116,6 +116,12 @@ public class CameraController : MonoBehaviour
     public void SetCameraToGame()
     {
         StartCoroutine(SwapCamera(3f));
+        PlaySFX();
         scopeLens.SetActive(false);
+    }
+
+    public void PlaySFX()
+    {
+        FindObjectOfType<AudioManager>()?.Play("Binocular SFX");
     }
 }
