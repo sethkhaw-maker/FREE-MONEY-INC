@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public delegate void MESSAGING_string(string stringName);
 public delegate void MESSAGING_void();
@@ -11,6 +12,7 @@ public class TUT_GameManager : MonoBehaviour
     public GameObject arkIndicator;
     public Animator fadeCanvas;
     public Animator cloudCanvas;
+
 
     [HideInInspector] public enum GameState { PLAYING, MINIGAME, SCOPING, PAUSED, TUTORIAL }
     [HideInInspector] public static GameState gameState;
@@ -71,6 +73,7 @@ public class TUT_GameManager : MonoBehaviour
         void DelayReload()
         {
             FindObjectOfType<SceneLoader>().LoadScene(3);
+            //SceneManager.LoadScene(3);
         }
     }
 
