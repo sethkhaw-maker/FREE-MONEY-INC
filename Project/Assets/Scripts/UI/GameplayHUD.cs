@@ -23,6 +23,8 @@ public class GameplayHUD : MonoBehaviour
     public Image objectiveTwoPortrait;
     public Image objectiveThreePortrait;
 
+    public Slider slider;
+
     [Header("Animal Portraits")]
     public Sprite[] animalPortraits;
 
@@ -31,6 +33,19 @@ public class GameplayHUD : MonoBehaviour
     private TUT_GameManager tutorialGameManager;
 
     public static GameplayHUD instance;
+    bool startClock = false;
+
+    private void OnEnable()
+    {
+        ObjectivesDisplay.StartClock += StartClock;
+    }
+
+    private void OnDisable()
+    {
+        ObjectivesDisplay.StartClock -= StartClock;
+    }
+
+    void StartClock() => startClock = true;
 
     void Start()
     {
@@ -43,7 +58,7 @@ public class GameplayHUD : MonoBehaviour
 
     void Update()
     {
-        if (gameplayManager != null)
+        if (gameplayManager != null && startClock)
         {
             UpdateClockhand();
             UpdateAnimalsCollected();
@@ -113,6 +128,7 @@ public class GameplayHUD : MonoBehaviour
     {
         //Rotate the clockhand UI
         clockhandImage.transform.rotation = Quaternion.Euler(0, 0, -gameplayManager.clockTimer / gameplayManager.oneDayRevolution * 360);
+        if (slider != null) slider.value = gameplayManager.clockTimer / gameplayManager.oneDayRevolution;
     }
 
     //Update UI for animals collected

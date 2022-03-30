@@ -65,10 +65,14 @@ public class GameplayManager : MonoBehaviour
     //Environment prefab
     public GameObject[] daysEnvironmentVariants;
 
+    bool startTime = false;
+
     private void Awake()
     {
         Animal.ResetStaticObjs();
     }
+
+    void StartTime() => startTime = true;
 
     void Start()
     {
@@ -87,16 +91,18 @@ public class GameplayManager : MonoBehaviour
     private void OnEnable()
     {
         Animal.UpdateAnimalCount += UpdateAnimalCount;
+        ObjectivesDisplay.StartClock += StartTime;
     }
 
     private void OnDisable()
     {
         Animal.UpdateAnimalCount -= UpdateAnimalCount;
+        ObjectivesDisplay.StartClock -= StartTime;
     }
 
     void Update()
     {
-        if (gameState == GameState.PLAYING)
+        if (gameState == GameState.PLAYING && startTime)
         {
             UpdateGameTime();
             UpdateWeatherTime();

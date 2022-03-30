@@ -10,6 +10,8 @@ public class ObjectivesDisplay : MonoBehaviour
     public Animator fadeCanvas;
     public GameObject cloudCanvas;
 
+    public static event MESSAGING_void StartClock;
+
     private void OnEnable() => SetQuota();
 
     public void SetQuota()
@@ -31,6 +33,7 @@ public class ObjectivesDisplay : MonoBehaviour
         fadeCanvas.SetInteger("fadeState", 1);
         Invoke("ShowClouds", 0.5f);
         gameObject.SetActive(false);
+        
     }
-    public void ShowClouds() => cloudCanvas.SetActive(true);
+    public void ShowClouds() { cloudCanvas.SetActive(true); StartClock?.Invoke(); }
 }
