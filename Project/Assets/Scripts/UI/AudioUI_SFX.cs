@@ -10,22 +10,22 @@ public class AudioUI_SFX : MonoBehaviour
     public void PlayButtonHoverAudio()
     {
         MainMenu.clip = MainMenu.gameObject.GetComponent<MainMenu>().SFXClips[0];
-        MainMenu.Play();
+        MainMenu.PlayOneShot(MainMenu.clip, AudioManager.instance.sfxVolume);
     }
     public void PlayButtonClickAudio()
     {
         MainMenu.clip = MainMenu.gameObject.GetComponent<MainMenu>().SFXClips[1];
-        MainMenu.Play();
+        MainMenu.PlayOneShot(MainMenu.clip, AudioManager.instance.sfxVolume);
     }
     public void PlayButtonPlayGameAudio()
     {
         MainMenu.clip = MainMenu.gameObject.GetComponent<MainMenu>().SFXClips[2];
-        MainMenu.Play();
+        MainMenu.PlayOneShot(MainMenu.clip, AudioManager.instance.sfxVolume);
     }
 
     public void PlayButtonFlipCardAudio()
     {
         MainMenu.clip = MainMenu.gameObject.GetComponent<MainMenu>().SFXClips[3];
-        MainMenu.Play();
+        MainMenu.PlayOneShot(MainMenu.clip, AudioManager.instance.sfxVolume);
     }
 }
