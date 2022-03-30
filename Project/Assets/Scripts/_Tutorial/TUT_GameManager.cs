@@ -12,13 +12,14 @@ public class TUT_GameManager : MonoBehaviour
     public GameObject arkIndicator;
     public Animator fadeCanvas;
     public Animator cloudCanvas;
+    public int sceneIndex = 2;
 
 
     [HideInInspector] public enum GameState { PLAYING, MINIGAME, SCOPING, PAUSED, TUTORIAL }
     [HideInInspector] public static GameState gameState;
     [HideInInspector] public string[] animalsToCollect = new string[3] { "Zebra", "Tiger", "Elephant" };
     [HideInInspector] public int[] animalsToCollect_Required = new int[3] { 1, 1, 1 };
-    [HideInInspector] public int[] animalsToCollect_Current = new int[3] { 0,0,0 };
+    [HideInInspector] public int[] animalsToCollect_Current = new int[3] { 0, 0, 0 };
     [HideInInspector] public GameObject minigameInstance;
 
     public static TUT_GameManager instance;
@@ -50,7 +51,7 @@ public class TUT_GameManager : MonoBehaviour
             PlayerController.instance.targetAnimal.MinigameFailed();
         }
 
-        
+
         PlayerController.instance.targetAnimal = null;          //Reset target animal from player
     }
     private void CheckWin()
@@ -73,8 +74,8 @@ public class TUT_GameManager : MonoBehaviour
 
     void DelayReload()
     {
-        FindObjectOfType<SceneLoader>().LoadScene(3);
-        //SceneManager.LoadScene(3);
+        FindObjectOfType<SceneLoader>().LoadScene(sceneIndex);
+        
     }
 
     void Subscription(bool state)
@@ -108,12 +109,12 @@ public class TUT_GameManager : MonoBehaviour
         int i = -1;
         switch (name)
         {
-            case "Zebra": case "Giraffe": case "Buffalo":   i = 0; break;
-            case "Tiger": case "Lion": case "Hyena":        i = 1; break;
-            case "Rhino": case "Elephant":                  i = 2; break;
+            case "Zebra": case "Giraffe": case "Buffalo": i = 0; break;
+            case "Tiger": case "Lion": case "Hyena": i = 1; break;
+            case "Rhino": case "Elephant": i = 2; break;
         }
         if (i == -1) return;
-        if (name == animalsToCollect[i]) animalsToCollect_Current[i]++; 
+        if (name == animalsToCollect[i]) animalsToCollect_Current[i]++;
     }
     void ResetTutorial() { Animal.ResetStaticObjs(); instance = this; }
     public void InitMinigame() { gameState = GameState.MINIGAME; if (minigameInstance == null) minigameInstance = Instantiate(minigamePrefab); }

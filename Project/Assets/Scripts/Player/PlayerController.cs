@@ -202,7 +202,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             //Clicked outside of animal, stopped chasing
-            targetAnimal.animalFSM.active = true;
+            //targetAnimal.animalFSM.active = true;
             targetAnimal = null;
             targetMove = mousePos;
             FindObjectOfType<AudioManager>()?.Play("Noah Footsteps");
