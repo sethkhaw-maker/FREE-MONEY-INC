@@ -3913,7 +3913,6 @@ Transform:
   - {fileID: 598488525689923664}
   - {fileID: 1119605970}
   - {fileID: 629327329}
-  - {fileID: 2108385443}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4551,6 +4550,7 @@ MonoBehaviour:
   arkIndicator: {fileID: 2032614505}
   fadeCanvas: {fileID: 1439814029}
   cloudCanvas: {fileID: 73855020}
+  sceneIndex: 2
   animalsToCollect:
   - Zebra
   - Tiger
@@ -12684,8 +12684,8 @@ Transform:
   - {fileID: 535029689}
   - {fileID: 1439814030}
   - {fileID: 2143498062399229348}
-  m_Father: {fileID: 533943539}
-  m_RootOrder: 4
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2111761656
 GameObject:

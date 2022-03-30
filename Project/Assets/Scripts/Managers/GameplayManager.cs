@@ -11,7 +11,6 @@ public class GameplayManager : MonoBehaviour
     public enum ClockState { DAY, NIGHT }
     public enum WeatherState { CLEAR, RAINY }
 
-
     //Variables
     public static GameplayManager instance;
     public static GameState gameState;
@@ -106,7 +105,7 @@ public class GameplayManager : MonoBehaviour
         CheckWin();
     }
 
-    //Update in-game timer
+
     public void UpdateGameTime()
     {
         //Increase timer by clockspeed, 360 for 1 revolution
@@ -128,9 +127,7 @@ public class GameplayManager : MonoBehaviour
             EnableNightVFX();
 
         }
-    }
-
-    //Update in-game weather
+    }         //Update in-game timer
     public void UpdateWeatherTime()
     {
         if (weatherState == WeatherState.CLEAR)
@@ -172,9 +169,7 @@ public class GameplayManager : MonoBehaviour
                 StartCoroutine(RainOverlayFadeIn());
             }
         }
-    }
-
-    //Chance of rain happening
+    }      //Update in-game weather
     public bool Rain()
     {
         int rnd = Random.Range(0, 100);
@@ -191,9 +186,7 @@ public class GameplayManager : MonoBehaviour
             rainChance += rainChanceIncrement;
             return false;
         }
-    }
-
-    //Call this to activate minigame
+    }                   //Chance of rain happening
     public void InitMinigame()
     {
         gameState = GameState.MINIGAME;
@@ -202,13 +195,10 @@ public class GameplayManager : MonoBehaviour
         {
             minigameInstance = Instantiate(minigamePrefab);
         }
-    }
+    }           //Call this to activate minigame
 
-    //Call this to activate end of minigame
-    public void EndMinigame(bool win)
-    {
-        StartCoroutine(DelayEndMinigame(win));
-    }
+
+
 
     private IEnumerator DelayEndMinigame(bool win)
     {
@@ -239,7 +229,7 @@ public class GameplayManager : MonoBehaviour
         PlayerController.instance.targetAnimal = null;
     }
 
-    //Send the animals into the ark
+    
     public void SendAnimalsIntoArk(GameObject ark)
     {
         //Send all into the ark (can probably do it to the 1st in party and recursive this)
@@ -248,7 +238,7 @@ public class GameplayManager : MonoBehaviour
             PlayerController.instance.party[i].target = ark;
             PlayerController.instance.party[i].followOffset = 0.1f;
         }
-    }
+    } //Send the animals into the ark
 
     //Fade In and Fade Out Effects for rain overlay
     private IEnumerator RainOverlayFadeIn()
@@ -290,7 +280,6 @@ public class GameplayManager : MonoBehaviour
         nightEffect.GetComponent<Animator>().SetBool("isNight", false);
         firefliesParticles.SetActive(false);
     }
-
     private void EnableNightVFX()
     {
         //FindObjectOfType<AudioManager>()?.Play("Night SFX");
@@ -303,7 +292,7 @@ public class GameplayManager : MonoBehaviour
 
     private void SetAnimalQuota()
     {
-        DecideRandomAnimals();
+        DecideWhichAnimalsToBeRecruited();
         DecideHowManyAnimalsToGet();
 
         void DecideHowManyAnimalsToGet()
@@ -330,7 +319,7 @@ public class GameplayManager : MonoBehaviour
                 animalsToCollect_Current[2] = 0;
             }
         }
-        void DecideRandomAnimals()
+        void DecideWhichAnimalsToBeRecruited()
         {
             for (int i = 0; i < animalsToCollect.Length; i++)
             {
@@ -382,14 +371,6 @@ public class GameplayManager : MonoBehaviour
         }
     }
 
-    //////////////////////////////////////////////
-    //Check win con
-    private void CheckWin()
-    {
-        if (!dayIsEnding && CollectedRequiredAnimals())
-            EndDay();
-    }
-
     bool CollectedRequiredAnimals()
     {
         for (int i = 0; i < animalsToCollect_Current.Length; i++)
@@ -408,7 +389,6 @@ public class GameplayManager : MonoBehaviour
         if (i == -1) return;
         if (name == animalsToCollect[i]) animalsToCollect_Current[i]++;
     }
-
     void EndDay()
     {
         dayIsEnding = true;
@@ -429,15 +409,13 @@ public class GameplayManager : MonoBehaviour
             FindObjectOfType<SceneLoader>().LoadScene(5);
         }
     }
-
     private void FadeDay()
     {
         fadeCanvas.SetInteger("fadeState", 1);
         Invoke("DelayReload", 1.5f);
     }
 
-    private void DelayReload()
-    {
-        FindObjectOfType<SceneLoader>().ReloadScene();
-    }
+    private void CheckWin() { if (!dayIsEnding && CollectedRequiredAnimals()) EndDay(); }   // check win condition
+    private void DelayReload() => FindObjectOfType<SceneLoader>().ReloadScene();
+    public void EndMinigame(bool win) => StartCoroutine(DelayEndMinigame(win));             //Call this to activate end of minigame
 }
