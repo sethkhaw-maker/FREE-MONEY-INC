@@ -6257,7 +6257,7 @@ MonoBehaviour:
   loadEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1166794192}
+      - m_Target: {fileID: 7458690360226402967}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -106192,10 +106192,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7458690360226402967}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 7458690360226402968}
+        m_TargetAssemblyTypeName: ObjectivesDisplay, Assembly-CSharp
+        m_MethodName: ButtonClick
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -106276,6 +106276,7 @@ GameObject:
   - component: {fileID: 7458690360226402964}
   - component: {fileID: 7458690360226402965}
   - component: {fileID: 7458690360226402966}
+  - component: {fileID: 7458690360226402968}
   m_Layer: 5
   m_Name: Objective Canvas
   m_TagString: Untagged
@@ -106283,6 +106284,28 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
+--- !u!114 &7458690360226402968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7458690360226402967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe44539e0a8b85048b271cc8428b3531, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  imageDisplay:
+  - {fileID: 1651045555}
+  - {fileID: 472569998}
+  - {fileID: 1470890581}
+  text:
+  - {fileID: 178733115}
+  - {fileID: 1647719419}
+  - {fileID: 1780718876}
+  fadeCanvas: {fileID: 1030118315}
+  cloudCanvas: {fileID: 1166794192}
 --- !u!224 &7458690360226402971
 RectTransform:
   m_ObjectHideFlags: 0

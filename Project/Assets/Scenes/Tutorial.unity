@@ -8722,6 +8722,10 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6698813993798678743, guid: f54dc91e31f76db479ad36d530866feb, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 04c769b3f3d32f140888663b0a409e51, type: 2}
     - target: {fileID: 6698813993798678746, guid: f54dc91e31f76db479ad36d530866feb, type: 3}
       propertyPath: m_Name
       value: Fade Canvas

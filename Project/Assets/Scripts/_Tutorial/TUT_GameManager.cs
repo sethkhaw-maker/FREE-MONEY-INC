@@ -68,7 +68,7 @@ public class TUT_GameManager : MonoBehaviour
 
     void FadeDay()
     {
-        fadeCanvas.SetInteger("fadeState", 1);
+        fadeCanvas.SetInteger("fadeState", 2);
         Invoke("DelayReload", 1.5f);
     }
 

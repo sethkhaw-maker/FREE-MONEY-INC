@@ -405,13 +405,13 @@ public class GameplayManager : MonoBehaviour
         {
             //Replace with end cutscene
             dayCount = 0;
-            fadeCanvas.SetInteger("fadeState", 1);
+            fadeCanvas.SetInteger("fadeState", 2);
             FindObjectOfType<SceneLoader>().LoadScene(5);
         }
     }
     private void FadeDay()
     {
-        fadeCanvas.SetInteger("fadeState", 1);
+        fadeCanvas.SetInteger("fadeState", 2);
         Invoke("DelayReload", 1.5f);
     }
 

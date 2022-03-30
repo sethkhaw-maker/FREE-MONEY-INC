@@ -83,9 +83,9 @@ public class CameraController : MonoBehaviour
     //Enable the camera scope
     private IEnumerator SwapCamera(float fadeDuration)
     {
-        fadeAnim.SetInteger("fadeState", 1);
+        fadeAnim.SetInteger("fadeState", 2);
         yield return new WaitForSeconds(fadeDuration / 2);
-        fadeAnim.SetInteger("fadeState", 0);
+        fadeAnim.SetInteger("fadeState", 1);
 
         if (isScoped == false)
         {
