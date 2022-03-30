@@ -207,3 +207,9 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: Oi
+    clip: {fileID: 8300000, guid: f64f28a568e6ab44fbd0fb857fc2d739, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
