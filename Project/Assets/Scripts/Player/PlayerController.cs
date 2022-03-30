@@ -192,14 +192,12 @@ public class PlayerController : MonoBehaviour
             //Check if party contains the animal
             if (party.Contains(hitAnimal)) return;
 
-            targetMove = mousePos;
-            FindObjectOfType<AudioManager>()?.Play("Mouse Click");
-
-            if (!targetAnimal.animalFSM.currState.IsInteractable) return;
-
             //Assign animal to target for chase and minigame
             targetAnimal = hitAnimal;
             targetAnimal.animalFSM.active = false;
+
+            targetMove = mousePos;
+            FindObjectOfType<AudioManager>()?.Play("Mouse Click");
         }
         else
         {
