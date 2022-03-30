@@ -63,18 +63,18 @@ public class TUT_GameManager : MonoBehaviour
     {
         cloudCanvas.SetBool("endDay", true);
         Invoke("FadeDay", 2.583f);
+    }
 
-        void FadeDay()
-        {
-            fadeCanvas.SetInteger("fadeState", 1);
-            Invoke("DelayReload", 1.5f);
-        }
+    void FadeDay()
+    {
+        fadeCanvas.SetInteger("fadeState", 1);
+        Invoke("DelayReload", 1.5f);
+    }
 
-        void DelayReload()
-        {
-            FindObjectOfType<SceneLoader>().LoadScene(3);
-            //SceneManager.LoadScene(3);
-        }
+    void DelayReload()
+    {
+        FindObjectOfType<SceneLoader>().LoadScene(3);
+        //SceneManager.LoadScene(3);
     }
 
     void Subscription(bool state)

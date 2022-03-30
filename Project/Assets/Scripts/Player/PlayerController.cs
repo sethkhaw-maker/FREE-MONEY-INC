@@ -194,6 +194,7 @@ public class PlayerController : MonoBehaviour
 
             //Assign animal to target for chase and minigame
             targetAnimal = hitAnimal;
+            targetAnimal.animalFSM.active = false;
             targetMove = mousePos;
             FindObjectOfType<AudioManager>()?.Play("Mouse Click");
 
@@ -201,6 +202,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             //Clicked outside of animal, stopped chasing
+            targetAnimal.animalFSM.active = true;
             targetAnimal = null;
             targetMove = mousePos;
             FindObjectOfType<AudioManager>()?.Play("Noah Footsteps");
