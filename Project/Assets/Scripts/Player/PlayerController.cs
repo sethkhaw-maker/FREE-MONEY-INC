@@ -66,13 +66,13 @@ public class PlayerController : MonoBehaviour
             isClearingAnimals = false;
             arkDoor.SetBool("isClosed", true);
         }
-        if (GameplayManager.gameState == GameplayManager.GameState.MINIGAME || GameplayManager.gameState == GameplayManager.GameState.SCOPING || isClearingAnimals)
+        if (GameplayManager.gameState == GameplayManager.GameState.MINIGAME || GameplayManager.gameState == GameplayManager.GameState.SCOPING)
         {
             targetMove = transform.position;
             rb.velocity = Vector2.zero;
             return;
         }
-        if (TUT_GameManager.gameState == TUT_GameManager.GameState.MINIGAME || TUT_GameManager.gameState == TUT_GameManager.GameState.SCOPING || TUT_GameManager.gameState == TUT_GameManager.GameState.TUTORIAL || isClearingAnimals)
+        if (TUT_GameManager.gameState == TUT_GameManager.GameState.MINIGAME || TUT_GameManager.gameState == TUT_GameManager.GameState.SCOPING || TUT_GameManager.gameState == TUT_GameManager.GameState.TUTORIAL)
         {
             targetMove = transform.position;
             rb.velocity = Vector2.zero;
@@ -192,17 +192,20 @@ public class PlayerController : MonoBehaviour
             //Check if party contains the animal
             if (party.Contains(hitAnimal)) return;
 
-            //Assign animal to target for chase and minigame
-            targetAnimal = hitAnimal;
-            targetAnimal.animalFSM.active = false;
             targetMove = mousePos;
             FindObjectOfType<AudioManager>()?.Play("Mouse Click");
 
+            if (!targetAnimal.animalFSM.currState.IsInteractable) return;
+
+            //Assign animal to target for chase and minigame
+            targetAnimal = hitAnimal;
+            targetAnimal.animalFSM.active = false;
         }
         else
         {
             //Clicked outside of animal, stopped chasing
-            targetAnimal.animalFSM.active = true;
+            if (targetAnimal != null)
+                targetAnimal.animalFSM.active = true;
             targetAnimal = null;
             targetMove = mousePos;
             FindObjectOfType<AudioManager>()?.Play("Noah Footsteps");

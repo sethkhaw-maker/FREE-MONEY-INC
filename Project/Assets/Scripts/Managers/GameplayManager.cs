@@ -39,15 +39,9 @@ public class GameplayManager : MonoBehaviour
 
     //In game variables
     //[HideInInspector] public int animalsCollected = 0;                //Number of animals collected in this session
-    public int preysCollected = 0;
-    public int predatorsCollected = 0;
-    public int mediatorsCollected = 0;
-
-    public int preysRequired = 5;
-    public int predatorsRequired = 3;
-    public int mediatorsRequired = 1;
-
-    public string[] animalsToCollect = new string[3];
+    [HideInInspector] public string[] animalsToCollect = new string[3];
+    [HideInInspector] public int[] animalsToCollect_Required = new int[3];
+    [HideInInspector] public int[] animalsToCollect_Current = new int[3];
 
     //Game timers
     [HideInInspector] public float clockTimer;
@@ -99,24 +93,6 @@ public class GameplayManager : MonoBehaviour
     private void OnDisable()
     {
         Animal.UpdateAnimalCount -= UpdateAnimalCount;
-    }
-
-    void UpdateAnimalCount(string name)
-    {
-        switch (name)
-        {
-            case "Zebra":
-            case "Giraffe":
-            case "Buffalo": 
-                preysCollected++; break;
-            case "Tiger":
-            case "Lion":
-            case "Hyena":
-                predatorsCollected++; break;
-            case "Rhino":
-            case "Elephant":
-                mediatorsCollected++; break;
-        }
     }
 
     void Update()
@@ -327,52 +303,80 @@ public class GameplayManager : MonoBehaviour
 
     private void SetAnimalQuota()
     {
-        animalsToCollect = new string[3];
+        DecideRandomAnimals();
+        DecideHowManyAnimalsToGet();
 
-        for (int i = 0; i < animalsToCollect.Length; i++)
+        void DecideHowManyAnimalsToGet()
         {
-            if (i == 0)
+            ResetAnimalCurrent();
+            switch (dayCount)
             {
-                int rnd = Random.Range(0, 3);
-                if (rnd == 0)
-                {
-                    animalsToCollect[i] = "Zebra";
-                }
-                else if (rnd == 1)
-                {
-                    animalsToCollect[i] = "Giraffe";
-                }
-                else if (rnd == 2)
-                {
-                    animalsToCollect[i] = "Buffalo";
-                }
+                case 0: SetToAnimalRequired(3, 2, 1); break;
+                case 1: SetToAnimalRequired(5, 3, 1); break;
+                case 2: SetToAnimalRequired(5, 5, 2); break;
             }
-            else if (i == 1)
+
+            void SetToAnimalRequired(int prey, int predator, int mediator)
             {
-                int rnd = Random.Range(0, 3);
-                if (rnd == 0)
-                {
-                    animalsToCollect[i] = "Lion";
-                }
-                else if (rnd == 1)
-                {
-                    animalsToCollect[i] = "Tiger";
-                }
-                else if (rnd == 2)
-                {
-                    animalsToCollect[i] = "Hyena";
-                }
+                animalsToCollect_Required[0] = prey;
+                animalsToCollect_Required[1] = predator;
+                animalsToCollect_Required[2] = mediator;
             }
-            else if (i == 2)
+
+            void ResetAnimalCurrent()
             {
-                int rnd = Random.Range(0, 2);
-                if (rnd == 0)
+                animalsToCollect_Current[0] = 0;
+                animalsToCollect_Current[1] = 0;
+                animalsToCollect_Current[2] = 0;
+            }
+        }
+        void DecideRandomAnimals()
+        {
+            for (int i = 0; i < animalsToCollect.Length; i++)
+            {
+                if (i == 0)
                 {
-                    animalsToCollect[i] = "Elephant";
+                    int rnd = Random.Range(0, 3);
+                    if (rnd == 0)
+                    {
+                        animalsToCollect[i] = "Zebra";
+                    }
+                    else if (rnd == 1)
+                    {
+                        animalsToCollect[i] = "Giraffe";
+                    }
+                    else if (rnd == 2)
+                    {
+                        animalsToCollect[i] = "Buffalo";
+                    }
                 }
-                else if (rnd == 1)
+                else if (i == 1)
                 {
-                    animalsToCollect[i] = "Rhino";
+                    int rnd = Random.Range(0, 3);
+                    if (rnd == 0)
+                    {
+                        animalsToCollect[i] = "Lion";
+                    }
+                    else if (rnd == 1)
+                    {
+                        animalsToCollect[i] = "Tiger";
+                    }
+                    else if (rnd == 2)
+                    {
+                        animalsToCollect[i] = "Hyena";
+                    }
+                }
+                else if (i == 2)
+                {
+                    int rnd = Random.Range(0, 2);
+                    if (rnd == 0)
+                    {
+                        animalsToCollect[i] = "Elephant";
+                    }
+                    else if (rnd == 1)
+                    {
+                        animalsToCollect[i] = "Rhino";
+                    }
                 }
             }
         }
@@ -382,25 +386,47 @@ public class GameplayManager : MonoBehaviour
     //Check win con
     private void CheckWin()
     {
-        if (preysCollected >= preysRequired && predatorsCollected >= predatorsRequired && mediatorsCollected >= mediatorsRequired && dayIsEnding == false)
+        if (!dayIsEnding && CollectedRequiredAnimals())
+            EndDay();
+    }
+
+    bool CollectedRequiredAnimals()
+    {
+        for (int i = 0; i < animalsToCollect_Current.Length; i++)
+            if (animalsToCollect_Required[i] > animalsToCollect_Current[i]) return false;
+        return true;
+    }
+    void UpdateAnimalCount(string name)
+    {
+        int i = -1;
+        switch (name)
         {
-            dayIsEnding = true;
+            case "Zebra": case "Giraffe": case "Buffalo": i = 0; break;
+            case "Tiger": case "Lion": case "Hyena": i = 1; break;
+            case "Rhino": case "Elephant": i = 2; break;
+        }
+        if (i == -1) return;
+        if (name == animalsToCollect[i]) animalsToCollect_Current[i]++;
+    }
 
-            //Day is progressing to next
-            if (dayCount < 2)
-            {
-                dayCount++;
+    void EndDay()
+    {
+        dayIsEnding = true;
 
-                cloudCanvas.SetBool("endDay", true);
-                Invoke("FadeDay", 2.583f);
-            }
-            else
-            {
-                //Replace with end cutscene
-                dayCount = 0;
-                fadeCanvas.SetInteger("fadeState", 1);
-                FindObjectOfType<SceneLoader>().LoadScene(5);
-            }
+        //Day is progressing to next
+        if (dayCount < 2)
+        {
+            dayCount++;
+
+            cloudCanvas.SetBool("endDay", true);
+            Invoke("FadeDay", 2.583f);
+        }
+        else
+        {
+            //Replace with end cutscene
+            dayCount = 0;
+            fadeCanvas.SetInteger("fadeState", 1);
+            FindObjectOfType<SceneLoader>().LoadScene(5);
         }
     }
 

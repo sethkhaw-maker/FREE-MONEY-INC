@@ -117,9 +117,9 @@ public class GameplayHUD : MonoBehaviour
     {
         if (gameplayManager != null)
         {
-            objectiveOneText.text = ": " + gameplayManager.preysCollected + "/" + gameplayManager.preysRequired;
-            objectiveTwoText.text = ": " + gameplayManager.predatorsCollected + "/" + gameplayManager.predatorsRequired;
-            objectiveThreeText.text = ": " + gameplayManager.mediatorsCollected + "/" + gameplayManager.mediatorsRequired;
+            objectiveOneText.text = ": " + gameplayManager.animalsToCollect_Current[0] + "/" + gameplayManager.animalsToCollect_Required[0];
+            objectiveTwoText.text = ": " + gameplayManager.animalsToCollect_Current[1] + "/" + gameplayManager.animalsToCollect_Required[1];
+            objectiveThreeText.text = ": " + gameplayManager.animalsToCollect_Current[2] + "/" + gameplayManager.animalsToCollect_Required[2];
         }
         else if (tutorialGameManager != null)
         {
