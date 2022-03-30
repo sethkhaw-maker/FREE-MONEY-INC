@@ -274,10 +274,10 @@ public class Minigame : MonoBehaviour
         {
             //if (!SYS_GeneralDashboard.instance.pauseActive)
             //{
-                t += Time.deltaTime;
-                float x = Random.Range(-1, 1) * cameraShakeStrength;
-                float y = Random.Range(-1, 1) * cameraShakeStrength;
-                mainCam.transform.position = new Vector3(originalCamPos.x + x, originalCamPos.y + y, originalCamPos.z);
+            t += Time.deltaTime;
+            float x = Random.Range(-1, 1) * cameraShakeStrength;
+            float y = Random.Range(-1, 1) * cameraShakeStrength;
+            mainCam.transform.position = new Vector3(originalCamPos.x + x, originalCamPos.y + y, originalCamPos.z);
             //}
             yield return null;
         }
@@ -309,18 +309,25 @@ public class Minigame : MonoBehaviour
 
     private void MakeNoise(bool success)
     {
+        string theAnimalName = PlayerController.instance.targetAnimal.animalName;
+
         if (success)
         {
             switch (PlayerController.instance.targetAnimal.animalType)
             {
                 case ANIMALTYPE.PREY:
-                    FindObjectOfType<AudioManager>()?.Play("Prey Roar");
+                    if (theAnimalName == "Buffalo") FindObjectOfType<AudioManager>()?.Play("Buffalo Moo");
+                    if (theAnimalName == "Zebra") FindObjectOfType<AudioManager>()?.Play("Prey Roar");
+                    if (theAnimalName == "Giraffe") FindObjectOfType<AudioManager>()?.Play("Grunt SFX");
                     break;
                 case ANIMALTYPE.PREDATOR:
-                    FindObjectOfType<AudioManager>()?.Play("Predator Roar");
+                    if (theAnimalName == "Lion") FindObjectOfType<AudioManager>()?.Play("Predator Roar");
+                    if (theAnimalName == "Tiger") FindObjectOfType<AudioManager>()?.Play("Tiger Roar");
+                    if (theAnimalName == "Hyena") FindObjectOfType<AudioManager>()?.Play("Hyena Roar");
                     break;
                 case ANIMALTYPE.MEDIATOR:
-                    FindObjectOfType<AudioManager>()?.Play("Elephant Roar");
+                    if (theAnimalName == "Elephant") FindObjectOfType<AudioManager>()?.Play("Elephant Roar");
+                    if (theAnimalName == "Rhino") FindObjectOfType<AudioManager>()?.Play("Grunt SFX");
                     break;
             }
         }

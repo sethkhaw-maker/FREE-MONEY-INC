@@ -70,8 +70,8 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - name: Minigame Passing
-    clip: {fileID: 8300000, guid: abcb3e42d4243474cb41ecc3b7a2b50a, type: 3}
-    volume: 1
+    clip: {fileID: 8300000, guid: dfbfca8b4f7879d40a8d6d9f194743ee, type: 3}
+    volume: 0.8
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -118,7 +118,7 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - name: Prey Roar
-    clip: {fileID: 8300000, guid: aa4eccc1397f6e5469311d4e68a907f1, type: 3}
+    clip: {fileID: 8300000, guid: 534666e7453f3d946b4a055a1cb05bb7, type: 3}
     volume: 0.8
     pitch: 1
     loop: 0
@@ -168,6 +168,42 @@ MonoBehaviour:
   - name: Mouse Click
     clip: {fileID: 8300000, guid: 8a10ef1e561b7864da8ea491638945c5, type: 3}
     volume: 0.7
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Grunt SFX
+    clip: {fileID: 8300000, guid: 52445a6825b8b96408f147699cbdad15, type: 3}
+    volume: 0.85
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Binocular SFX
+    clip: {fileID: 8300000, guid: 7c909159884468343b2b63884fc3262c, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Noah Footsteps
+    clip: {fileID: 8300000, guid: fd0404c87e1d6df4c8c0da2a08afba33, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Buffalo Moo
+    clip: {fileID: 8300000, guid: b93d6b00be670ce458085e6fc6371ae3, type: 3}
+    volume: 0.47
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Hyena Roar
+    clip: {fileID: 8300000, guid: 7e608b400aa18fb4cb16af758bf708bf, type: 3}
+    volume: 0.8
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Tiger Roar
+    clip: {fileID: 8300000, guid: 9bcf4023e84929e45a398472badf7405, type: 3}
+    volume: 0.8
     pitch: 1
     loop: 0
     source: {fileID: 0}
