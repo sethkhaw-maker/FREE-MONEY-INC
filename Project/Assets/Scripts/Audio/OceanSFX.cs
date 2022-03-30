@@ -4,14 +4,20 @@ using UnityEngine;
 
 public class OceanSFX : MonoBehaviour
 {
-    AudioManager audioManager;
+    public AudioManager audioManager;
     bool isInMainMenu;
+    bool isPlaying;
+
+    void Awake()
+    {
+        audioManager = GameObject.Find("Audio Manager").GetComponent<AudioManager>();
+    }
 
     void Start()
     {
         isInMainMenu = true;
-        audioManager = GameObject.Find("Audio Manager").GetComponent<AudioManager>();
-        FindObjectOfType<AudioManager>()?.Play("Ocean Waves");
+
+        //FindObjectOfType<AudioManager>()?.Play("Ocean Waves");
 
     }
 
@@ -27,8 +33,15 @@ public class OceanSFX : MonoBehaviour
 
     IEnumerator LoopAudio()
     {
+        if (!isPlaying)
+        {
+            FindObjectOfType<AudioManager>()?.Play("Ocean Waves");
+            isPlaying = true;
+        }
         yield return new WaitForSeconds(audioManager.sounds[15].clip.length);
+        isPlaying = false;
         FindObjectOfType<AudioManager>()?.Play("Ocean Waves");
+        
     }
 
     public void Starting()

@@ -36,4 +36,9 @@ public class MainMenu : MonoBehaviour
     {
         FindObjectOfType<AudioManager>()?.Play("Page Flip");
     }
+
+    public void PlayOiSFX()
+    {
+        FindObjectOfType<AudioManager>()?.Play("Oi");
+    }
 }
