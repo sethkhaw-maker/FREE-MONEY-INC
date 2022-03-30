@@ -30,8 +30,11 @@ public class GameplayHUD : MonoBehaviour
     private GameplayManager gameplayManager;
     private TUT_GameManager tutorialGameManager;
 
+    public static GameplayHUD instance;
+
     void Start()
     {
+        instance = this;
         gameplayManager = FindObjectOfType<GameplayManager>();
         tutorialGameManager = FindObjectOfType<TUT_GameManager>();
         SetAnimalPortraits();
