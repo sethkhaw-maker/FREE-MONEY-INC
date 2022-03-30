@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CameraController : MonoBehaviour
 {
@@ -20,21 +21,30 @@ public class CameraController : MonoBehaviour
 
     public GameObject arkIndicator;
 
+    private float castDist = 300f;
+    public LayerMask animalLayer;
+    public GameObject infoBox;
+    public Text animalInfo;
+
     void Start()
     {
         player = FindObjectOfType<PlayerController>();
         scopeCam.depth = -2;
+        infoBox.SetActive(false);
     }
 
     void Update()
     {
         if (isScoped)
         {
+            CheckAnimal();
+
             float x = Input.GetAxisRaw("Mouse X") * mouseSensitivity * Time.deltaTime;
             float y = Input.GetAxisRaw("Mouse Y") * mouseSensitivity * Time.deltaTime;
 
             scopeCam.transform.position += new Vector3(x, y, 0);
 
+            //Lock position of binoculars camera to boundaries
             if (scopeCam.transform.position.x < -38)
             {
                 scopeCam.transform.position = new Vector3(-38f, scopeCam.transform.position.y, scopeCam.transform.position.z);
@@ -124,4 +134,24 @@ public class CameraController : MonoBehaviour
     {
         FindObjectOfType<AudioManager>()?.Play("Binocular SFX");
     }
+
+    public void CheckAnimal()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(scopeCam.transform.position, scopeCam.transform.forward, castDist, animalLayer);
+        if (hit.collider != null)
+        {
+            //print(hit.transform.name);
+
+            string hitName = hit.transform.GetComponent<Animal>().animalName;
+            string hitType = hit.transform.GetComponent<Animal>().animalType.ToString();
+
+            infoBox.SetActive(true);
+            animalInfo.text = "Animal : " + hitName + "\n" + "Type : " + hitType;
+        }
+        else
+        {
+            infoBox.SetActive(false);
+        }
+    }
+
 }
