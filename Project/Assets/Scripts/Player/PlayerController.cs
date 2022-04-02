@@ -61,6 +61,11 @@ public class PlayerController : MonoBehaviour
 
         if (TutorialIsRunning()) return;
 
+        if (party.Count != 0)
+        {
+            targetMove = transform.position;
+            rb.velocity = Vector2.zero;
+        }
         if (party.Count == 0)
         {
             isClearingAnimals = false;

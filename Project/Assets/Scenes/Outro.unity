@@ -317,7 +317,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7651901415210417604, guid: b05cc1048ace9614f8e117ce2bd30c3b, type: 3}
       propertyPath: m_Name
-      value: Game Over Canvas
+      value: Game Win UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 7651901415210417604, guid: b05cc1048ace9614f8e117ce2bd30c3b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7651901415286867749, guid: b05cc1048ace9614f8e117ce2bd30c3b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -338,6 +342,10 @@ PrefabInstance:
     - target: {fileID: 7651901415286867749, guid: b05cc1048ace9614f8e117ce2bd30c3b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7651901415563613673, guid: b05cc1048ace9614f8e117ce2bd30c3b, type: 3}
+      propertyPath: m_Name
+      value: Game Win UI
       objectReference: {fileID: 0}
     - target: {fileID: 7651901416586769643, guid: b05cc1048ace9614f8e117ce2bd30c3b, type: 3}
       propertyPath: m_Text

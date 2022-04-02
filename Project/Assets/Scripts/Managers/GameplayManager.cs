@@ -21,6 +21,7 @@ public class GameplayManager : MonoBehaviour
     //Minigame prefabs
     private GameObject minigameInstance;
     public GameObject minigamePrefab;
+    public GameObject winCanvas;
 
     //Game over prefabs
     //private GameObject gameOverInstance;
@@ -411,8 +412,10 @@ public class GameplayManager : MonoBehaviour
         {
             //Replace with end cutscene
             dayCount = 0;
+            gameState = GameState.MINIGAME;
             fadeCanvas.SetInteger("fadeState", 2);
-            FindObjectOfType<SceneLoader>().LoadScene(5);
+            winCanvas.SetActive(true);
+            //FindObjectOfType<SceneLoader>().LoadScene(5);
         }
     }
     private void FadeDay()
