@@ -24,6 +24,8 @@ public class PlayerController : MonoBehaviour
 
     public bool isClearingAnimals = false;
 
+    public CopyCursor cursor;
+
     public enum MoveDirection
     {
         UP,
@@ -58,6 +60,8 @@ public class PlayerController : MonoBehaviour
 
         //Update Noah's animation
         UpdateAnimation();
+
+        //CheckHover();
 
         if (TutorialIsRunning()) return;
 
@@ -161,6 +165,17 @@ public class PlayerController : MonoBehaviour
                 newAnimal.RegisterAnimalToParty();
             }
         }
+    }
+
+    private void CheckHover()
+    {
+        if (GameplayManager.gameState != GameplayManager.GameState.PLAYING) return;
+
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        RaycastHit2D anyAnimals = Physics2D.Raycast(mousePos, transform.forward, 1f, LayerMask.GetMask("Animal"));
+
+        if (anyAnimals.collider != null) cursor.rend.sprite = cursor.hoverCursor;
+        else cursor.rend.sprite = cursor.normalCursor;
     }
 
     //Check for animal clicked

@@ -816,6 +816,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1122441321409301251, guid: d4794d1c1ace05e41b20fd7a4946d1ff, type: 3}
   m_PrefabInstance: {fileID: 8668992891363335654}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &96678093 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1122441321409301252, guid: d4794d1c1ace05e41b20fd7a4946d1ff, type: 3}
+  m_PrefabInstance: {fileID: 8668992891363335654}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 96678089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 962813614d0970f41924a622e902c4ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &103019830
 GameObject:
   m_ObjectHideFlags: 0
@@ -105960,6 +105971,10 @@ PrefabInstance:
       propertyPath: arkDoor
       value: 
       objectReference: {fileID: 453305796}
+    - target: {fileID: 4874716347760840693, guid: c215f3c6438e701429bdce108dc30b2f, type: 3}
+      propertyPath: cursor
+      value: 
+      objectReference: {fileID: 96678093}
     - target: {fileID: 4874716347760840695, guid: c215f3c6438e701429bdce108dc30b2f, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -106990,6 +107005,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1122441321409301252, guid: d4794d1c1ace05e41b20fd7a4946d1ff, type: 3}
+      propertyPath: hoverCursor
+      value: 
+      objectReference: {fileID: 21300000, guid: 33e6c46f66fb8e84084ef7d6ea9143c0, type: 3}
     - target: {fileID: 8668992891774452689, guid: d4794d1c1ace05e41b20fd7a4946d1ff, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

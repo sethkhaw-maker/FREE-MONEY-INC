@@ -6,9 +6,10 @@ using UnityEngine.UI;
 public class CopyCursor : MonoBehaviour
 {
     //public static CopyCursor instance;
-    private Image rend;
+    public Image rend;
     public Sprite highlightedCursor;
     public Sprite normalCursor;
+    public Sprite hoverCursor;
     public AudioSource CursorAudio;
     public AudioClip[] CursorClips;
     public GameObject clickEffect;
