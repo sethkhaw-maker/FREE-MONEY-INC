@@ -429,7 +429,7 @@ public class GameplayManager : MonoBehaviour
         if (state) dayCount++;
 
         //Day is progressing to next
-        if (dayCount < 2)
+        if (dayCount < 3)
         {
             cloudCanvas.SetBool("endDay", true);
             Invoke("FadeDay", 2.583f);
