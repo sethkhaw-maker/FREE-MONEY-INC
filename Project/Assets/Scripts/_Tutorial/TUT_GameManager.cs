@@ -14,7 +14,6 @@ public class TUT_GameManager : MonoBehaviour
     public Animator cloudCanvas;
     public int sceneIndex = 2;
 
-
     [HideInInspector] public enum GameState { PLAYING, MINIGAME, SCOPING, PAUSED, TUTORIAL }
     [HideInInspector] public static GameState gameState;
     [HideInInspector] public string[] animalsToCollect = new string[3] { "Zebra", "Tiger", "Elephant" };
@@ -25,6 +24,7 @@ public class TUT_GameManager : MonoBehaviour
     public static TUT_GameManager instance;
 
     private void Awake() => ResetTutorial();
+    private void Start() => ResetTutorialOnStart();
     private void OnEnable() => Subscription(true);
     private void OnDisable() => Subscription(false);
     private void Update() => CheckWin();
@@ -116,7 +116,8 @@ public class TUT_GameManager : MonoBehaviour
         if (i == -1) return;
         if (name == animalsToCollect[i]) animalsToCollect_Current[i]++;
     }
-    void ResetTutorial() { Animal.ResetStaticObjs(); instance = this; }
+    void ResetTutorial() { Animal.ResetStaticObjs(); }
+    void ResetTutorialOnStart() { instance = this; gameState = GameState.PLAYING; GameplayManager.gameState = GameplayManager.GameState.PLAYING; }
     public void InitMinigame() { gameState = GameState.MINIGAME; if (minigameInstance == null) minigameInstance = Instantiate(minigamePrefab); }
     public void EndMinigame(bool win) => StartCoroutine(DelayEndMinigame(win));
 }

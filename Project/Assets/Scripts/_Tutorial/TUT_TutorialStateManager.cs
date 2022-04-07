@@ -28,6 +28,7 @@ public class TUT_TutorialStateManager : MonoBehaviour
     void CheckForFlagsInUpdate()
     {
         if (tutorialRunning && tutorialState == 0 && !tutorialDisplayed[0]) { ReadAnimator(); }
+        Debug.Log("tutorialDisplayed @ " + tutorialState + ": " + tutorialDisplayed[tutorialState]);
     }
 
     void ProgressTutorial()

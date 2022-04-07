@@ -24,7 +24,8 @@ public class STATE_FollowNoah : SYS_FSMState
         if (index != 0) followTarget = PlayerController.instance.party[index - 1].gameObject;
 
         // Set target to animal.
-        self.target = followTarget;
+        if (followTarget != null)
+            self.target = followTarget;
     }
 
     public override void OnExit() { }
@@ -32,7 +33,9 @@ public class STATE_FollowNoah : SYS_FSMState
     public override void Running()
     {
         // Calculate distance.
-        float dist = Vector3.Distance(self.transform.position, self.target.transform.position);
+
+        float dist = 0;
+        if (self.target != null) dist = Vector3.Distance(self.transform.position, self.target.transform.position);
 
         // Ensure that there's an offset. Move animal until offset distance.
         if (dist > self.followOffset)
