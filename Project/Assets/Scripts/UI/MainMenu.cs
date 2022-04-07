@@ -51,6 +51,6 @@ public class MainMenu : MonoBehaviour
 
     public void PlayClickSound()
     {
-
+        FindObjectOfType<AudioManager>()?.Play("Button Click");
     }
 }

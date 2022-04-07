@@ -14,6 +14,11 @@ public class ObjectivesDisplay : MonoBehaviour
 
     private void OnEnable() => SetQuota();
 
+    private void Start()
+    {
+        FindObjectOfType<AudioManager>()?.Play("Objective Noti");
+    }
+
     public void SetQuota()
     {
         GameplayManager.gameState = GameplayManager.GameState.MINIGAME;
@@ -30,6 +35,7 @@ public class ObjectivesDisplay : MonoBehaviour
     public void ButtonClick()
     {
         GameplayManager.gameState = GameplayManager.GameState.PLAYING;
+        FindObjectOfType<AudioManager>()?.Play("Button Click");
         fadeCanvas.SetInteger("fadeState", 1);
         Invoke("ShowClouds", 0.5f);
         gameObject.SetActive(false);

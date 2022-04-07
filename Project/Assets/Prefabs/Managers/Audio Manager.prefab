@@ -225,3 +225,9 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: Objective Noti
+    clip: {fileID: 8300000, guid: 6fb4b008b83c0ec4a8d28c9828945ce8, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
