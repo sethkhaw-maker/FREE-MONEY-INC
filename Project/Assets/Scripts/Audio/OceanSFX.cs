@@ -40,7 +40,7 @@ public class OceanSFX : MonoBehaviour
         }
         yield return new WaitForSeconds(audioManager.sounds[15].clip.length);
         isPlaying = false;
-        FindObjectOfType<AudioManager>()?.Play("Ocean Waves");
+        //FindObjectOfType<AudioManager>()?.Play("Ocean Waves");
         
     }
 

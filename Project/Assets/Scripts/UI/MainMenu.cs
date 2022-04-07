@@ -25,6 +25,7 @@ public class MainMenu : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+        Debug.Log("QUIT!");
     }
 
     public void LoadMainLevel()
@@ -40,5 +41,16 @@ public class MainMenu : MonoBehaviour
     public void PlayOiSFX()
     {
         FindObjectOfType<AudioManager>()?.Play("Oi");
+        
+    }
+
+    public void PlayUIHover()
+    {
+        FindObjectOfType<AudioManager>()?.Play("UI Selection");
+    }
+
+    public void PlayClickSound()
+    {
+
     }
 }

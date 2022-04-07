@@ -213,3 +213,15 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: UI Selection
+    clip: {fileID: 8300000, guid: 4bbb28875d1ef6349b969a40bb31cc16, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Button Click
+    clip: {fileID: 8300000, guid: 025656cb13da4df428b3c4d7bd53d014, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
