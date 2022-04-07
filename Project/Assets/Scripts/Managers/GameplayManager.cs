@@ -71,6 +71,7 @@ public class GameplayManager : MonoBehaviour
     private void Awake()
     {
         Animal.ResetStaticObjs();
+        gameState = GameState.PLAYING;
     }
 
     void StartTime() => startTime = true;
