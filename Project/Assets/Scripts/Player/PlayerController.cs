@@ -63,8 +63,6 @@ public class PlayerController : MonoBehaviour
 
         //CheckHover();
 
-        Debug.Log("isTutorialRunning?: " + TutorialIsRunning());
-
         if (TutorialIsRunning()) return;
 
         if (party.Count != 0)
@@ -120,13 +118,10 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            Debug.Log("step#3 | moving to targetMove" + targetMove + " | checkDist: " + checkDist);
             if (Vector2.Distance(transform.position, targetMove) < checkDist)
             {
                 //Noah has reached destination
                 rb.velocity = Vector2.zero;
-
-                Debug.Log("step#4.1");
 
             }
             else
@@ -134,8 +129,6 @@ public class PlayerController : MonoBehaviour
                 //Get the vector direction from mousepos to player
                 Vector2 dir = targetMove - new Vector2(transform.position.x, transform.position.y);
                 dir = dir.normalized;
-
-                Debug.Log("step#4.2");
 
                 rb.velocity = dir * speed;
             }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameOverScript : MonoBehaviour
+public class GameWinScript : MonoBehaviour
 {
     public Animator fadeCanvas;
 
@@ -16,4 +16,5 @@ public class GameOverScript : MonoBehaviour
             sceneLoader.ChangeBGM(0);
         }
     }
+    public void RetryDay() => GameplayManager.instance.RetryDay();
 }

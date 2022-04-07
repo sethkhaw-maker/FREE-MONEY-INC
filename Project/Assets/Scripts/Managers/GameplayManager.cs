@@ -21,7 +21,7 @@ public class GameplayManager : MonoBehaviour
     //Minigame prefabs
     private GameObject minigameInstance;
     public GameObject minigamePrefab;
-    public GameObject winCanvas;
+    public GameObject winCanvas, loseCanvas;
 
     //Game over prefabs
     //private GameObject gameOverInstance;
@@ -67,6 +67,7 @@ public class GameplayManager : MonoBehaviour
     public GameObject[] daysEnvironmentVariants;
 
     bool startTime = false;
+    bool gameOver = false;
 
     private void Awake()
     {
@@ -85,7 +86,7 @@ public class GameplayManager : MonoBehaviour
         rainParticleSystem = RainParticles.GetComponent<ParticleSystem>();
         rainOverlay = RainParticles.GetComponentInChildren<SpriteRenderer>();
         DisableNightVFX();
-        oneDayRevolution = 90f;
+        SetStageTimer();
 
         daysEnvironmentVariants[dayCount].SetActive(true);
     }
@@ -123,10 +124,13 @@ public class GameplayManager : MonoBehaviour
         //Reset to day
         if (clockTimer >= oneDayRevolution)
         {
-            //Reset to 0
-            clockTimer = 0;
-            clockState = ClockState.DAY;
-            DisableNightVFX();
+            if (!gameOver)
+            CheckForGameOver();
+
+            ////Reset to 0
+            //clockTimer = 0;
+            //clockState = ClockState.DAY;
+            //DisableNightVFX();
         }
         //Set to night
         else if (clockTimer >= (oneDayRevolution / 2))
@@ -135,7 +139,16 @@ public class GameplayManager : MonoBehaviour
             EnableNightVFX();
 
         }
-    }         //Update in-game timer
+    }
+    
+    void CheckForGameOver()
+    {
+        gameOver = true;
+        loseCanvas.SetActive(true);
+        gameState = GameState.MINIGAME;
+    }
+
+    //Update in-game timer
     public void UpdateWeatherTime()
     {
         if (weatherState == WeatherState.CLEAR)
@@ -298,6 +311,18 @@ public class GameplayManager : MonoBehaviour
         firefliesParticles.SetActive(true);
     }
 
+    void SetStageTimer()
+    {
+        switch (dayCount)
+        {
+            case 0: oneDayRevolution = 90f;  break;
+            case 1: oneDayRevolution = 180f; break;
+            case 2: oneDayRevolution = 270f; break;
+        }
+
+        Debug.Log("oneDayRevolution: " + oneDayRevolution);
+    }
+
     private void SetAnimalQuota()
     {
         DecideWhichAnimalsToBeRecruited();
@@ -397,15 +422,15 @@ public class GameplayManager : MonoBehaviour
         if (i == -1) return;
         if (name == animalsToCollect[i]) animalsToCollect_Current[i]++;
     }
-    void EndDay()
+    void EndDay(bool state)
     {
         dayIsEnding = true;
+
+        if (state) dayCount++;
 
         //Day is progressing to next
         if (dayCount < 2)
         {
-            dayCount++;
-
             cloudCanvas.SetBool("endDay", true);
             Invoke("FadeDay", 2.583f);
         }
@@ -424,8 +449,13 @@ public class GameplayManager : MonoBehaviour
         fadeCanvas.SetInteger("fadeState", 2);
         Invoke("DelayReload", 1.5f);
     }
+    public void RetryDay() 
+    {
+        gameState = GameState.PLAYING;    
+        EndDay(false); 
+    }
 
-    private void CheckWin() { if (!dayIsEnding && CollectedRequiredAnimals()) EndDay(); }   // check win condition
+    private void CheckWin() { if (!dayIsEnding && CollectedRequiredAnimals()) EndDay(true); }   // check win condition
     private void DelayReload() => FindObjectOfType<SceneLoader>().ReloadScene();
     public void EndMinigame(bool win) => StartCoroutine(DelayEndMinigame(win));             //Call this to activate end of minigame
 }
