@@ -120,17 +120,13 @@ public class PlayerController : MonoBehaviour
         {
             float mDist = Vector2.Distance(transform.position, targetMove);
 
-            Debug.Log("mDist: " + mDist + " | checkDist: " + checkDist);
-
             if (mDist < checkDist)
             {
-                Debug.Log("step#1");
                 //Noah has reached destination
                 rb.velocity = Vector2.zero;
             }
             else
             {
-                Debug.Log("step#2");
                 //Get the vector direction from mousepos to player
                 Vector2 dir = targetMove - new Vector2(transform.position.x, transform.position.y);
                 dir = dir.normalized;

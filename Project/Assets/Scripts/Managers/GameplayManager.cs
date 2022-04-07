@@ -319,8 +319,6 @@ public class GameplayManager : MonoBehaviour
             case 1: oneDayRevolution = 180f; break;
             case 2: oneDayRevolution = 270f; break;
         }
-
-        Debug.Log("oneDayRevolution: " + oneDayRevolution);
     }
 
     private void SetAnimalQuota()
