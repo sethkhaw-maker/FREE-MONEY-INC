@@ -65,11 +65,11 @@ public class PlayerController : MonoBehaviour
 
         if (TutorialIsRunning()) return;
 
-        if (party.Count != 0)
-        {
-            targetMove = transform.position;
-            rb.velocity = Vector2.zero;
-        }
+        //if (party.Count != 0)
+        //{
+        //    targetMove = transform.position;
+        //    rb.velocity = Vector2.zero;
+        //}
         if (party.Count == 0)
         {
             isClearingAnimals = false;
@@ -118,14 +118,19 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            if (Vector2.Distance(transform.position, targetMove) < checkDist)
+            float mDist = Vector2.Distance(transform.position, targetMove);
+
+            Debug.Log("mDist: " + mDist + " | checkDist: " + checkDist);
+
+            if (mDist < checkDist)
             {
+                Debug.Log("step#1");
                 //Noah has reached destination
                 rb.velocity = Vector2.zero;
-
             }
             else
             {
+                Debug.Log("step#2");
                 //Get the vector direction from mousepos to player
                 Vector2 dir = targetMove - new Vector2(transform.position.x, transform.position.y);
                 dir = dir.normalized;
@@ -139,23 +144,24 @@ public class PlayerController : MonoBehaviour
         {
             if (targetAnimal != null) return;
 
-            Debug.Log("step#5");
-
             //Get mouse position in world space
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             targetMove = mousePos;
 
+            RaycastHit2D hitArk = Physics2D.Raycast(mousePos, transform.forward, 1f, arkLayer);
+            if (hitArk.collider != null)
+            {
+                targetMove = transform.position;
+                return;
+            }
+
             //Return if player is near the mouse
             if (Vector2.Distance(transform.position, mousePos) < checkDist)
             {
-                Debug.Log("step#5.1");
-
                 //Noah has reached destination
                 rb.velocity = Vector2.zero;
                 return;
             }
-
-            Debug.Log("step#6");
 
             //Get the vector direction from mousepos to player
             Vector2 dir = targetMove - new Vector2(transform.position.x, transform.position.y);
@@ -238,7 +244,6 @@ public class PlayerController : MonoBehaviour
 
             FindObjectOfType<AudioManager>()?.Play("Noah Footsteps");
 
-            Debug.Log("step#2 | mousePos: " + mousePos + " | targetMove: " + targetMove);
         }
 
         FindObjectOfType<AudioManager>()?.Play("Noah Footsteps");

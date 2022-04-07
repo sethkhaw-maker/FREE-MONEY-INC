@@ -51,7 +51,6 @@ public class TUT_GameManager : MonoBehaviour
             PlayerController.instance.targetAnimal.MinigameFailed();
         }
 
-
         PlayerController.instance.targetAnimal = null;          //Reset target animal from player
     }
     private void CheckWin()
