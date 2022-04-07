@@ -7,6 +7,7 @@ public class OceanSFX : MonoBehaviour
     public AudioManager audioManager;
     bool isInMainMenu;
     bool isPlaying;
+    bool isStop;
 
     void Awake()
     {
@@ -35,13 +36,20 @@ public class OceanSFX : MonoBehaviour
     {
         if (!isPlaying)
         {
-            FindObjectOfType<AudioManager>()?.Play("Ocean Waves");
             isPlaying = true;
+            FindObjectOfType<AudioManager>()?.Play("Ocean Waves");
+            Debug.Log("WEH");
+
         }
-        yield return new WaitForSeconds(audioManager.sounds[15].clip.length);
-        isPlaying = false;
-        //FindObjectOfType<AudioManager>()?.Play("Ocean Waves");
-        
+        else if (!isStop)
+        {
+            isStop = true;
+            yield return new WaitForSeconds(70f);
+            isStop = false;
+            isPlaying = false;
+        }
+
+
     }
 
     public void Starting()
